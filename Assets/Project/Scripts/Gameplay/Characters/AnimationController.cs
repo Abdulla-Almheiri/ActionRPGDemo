@@ -19,6 +19,12 @@ namespace Chaos.Gameplay.Characters
         void Update()
         {
             HandleRunningAnimation();
+
+            if(Input.GetKeyUp(KeyCode.Alpha1) == true)
+            {
+                _animator.SetTrigger("Attack1");
+                Debug.Log("Attack triggered");
+            }
         }
 
         protected void Initialize()
@@ -35,7 +41,7 @@ namespace Chaos.Gameplay.Characters
             }
 
             var currentSpeed = _movementController.GetCurrentMovementSpeed();
-            Debug.Log("Current speed =   " + currentSpeed);
+            //Debug.Log("Current speed =   " + currentSpeed);
             _animator.SetFloat("MovementSpeed", currentSpeed);
         }
     }
