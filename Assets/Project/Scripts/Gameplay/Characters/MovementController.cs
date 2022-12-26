@@ -67,7 +67,7 @@ namespace Chaos.Gameplay.Characters
 
             RaycastHit rayHit;
 
-            if (Physics.Raycast(ray, out rayHit, Layer))
+            if (Physics.Raycast(ray, out rayHit, Layer) == true)
             {
                 MoveToWorldPoint(rayHit.point);
             }
@@ -76,7 +76,7 @@ namespace Chaos.Gameplay.Characters
 
         public void StopMovement()
         {
-
+            _navMeshAgent.isStopped = true;
         }
 
         public void MoveToCharacter(CharacterController character)
@@ -88,6 +88,21 @@ namespace Chaos.Gameplay.Characters
         {
             var currentSpeed = _navMeshAgent.velocity.magnitude / _navMeshAgent.speed;
             return currentSpeed;
+        }
+
+        public void RotateCharacterInMouseDirection()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit rayHit;
+
+            if (Physics.Raycast(ray, out rayHit, Layer))
+            {
+                var direction = (rayHit.point - transform.position);
+                direction.y = 0;
+                direction = direction.normalized;
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
         }
     }
 }

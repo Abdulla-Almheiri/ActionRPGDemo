@@ -8,6 +8,8 @@ namespace Chaos.Gameplay.Characters
     {
         
         protected MovementController _movementController;
+        protected SkillController _skillController;
+        protected CharacterVFXController _characterVFXController;
         protected Animator _animator;
         // Start is called before the first frame update
         void Start()
@@ -23,7 +25,21 @@ namespace Chaos.Gameplay.Characters
             if(Input.GetKeyUp(KeyCode.Alpha1) == true)
             {
                 _animator.SetTrigger("Attack1");
+                //TEST
+                _skillController.SpawnSkillVFXTest();
                 Debug.Log("Attack triggered");
+            }
+
+            if (Input.GetKeyUp(KeyCode.F) == true)
+            {
+                _animator.SetTrigger("Death");
+                Debug.Log("Death triggered");
+            }
+
+            if (Input.GetKeyUp(KeyCode.H) == true)
+            {
+                _animator.SetTrigger("Hit");
+                Debug.Log("Hit triggered");
             }
         }
 
@@ -31,6 +47,8 @@ namespace Chaos.Gameplay.Characters
         {
             _movementController = GetComponent<MovementController>();
             _animator = GetComponent<Animator>();
+            _skillController = GetComponent<SkillController>();
+            _characterVFXController = GetComponent<CharacterVFXController>();
         }
 
         protected void HandleRunningAnimation()
