@@ -11,7 +11,7 @@ namespace Chaos.Gameplay.Characters
         public CharacterVFXSpawnLocationType SpawnLocationType;
 
         protected CharacterVFXController _characterVFXController;
-        protected MovementController _characterMovementController;
+        protected CharacterMovementController _characterMovementController;
 
         // Start is called before the first frame update
         void Start()
@@ -28,7 +28,7 @@ namespace Chaos.Gameplay.Characters
         protected void Initialize()
         {
             _characterVFXController = GetComponent<CharacterVFXController>();
-            _characterMovementController = GetComponent<MovementController>();
+            _characterMovementController = GetComponent<CharacterMovementController>();
         }
         public void SpawnSkillVFXTest()
         {

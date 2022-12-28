@@ -6,7 +6,7 @@ using Chaos.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
-    public class MovementController : GameController
+    public class CharacterMovementController : GameController
     {
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
@@ -63,7 +63,7 @@ namespace Chaos.Gameplay.Characters
         public void MoveToMousePosition()
         {
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit rayHit;
 
@@ -92,7 +92,7 @@ namespace Chaos.Gameplay.Characters
 
         public void RotateCharacterInMouseDirection()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit rayHit;
 

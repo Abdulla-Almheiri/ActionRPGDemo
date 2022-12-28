@@ -7,7 +7,7 @@ namespace Chaos.Gameplay.Characters
     public class AnimationController : MonoBehaviour
     {
         
-        protected MovementController _movementController;
+        protected CharacterMovementController _movementController;
         protected SkillController _skillController;
         protected CharacterVFXController _characterVFXController;
         protected Animator _animator;
@@ -45,7 +45,7 @@ namespace Chaos.Gameplay.Characters
 
         protected void Initialize()
         {
-            _movementController = GetComponent<MovementController>();
+            _movementController = GetComponent<CharacterMovementController>();
             _animator = GetComponent<Animator>();
             _skillController = GetComponent<SkillController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
