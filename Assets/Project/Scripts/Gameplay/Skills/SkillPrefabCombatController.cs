@@ -21,12 +21,12 @@ namespace Chaos.Gameplay.Skills
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log("TRIGGER ENTERED : " + other);
-            other.gameObject.GetComponent<CombatController>()?.TakeDamage(Random.Range(1f, 50f));
+            other.gameObject.GetComponent<CharacterCombatController>()?.TakeDamage(Random.Range(1f, 50f));
         }
         private void OnCollisionEnter(Collision collision)
         {
             Debug.Log("COLLISION ENTERED : " + collision);
-            collision.gameObject.GetComponent<CombatController>()?.TakeDamage(Random.Range(1f, 50f));
+            collision.gameObject.GetComponent<CharacterCombatController>()?.TakeDamage(Random.Range(1f, 50f));
         }
 
     }

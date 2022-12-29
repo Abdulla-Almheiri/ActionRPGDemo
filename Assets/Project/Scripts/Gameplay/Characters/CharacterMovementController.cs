@@ -79,9 +79,9 @@ namespace Chaos.Gameplay.Characters
             _navMeshAgent.isStopped = true;
         }
 
-        public void MoveToCharacter(CharacterController character)
+        public void MoveToGameObject(GameObject targetGameObject)
         {
-
+            MoveToWorldPoint(targetGameObject.gameObject.transform.position);
         }
 
         public float GetCurrentMovementSpeed()

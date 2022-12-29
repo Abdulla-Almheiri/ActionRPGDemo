@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/Art/UI/damageNumberStyleSheet.uss?fileID=7433441132597879392&amp;guid=8458e76138c2c334cb1620c6ae83f758&amp;type=3#damageNumberStyleSheet" />
+    <ui:VisualElement name="textContainer" style="width: 400px; height: 100px; position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+        <ui:Label text="999" display-tooltip-when-elided="true" name="damageNumber" style="position: relative; left: auto; top: auto; right: auto; bottom: auto; font-size: 86px; -unity-text-outline-width: 5px; -unity-font-style: bold; color: rgba(142, 142, 142, 255); -unity-text-align: upper-center;" />
+    </ui:VisualElement>
+</ui:UXML>

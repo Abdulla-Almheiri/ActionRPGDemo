@@ -14,7 +14,7 @@ namespace Chaos.Gameplay.Skills
         public string Description;
         public int ManaCost = 0;
         public float RechargeTime = 0f;
-
+        
         /*
         [Space(20)]
         

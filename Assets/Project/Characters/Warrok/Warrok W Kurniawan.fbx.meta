@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: b999633dfbdf9534f8e9f6b14704090e
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
@@ -16,17 +16,17 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_diffuse
-    second: {fileID: 2800000, guid: fe408001d3bf54846bce220dce3c9a94, type: 3}
+    second: {fileID: 2800000, guid: 5d6d6be1058566d499f4c82a4275b7fb, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_normal
-    second: {fileID: 2800000, guid: 7a599d35a52d6dd429da7f5e19295ead, type: 3}
+    second: {fileID: 2800000, guid: f641b616d7bfbfb488d738b95b89f8bd, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_specular
-    second: {fileID: 2800000, guid: 3e828c2f815080549b66ee39d657e1d4, type: 3}
+    second: {fileID: 2800000, guid: 3bc38aa0e38aecd4e8b611c5a8513097, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -122,6 +122,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
