@@ -6,7 +6,7 @@ using Chaos.Gameplay.Characters;
 namespace Chaos.Gameplay.Skills
 {
     [System.Serializable]
-    public abstract class SkillActionCoefficient 
+    public  class SkillActionCoefficient 
     {
         public float Value;
         public CooefficientType CooefficientType;

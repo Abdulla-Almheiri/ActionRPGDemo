@@ -7,6 +7,7 @@ namespace Chaos.Gameplay.Characters
     public class CharacterAIController : MonoBehaviour
     {
         public GameObject PlayerTest;
+        private CharacterMovementController _playerMovementController;
         [SerializeField]
         protected CharacterAITemplate _characterAITemplate;
         protected CharacterMovementController _characterMovementController;
@@ -26,6 +27,7 @@ namespace Chaos.Gameplay.Characters
         public void Initialize()
         {
             _characterMovementController = GetComponent<CharacterMovementController>();
+            _playerMovementController = PlayerTest.GetComponent<CharacterMovementController>();
         }
 
         private void ProcessCharacterAI()
@@ -37,6 +39,13 @@ namespace Chaos.Gameplay.Characters
 
             if(_characterAITemplate.ChasePlayer == true)
             {
+                if(_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController))
+                {
+                    Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
+                    _characterMovementController.StopMovement();
+                    return;
+                }
+
                 if(_characterMovementController != null)
                 {
                     _characterMovementController.MoveToGameObject(PlayerTest);

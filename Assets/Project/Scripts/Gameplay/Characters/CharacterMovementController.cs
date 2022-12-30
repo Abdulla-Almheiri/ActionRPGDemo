@@ -10,7 +10,7 @@ namespace Chaos.Gameplay.Characters
     {
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
-
+        public float DefaultMeleeRangeTest = 5f;
         void Start()
         {
             Initialize(null);
@@ -18,11 +18,7 @@ namespace Chaos.Gameplay.Characters
 
         void Update()
         {
-            if(Input.GetMouseButton(0) == true)
-            {
-                MoveToMousePosition();
-                
-            }
+
             
         }
         public override bool Initialize(Game game)
@@ -102,6 +98,24 @@ namespace Chaos.Gameplay.Characters
                 direction.y = 0;
                 direction = direction.normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
+            }
+        }
+
+        public float GetUnsignedDistanceBetweenCharacters(CharacterMovementController targetCharacter)
+        {
+            return Mathf.Abs((gameObject.transform.position - targetCharacter.gameObject.transform.position).magnitude);
+        }
+
+        public bool IsCharacterWithinMeleeRange(CharacterMovementController targetCharacter)
+        {
+            float distance = GetUnsignedDistanceBetweenCharacters(targetCharacter);
+            Debug.Log("Distance   is    :    " + distance);
+            if(distance <= DefaultMeleeRangeTest)
+            {
+                return true;
+            } else
+            {
+                return false;
             }
         }
     }

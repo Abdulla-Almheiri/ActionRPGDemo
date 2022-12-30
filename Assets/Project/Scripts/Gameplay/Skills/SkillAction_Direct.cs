@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Chaos.Gameplay.Skills
 {
     [System.Serializable]
-    public class SkillAction_Direct : SkillAction
+    public class SkillAction_Direct 
     {
         [SerializeField]
         protected SkillActionCoefficient _damage;
@@ -18,9 +18,5 @@ namespace Chaos.Gameplay.Skills
         [SerializeField]
         protected SkillActionCoefficient _drainResource;
 
-        public override void Apply(ISkillActionReceiver activator, ISkillActionReceiver receiver)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

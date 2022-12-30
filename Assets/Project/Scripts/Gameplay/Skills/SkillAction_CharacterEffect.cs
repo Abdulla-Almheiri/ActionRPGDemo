@@ -6,7 +6,7 @@ using Chaos.Gameplay.Characters;
 namespace Chaos.Gameplay.Skills
 {
     [System.Serializable]
-    public class SkillAction_CharacterEffect : SkillAction
+    public class SkillAction_CharacterEffect 
     {
         [SerializeField]
         protected float _duration;
@@ -14,9 +14,5 @@ namespace Chaos.Gameplay.Skills
         [SerializeField]
         protected Attribute _attribute;
 
-        public override void Apply(ISkillActionReceiver activator, ISkillActionReceiver receiver)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

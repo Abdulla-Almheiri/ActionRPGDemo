@@ -12,9 +12,9 @@ namespace Chaos.Gameplay.Skills
         public string Name;
         [TextArea(5, 15)]
         public string Description;
-        public int ManaCost = 0;
+        public int EnergyCost = 0;
         public float RechargeTime = 0f;
-        
+
         /*
         [Space(20)]
         
@@ -47,8 +47,7 @@ namespace Chaos.Gameplay.Skills
         public List<SkillAction> Actions;
         */
 
-        public List<SkillAction_Direct> Direct = new List<SkillAction_Direct>();
-        public List<SkillAction_CharacterEffect> Character = new List<SkillAction_CharacterEffect>();
+        public List<SkillAction> SkillActions = new List<SkillAction>();
 
         
     }

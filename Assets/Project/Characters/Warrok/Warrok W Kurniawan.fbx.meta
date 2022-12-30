@@ -16,17 +16,17 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_diffuse
-    second: {fileID: 2800000, guid: 5d6d6be1058566d499f4c82a4275b7fb, type: 3}
+    second: {fileID: 2800000, guid: df3a07c4a22a7aa4aadd1018f6217341, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_normal
-    second: {fileID: 2800000, guid: f641b616d7bfbfb488d738b95b89f8bd, type: 3}
+    second: {fileID: 2800000, guid: 2dead6f34a66df24692ab6b4a26ac1f2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bear_specular
-    second: {fileID: 2800000, guid: 3bc38aa0e38aecd4e8b611c5a8513097, type: 3}
+    second: {fileID: 2800000, guid: fa24f93af27dd2543ae102c6e725c453, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
