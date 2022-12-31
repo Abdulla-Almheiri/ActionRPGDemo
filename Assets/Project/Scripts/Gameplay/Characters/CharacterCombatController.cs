@@ -13,7 +13,12 @@ namespace Chaos.Gameplay.Characters
         private float _maxEnergy = 40f;
         private float _currentEnergy = 40f;
         private float _energyRegenPerSecond = 5f;
+
+        private CharacterMovementController _characterMovementController;
+
         private Dictionary<Attribute, float> _attributes = new Dictionary<Attribute, float>();
+
+        private CharacterStateTemplate _characterState;
         public void TakeDamage(float value)
         {
             Debug.Log("Damage taken:   " + value);
@@ -21,11 +26,7 @@ namespace Chaos.Gameplay.Characters
 
        public void ApplySkillAction(SkillAction skillAction)
         {
-            float damage = 0f, healing = 0f;
-            if(_attributes.TryGetValue(skillAction.Damage.Attribute, out damage))
-            {
-                damage = skillAction.Damage.Value * damage / 100f;
-            }
+
         }
         
         private void ClampHealth()
@@ -40,6 +41,16 @@ namespace Chaos.Gameplay.Characters
 
         public void Initialize()
         {
+            _characterMovementController = GetComponent<CharacterMovementController>();
+        }
+
+        public void EngageCharacterInMelee(CharacterCombatController targetCharacter)
+        {
+            if(_characterMovementController == null)
+            {
+                return;
+            }
+
 
         }
     }

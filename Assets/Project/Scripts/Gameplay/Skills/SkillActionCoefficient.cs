@@ -9,13 +9,7 @@ namespace Chaos.Gameplay.Skills
     public  class SkillActionCoefficient 
     {
         public float Value;
-        public CooefficientType CooefficientType;
+        public float Duration;
         public Attribute Attribute;
-    }
-
-    public enum CooefficientType
-    {
-        PERCENTAGE,
-        FLAT
     }
 }

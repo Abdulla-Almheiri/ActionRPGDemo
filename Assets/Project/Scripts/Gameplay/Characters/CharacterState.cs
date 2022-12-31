@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Chaos.Gameplay.Characters
 {
-    [CreateAssetMenu(fileName = "new character state", menuName = "Content/Characters/Character State")]
-    public class CharacterState : ScriptableObject
+    [System.Serializable]
+    public class CharacterState 
     {
         public bool CanMove = true;
         public bool CanAttack = true;

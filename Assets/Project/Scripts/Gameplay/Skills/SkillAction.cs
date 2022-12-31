@@ -7,12 +7,10 @@ using UnityEngine.UI;
 namespace Chaos.Gameplay.Skills
 {
     [System.Serializable]
-    public  class SkillAction 
+    public class SkillAction 
     {
-        public SkillActionCoefficient Damage;
-        public SkillActionCoefficient Healing;
+        public SkillActionCoefficient Coefficient;
         public SkillActionElement Element;
-        public float Duration = 10f;
         
     }
 }

@@ -12,10 +12,23 @@ namespace Chaos.Gameplay.Skills
         public string Name;
         [TextArea(5, 15)]
         public string Description;
-        public int EnergyCost = 0;
-        public float RechargeTime = 0f;
 
-        /*
+        [Space(20)]
+        [Header("ACTIVATION")]
+        public SkillActivationData SkillActivationData;
+
+        [Space(20)]
+        [Header("TRIGGER")]
+        public SkillTriggerData SkillTriggerData;
+
+        [Space(20)]
+        [Header("VISUAL EFFECT")]
+
+
+        public List<SkillAction> SkillActions = new List<SkillAction>();
+
+
+                /*
         [Space(20)]
         
         [Header("VISUAL EFFECT")]
@@ -46,8 +59,6 @@ namespace Chaos.Gameplay.Skills
         [Header("If Action's VFX Prefab is empty, then default one is used.")]
         public List<SkillAction> Actions;
         */
-
-        public List<SkillAction> SkillActions = new List<SkillAction>();
 
         
     }

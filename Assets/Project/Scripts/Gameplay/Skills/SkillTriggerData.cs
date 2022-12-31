@@ -5,9 +5,10 @@ using UnityEngine;
 namespace Chaos.Gameplay.Skills
 {
     [System.Serializable]
-    public class SkillActivationData
+    public class SkillTriggerData
     {
-        public float EnergyCost = 0f;
-        public float RechargeTime = 0f;
+        public float TriggerChance = 100f;
+        public SkillTrigger SkillTrigger;
+
     }
 }
