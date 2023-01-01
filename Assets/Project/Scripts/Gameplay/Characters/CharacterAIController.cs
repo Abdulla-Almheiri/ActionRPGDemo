@@ -27,7 +27,10 @@ namespace Chaos.Gameplay.Characters
         public void Initialize()
         {
             _characterMovementController = GetComponent<CharacterMovementController>();
-            _playerMovementController = PlayerTest.GetComponent<CharacterMovementController>();
+            if (PlayerTest != null)
+            {
+                _playerMovementController = PlayerTest.GetComponent<CharacterMovementController>();
+            }
         }
 
         private void ProcessCharacterAI()
@@ -47,7 +50,7 @@ namespace Chaos.Gameplay.Characters
             {
                 if (_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController))
                 {
-                    Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
+                    //Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
                     _characterMovementController.StopMovement();
                     return;
                 }

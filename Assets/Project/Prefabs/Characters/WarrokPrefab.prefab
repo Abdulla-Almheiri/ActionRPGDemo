@@ -951,6 +951,8 @@ GameObject:
   - component: {fileID: 3199891489099731910}
   - component: {fileID: 919132148592761777}
   - component: {fileID: 919132148592761776}
+  - component: {fileID: 677555022}
+  - component: {fileID: -2342888417775700775}
   m_Layer: 0
   m_Name: WarrokPrefab
   m_TagString: Untagged
@@ -1090,6 +1092,30 @@ CapsuleCollider:
   m_Height: 2.69
   m_Direction: 1
   m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &677555022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353453558888526314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979eb2378f73d6942a9fbd0dfc68a0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2342888417775700775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353453558888526314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bb1698812a4574fa122f04ef0d6b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2451685129057789390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2394,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91d36f0bfb77b9d4696db9545bcb0946, type: 2}
+  - {fileID: 2100000, guid: 40c03f87357e32e4a90e77c246f81cae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -26,7 +26,7 @@ namespace Chaos.Gameplay.Characters
             {
                 _animator.SetTrigger("Attack1");
                 //TEST
-                _skillController.SpawnSkillVFXTest();
+                _skillController?.SpawnSkillVFXTest();
                 Debug.Log("Attack triggered");
             }
 

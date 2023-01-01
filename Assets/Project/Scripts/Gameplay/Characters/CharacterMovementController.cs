@@ -103,13 +103,17 @@ namespace Chaos.Gameplay.Characters
 
         public float GetUnsignedDistanceBetweenCharacters(CharacterMovementController targetCharacter)
         {
+            if(targetCharacter == null)
+            {
+                return 0;
+            }
             return Mathf.Abs((gameObject.transform.position - targetCharacter.gameObject.transform.position).magnitude);
         }
 
         public bool IsCharacterWithinMeleeRange(CharacterMovementController targetCharacter)
         {
             float distance = GetUnsignedDistanceBetweenCharacters(targetCharacter);
-            Debug.Log("Distance   is    :    " + distance);
+            //Debug.Log("Distance   is    :    " + distance);
             if(distance <= DefaultMeleeRangeTest)
             {
                 return true;

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Chaos.Skills;
+using Chaos.Gameplay.Skills;
+using Chaos.Gameplay.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
     public class CharacterSkillController : MonoBehaviour
     {
+        public GameUIController GameUIController;
         public GameObject SkillVFX;
         public CharacterVFXSpawnLocationType SpawnLocationType;
 
@@ -46,6 +48,7 @@ namespace Chaos.Gameplay.Characters
             }
             var spawnedVFX = Instantiate(SkillVFX, spawnPoint);
             spawnedVFX.transform.SetParent(null);
+            spawnedVFX.GetComponent<SkillPrefabCombatController>().GameUIControllerTest = GameUIController;
             
         }
 
