@@ -11,13 +11,19 @@ namespace Chaos.Gameplay.UI
         public FloatingCombatTextTemplate FloatingCombatTextTemplate;
         private GameObjectPoolController _gameObjectPoolController;
         private TMP_Text _TMPText;
-        private Vector3 _initialPosition;
+        private Vector3 _currentPosition;
         private float _elapsedTime = 0f;
         private float _maxDurationInSeconds = 3f;
+        private bool _followTransform = false;
+        private Vector3 _initialPosition;
+        private UnityEngine.Camera _cachedCamera;
 
         public void Awake()
         {
-            _gameObjectPoolController = GetComponent<GameObjectPoolController>(); ;
+            _cachedCamera = UnityEngine.Camera.main;
+            _TMPText = GetComponent<TMP_Text>();
+            _gameObjectPoolController = GetComponent<GameObjectPoolController>();
+            
         }
         // Start is called before the first frame update
         void Start()
@@ -33,6 +39,7 @@ namespace Chaos.Gameplay.UI
                 Play();
             }
             ProcessDisablingAfterElapsedTime();
+            ProcessFollowingInitializedTransform();
         }
         private void ProcessDisablingAfterElapsedTime()
         {
@@ -47,12 +54,31 @@ namespace Chaos.Gameplay.UI
                 gameObject.SetActive(false);
             }
         }
+
+        private void ProcessFollowingInitializedTransform()
+        {
+            if(_initialPosition == null || _followTransform == false)
+            {
+                return;
+            }
+            //HERE FIX
+            _currentPosition = _cachedCamera.WorldToScreenPoint(_initialPosition);
+            _currentPosition.z = 0f;
+        }
+
         public void Initialize(Vector3 initialPosition)
         {
             _TMPText = GetComponent<TMP_Text>();
-            _initialPosition = initialPosition;
-            _TMPText.rectTransform.SetPositionAndRotation(_initialPosition, Quaternion.identity);
+            _currentPosition = initialPosition;
+            _TMPText.rectTransform.SetPositionAndRotation(_currentPosition, Quaternion.identity);
             Play();
+        }
+
+
+        public void Initialize(Transform worldPoint, FloatingCombatTextTemplate floatingCombatTextTemplate, bool followTransform = false)
+        {
+            FloatingCombatTextTemplate = floatingCombatTextTemplate;
+            _followTransform = followTransform;
         }
 
         public void Play()
@@ -66,17 +92,41 @@ namespace Chaos.Gameplay.UI
                 StartCoroutine(AnimatePropertyWithAnimationCurveCO(animationData));
             }
 
-
         }
+
+
+        public void Play(Transform worldPoint, FloatingCombatTextTemplate floatingCombatTextTemplate, bool followTransform = false)
+        {
+            if ( _TMPText == null)
+            {
+                return;
+            }
+            _initialPosition = worldPoint.position;
+            _followTransform = followTransform;
+
+            var initialPosition = _cachedCamera.WorldToScreenPoint(worldPoint.position);
+           initialPosition.z = 0f;
+           _TMPText.rectTransform.SetPositionAndRotation(initialPosition, Quaternion.identity);
+
+            _currentPosition = initialPosition;
+            Debug.Log("Position is :   " + initialPosition);
+
+            foreach (FloatingCombatTextAnimationData animationData in floatingCombatTextTemplate.PropertiesToAnimate)
+            {
+                StartCoroutine(AnimatePropertyWithAnimationCurveCO(animationData));
+            }
+        }
+
 
         private IEnumerator AnimatePropertyWithAnimationCurveCO(FloatingCombatTextAnimationData animationData)
         {
-            float increment = 1f / 30f;
+            float increment = Time.deltaTime;
 
-            var wait = new WaitForSeconds(increment);
+            var wait = new WaitForEndOfFrame();
             float progress = 0f;
             while(progress <= 1f+increment)
             {
+                increment = Time.deltaTime;
                 SetPropertyValue(animationData.PropertyToAnimate, animationData.CurveMultiplier * animationData.AnimationCurve.Evaluate(progress));
                 progress += increment;
                 yield return wait;
@@ -88,14 +138,14 @@ namespace Chaos.Gameplay.UI
 
             if(propertyType == FloatingCombatTextAnimationDataPropertyType.RelativePositionX)
             {
-                Vector3 newPosition = _initialPosition + (new Vector3(newValue, 0f, 0f));
+                Vector3 newPosition = _currentPosition + (new Vector3(newValue, 0f, 0f));
                 _TMPText.rectTransform.SetPositionAndRotation(newPosition, Quaternion.identity);
                 return;
             }
 
             if (propertyType == FloatingCombatTextAnimationDataPropertyType.RelativePositionY)
             {
-                Vector3 newPosition = _initialPosition + (new Vector3(0f, newValue, 0f));
+                Vector3 newPosition = _currentPosition + (new Vector3(0f, newValue, 0f));
                 _TMPText.rectTransform.SetPositionAndRotation(newPosition, Quaternion.identity);
                 return;
             }
@@ -119,12 +169,19 @@ namespace Chaos.Gameplay.UI
 
         public void OnEnable()
         {
-            Play();
+            
+            //Play();
+            ResetElapsedTime();
         }
 
+
+        private void ResetElapsedTime()
+        {
+            _elapsedTime = 0f;
+        }
         public void OnDisable()
         {
-            _gameObjectPoolController.ReturnToPool();
+            //_gameObjectPoolController.ReturnToPool();
         }
 
     }

@@ -9,6 +9,8 @@ namespace Chaos.Gameplay.Systems
 {
     public class GameUIController : MonoBehaviour
     {
+        public FloatingCombatTextProfile FloatingCombatTextProfile;
+        public FloatingCombatTextTemplate FloatingCombatTextTemplate;
         public GameObjectPoolTemplate GameObjectPoolTemplate;
         private GamePoolController _gamePoolController;
 
@@ -30,20 +32,40 @@ namespace Chaos.Gameplay.Systems
             
         }
 
-        public void SpawnDamageTextAtScreenPositionTest(float amount, Vector3 targetScreenPosition)
+        public void SpawnDamageTextAtScreenPositionTest(string text, Transform worldPoint)
         {
             var objPool = _gamePoolController.RetrieveGameObjectPoolByTemplate(GameObjectPoolTemplate);
-            var spawn = objPool.RetrieveFirstAvailablePooledGameObject();
+            var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
             if(spawn == null)
             {
+                
                 return;
             }
             spawn.gameObject.SetActive(true);
-            spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Initialize(targetScreenPosition);
+            spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Initialize(worldPoint, FloatingCombatTextTemplate);
+            spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Play(worldPoint, FloatingCombatTextTemplate, true);
             //spawn.gameObject.GetComponent<TMP_Text>().rectTransform.SetPositionAndRotation(targetScreenPosition, Quaternion.identity);
-            spawn.gameObject.GetComponent<TMP_Text>().text = amount.ToString();
+            spawn.gameObject.GetComponent<TMP_Text>().text = text;
+            spawn.gameObject.GetComponent<TMP_Text>().faceColor = FloatingCombatTextTemplate.Color;
 
 
         }
+
+        public void TriggerFloatingCombatTextFromTransform(string text, Transform worldPoint, FloatingCombatTextEventType eventType)
+        {
+
+        }
+    }
+
+    public enum FloatingCombatTextEventType
+    {
+        Damage,
+        CriticalDamage,
+        Healing,
+        CriticalHealing,
+        CharacterStatusChange,
+        HealingRegeneration,
+        EnergyRegeneration
+
     }
 }

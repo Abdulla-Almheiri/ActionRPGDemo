@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 919132148592761776}
   - component: {fileID: 677555022}
   - component: {fileID: -2342888417775700775}
+  - component: {fileID: 8230261869894096178}
   m_Layer: 0
   m_Name: WarrokPrefab
   m_TagString: Untagged
@@ -1104,6 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979eb2378f73d6942a9fbd0dfc68a0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameMaterialController: {fileID: 0}
 --- !u!114 &-2342888417775700775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1118,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2bb1698812a4574fa122f04ef0d6b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8230261869894096178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353453558888526314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c630bd50086a04fb8c535072b862ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterCombatTemplate: {fileID: 11400000, guid: 211877ea1fc3fea43bcc30be8479d5bc,
+    type: 2}
 --- !u!1 &2451685129057789390
 GameObject:
   m_ObjectHideFlags: 0

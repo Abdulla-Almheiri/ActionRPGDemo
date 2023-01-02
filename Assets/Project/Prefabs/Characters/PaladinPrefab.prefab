@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 1682498534}
   - component: {fileID: 3864621539015612422}
   - component: {fileID: 1347905474224235880}
+  - component: {fileID: 1501025853648936820}
   m_Layer: 0
   m_Name: PaladinPrefab
   m_TagString: Untagged
@@ -1306,6 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027fcf2fb93553b43bfa9594bf650168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameUIController: {fileID: 0}
   SkillVFX: {fileID: 6820445246708541164, guid: a4cbe42d5b08a10438ca47926808e5ab,
     type: 3}
   SpawnLocationType: {fileID: 11400000, guid: ee43a4c395630b340a822cdd8232723e, type: 2}
@@ -1361,6 +1363,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 979eb2378f73d6942a9fbd0dfc68a0f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501025853648936820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196629630285573069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf47a8c83385246468fa7ef4f07af054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3317519688389044056

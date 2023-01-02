@@ -25,9 +25,10 @@ namespace Chaos.Gameplay.Systems
         {
             if(Input.GetKeyUp(KeyCode.P))
             {
-               var objPool = RetrieveGameObjectPoolByTemplate(PoolTemplateTest);
-               var spawn = objPool.RetrieveFirstAvailablePooledGameObject(true);
-               // spawn.gameObject.SetActive(true);
+                var objPool = RetrieveGameObjectPoolByTemplate(PoolTemplateTest);
+                var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
+                spawn?.gameObject.SetActive(true);
+
             }
         }
 

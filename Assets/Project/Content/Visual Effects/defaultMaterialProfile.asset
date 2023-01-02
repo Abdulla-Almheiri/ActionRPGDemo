@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a27dc226dca2d4e8b75f1591b7880f, type: 3}
+  m_Name: defaultMaterialProfile
+  m_EditorClassIdentifier: 
+  MouseHoverHighlightBehaviourCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  NeutralHighlightColor: {r: 0.7735849, g: 0.7516395, b: 0.6239765, a: 1}
+  HostileHighlightColor: {r: 1, g: 0, b: 0, a: 1}
+  FriendlyHighlightColor: {r: 0, g: 1, b: 0, a: 1}
+  MaterialHighlightColorsTriggeredbyElements:
+  - Element: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
+    MaterialHighlightColor: {r: 0.8962264, g: 0.87899566, b: 0.5453453, a: 1}
+    Duration: 1
+    HighlightPowerCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.22527772
+        value: 0.28167796
+        inSlope: -1.009351
+        outSlope: -1.009351
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.35685596
+        value: 0.9555391
+        inSlope: 0.82833624
+        outSlope: 0.82833624
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.41071153
+        outWeight: 0.26937318
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1.1667253
+        outSlope: -1.1667253
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.5763834
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4

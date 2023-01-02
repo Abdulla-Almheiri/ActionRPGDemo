@@ -48,6 +48,9 @@ namespace Chaos.Gameplay.Systems
             _gameObjectPool.ReturnObjectToPool(this);
         }
 
-
+        private void OnDisable()
+        {
+            ReturnToPool();
+        }
     }
 }

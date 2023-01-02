@@ -27,19 +27,19 @@ namespace Chaos.Gameplay.Characters
                 _animator.SetTrigger("Attack1");
                 //TEST
                 _skillController?.SpawnSkillVFXTest();
-                Debug.Log("Attack triggered");
+                //Debug.Log("Attack triggered");
             }
 
             if (Input.GetKeyUp(KeyCode.F) == true)
             {
                 _animator.SetTrigger("Death");
-                Debug.Log("Death triggered");
+                //Debug.Log("Death triggered");
             }
 
             if (Input.GetKeyUp(KeyCode.H) == true)
             {
                 _animator.SetTrigger("Hit");
-                Debug.Log("Hit triggered");
+                //Debug.Log("Hit triggered");
             }
         }
 

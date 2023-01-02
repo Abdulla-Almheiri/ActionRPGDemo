@@ -8,10 +8,13 @@ namespace Chaos.Gameplay.Systems
     public class GameObjectPool
     {
         private Stack<GameObjectPoolController> _readyObjects = new Stack<GameObjectPoolController>();
-        private Queue<GameObjectPoolController> _objectsInUse = new Queue<GameObjectPoolController>();
+
+        private List<GameObjectPoolController> _objectsInUse = new List<GameObjectPoolController>();
+
         private GameObjectPoolTemplate _gameObjectPoolTemplate;
         private GamePoolController _gamePoolController;
         private int _maxSize = 0;
+        private int _allocatedObjectsCount = 0;
         public GameObjectPool(GameObjectPoolTemplate gameObjectPoolTemplate, GamePoolController gamePoolController)
         {
             Initialize(gameObjectPoolTemplate, gamePoolController);
@@ -48,7 +51,8 @@ namespace Chaos.Gameplay.Systems
 
             if (_gameObjectPoolTemplate.PreAllocateObjects == true)
             {
-                AllocateSpaceForPooledObjects(_maxSize);
+                //AllocateSpaceForPooledObjects(_maxSize);
+                PreAllocateAndInstantiateGameObjects(_maxSize);
             }
 
         }
@@ -56,50 +60,56 @@ namespace Chaos.Gameplay.Systems
        
         public void ReturnObjectToPool(GameObjectPoolController pooledGameObject)
         {
-            if(_readyObjects.Count >= _maxSize)
+            if(_gameObjectPoolTemplate == null)
             {
                 return;
             }
 
-            pooledGameObject.gameObject.SetActive(false);
-            _objectsInUse.Dequeue();
+            if(_objectsInUse.Remove(pooledGameObject) == false)
+            {
+                return;
+            }
+
+
             _readyObjects.Push(pooledGameObject);
         }
 
-        public GameObjectPoolController RetrieveFirstAvailablePooledGameObject(bool setActive = true)
-        {
-            if(_readyObjects.Count <= 0 && _objectsInUse.Count == _maxSize)
-            {
-                return null;
-            }
+        
 
-           /* if(_objectsInUse.Count == _maxSize)
+        public GameObjectPoolController RetrieveNextAvailableGameObjectFromPool()
+        {
+            if(_allocatedObjectsCount >= _maxSize && _readyObjects.Count == 0)
             {
                 
                 return null;
-            }*/
-
-            if(_readyObjects.Count == 0)
-            {
-                AllocateSpaceForPooledObjects(1);
             }
 
-            var retrievedObject = _readyObjects.Pop();
-            _objectsInUse.Enqueue(retrievedObject);
-            if(_gameObjectPoolTemplate.HideActiveInHierarchy == true)
+            if (_readyObjects.Count > 0)
             {
-                retrievedObject.gameObject.hideFlags = HideFlags.HideInHierarchy;
+                
+                var obj = _readyObjects.Pop();
+                ApplyTemplateFlagsToGameObject(obj);
+                _objectsInUse.Add(obj);
+                //obj.gameObject.SetActive(true);
+                return obj;
             }
 
-            if(setActive == true)
+            if(PreAllocateAndInstantiateGameObjects(1) == true)
             {
-                retrievedObject.gameObject.SetActive(true);
+                
+                var obj = _readyObjects.Pop();
+                ApplyTemplateFlagsToGameObject(obj);
+                _objectsInUse.Add(obj);
+                return obj;
             }
 
-            return retrievedObject;
+            return null;
+
         }
 
-        private int AvailableSlotsInPool()
+        
+
+        private int NumberOfFreeGameObjects()
         {
             if(_maxSize == 0)
             {
@@ -107,52 +117,92 @@ namespace Chaos.Gameplay.Systems
                 return 0;
             }
 
-            var slots = _maxSize - (_readyObjects.Count + _objectsInUse.Count);
-            
-            return slots;
+            return _readyObjects.Count;
         }
 
-        private void AllocateSpaceForPooledObjects(int requestedNumberOfSlotsToAllocate)
+        private bool PreAllocateAndInstantiateGameObjects(int numberOfObjectsToPreAllocate)
         {
-            
-            int slotsToAllocate = Mathf.Min(AvailableSlotsInPool() , requestedNumberOfSlotsToAllocate);
+            if(_allocatedObjectsCount >= _maxSize)
+            {
+                return false;
+            }
 
-            if (slotsToAllocate <= 0)
+            int iterations = Mathf.Min(RemainingUnallocatedSlots(), numberOfObjectsToPreAllocate);
+            
+            for(int i =0; i<iterations; i++)
+            {
+                var spawn = InstantiateNewGameObjectByTemplate();
+                InitializeGameObjectToThisGamePool(spawn);
+                ApplyTemplateFlagsToGameObject(spawn);
+                _readyObjects.Push(spawn);
+                _allocatedObjectsCount++;
+            }
+
+            return iterations > 0;
+        }
+
+
+        private GameObjectPoolController InstantiateNewGameObjectByTemplate()
+        {
+            if(_gameObjectPoolTemplate == null)
+            {
+                return null;
+            }
+
+            GameObjectPoolController spawn;
+            if (_gameObjectPoolTemplate.RequiresCanvas == true)
+            {
+                spawn = GameObject.Instantiate(_gameObjectPoolTemplate.PoolablePrefab, _gamePoolController.DynamicCanvasTest.transform);
+
+            }
+            else
+            {
+                spawn = GameObject.Instantiate(_gameObjectPoolTemplate.PoolablePrefab);
+            }
+
+            return spawn;
+        }
+        private void InitializeGameObjectToThisGamePool(GameObjectPoolController gameObjectToInitialize)
+        {
+            gameObjectToInitialize.Initialize(this);
+        }
+
+        private void ApplyTemplateFlagsToGameObject(GameObjectPoolController gameObjectToApplyTemplateFlagsTo)
+        {
+            if(_gameObjectPoolTemplate == null)
             {
                 return;
             }
 
-            for (int i = 0; i < slotsToAllocate; i++)
+            if(gameObjectToApplyTemplateFlagsTo == null)
             {
-                
-                GameObjectPoolController spawn;
-                if (_gameObjectPoolTemplate.RequiresCanvas == true)
-                {
-                    spawn = GameObject.Instantiate(_gameObjectPoolTemplate.PoolablePrefab, _gamePoolController.DynamicCanvasTest.transform);
-                    
-                }
-                else
-                {
-                    spawn = GameObject.Instantiate(_gameObjectPoolTemplate.PoolablePrefab);
-                }
-                
-                spawn.Initialize(this);
-                if (_gameObjectPoolTemplate.HideInactiveInHierarchy == true)
-                {
-                    spawn.gameObject.hideFlags = HideFlags.HideInHierarchy;
-                }
-                if (_gameObjectPoolTemplate.SetActiveAfterAllocation == false)
-                {
-                    spawn.gameObject.SetActive(false);
-                } else
-                {
-                    spawn.gameObject.SetActive(true);
-                }
-
-                _readyObjects.Push(spawn);
-
+                return;
             }
 
+
+            if (_gameObjectPoolTemplate.HideInactiveInHierarchy == true)
+            {
+                gameObjectToApplyTemplateFlagsTo.gameObject.hideFlags = HideFlags.HideInHierarchy;
+            }
+
+            if (_gameObjectPoolTemplate.SetActiveAfterAllocation == false)
+            {
+                gameObjectToApplyTemplateFlagsTo.gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObjectToApplyTemplateFlagsTo.gameObject.SetActive(true);
+            }
         }
+        private int RemainingUnallocatedSlots()
+        {
+            return _maxSize - (_objectsInUse.Count + _readyObjects.Count);
+        }
+
+        private int NumberOfGameObjectsAvailableForUse()
+        {
+            return _readyObjects.Count;
+        }
+
     }
 }
