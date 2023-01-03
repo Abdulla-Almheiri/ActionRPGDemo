@@ -4,11 +4,14 @@ using UnityEngine;
 using Unity;
 using TMPro;
 using Chaos.Gameplay.UI;
+using UnityEngine.UI;
 
 namespace Chaos.Gameplay.Systems
 {
     public class GameUIController : MonoBehaviour
     {
+        public Canvas Canvas;
+        public HealthBarPrefabController HealthBarPrefab;
         public FloatingCombatTextProfile FloatingCombatTextProfile;
         public FloatingCombatTextTemplate FloatingCombatTextTemplate;
         public GameObjectPoolTemplate GameObjectPoolTemplate;

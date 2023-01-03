@@ -19,4 +19,4 @@ MonoBehaviour:
   PreAllocateObjects: 1
   SetActiveAfterAllocation: 0
   RequiresCanvas: 1
-  MaxSize: 24
+  MaxSize: 100

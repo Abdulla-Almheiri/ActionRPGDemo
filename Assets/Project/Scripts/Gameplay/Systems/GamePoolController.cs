@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Chaos.Gameplay.Characters;
 
 namespace Chaos.Gameplay.Systems
 {
@@ -27,7 +28,13 @@ namespace Chaos.Gameplay.Systems
             {
                 var objPool = RetrieveGameObjectPoolByTemplate(PoolTemplateTest);
                 var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
-                spawn?.gameObject.SetActive(true);
+                if(spawn == null)
+                {
+                    return;
+                }
+                spawn.gameObject.SetActive(true);
+                spawn.GetComponent<CharacterMaterialController>().GameMaterialController = GetComponent<GameMaterialController>();
+                spawn.GetComponent<CharacterCombatController>().GameUIController = GetComponent<GameUIController>();
 
             }
         }

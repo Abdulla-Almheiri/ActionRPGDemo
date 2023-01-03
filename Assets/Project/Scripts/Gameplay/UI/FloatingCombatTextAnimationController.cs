@@ -13,7 +13,7 @@ namespace Chaos.Gameplay.UI
         private TMP_Text _TMPText;
         private Vector3 _currentPosition;
         private float _elapsedTime = 0f;
-        private float _maxDurationInSeconds = 3f;
+        private float _maxDurationInSeconds = 2f;
         private bool _followTransform = false;
         private Vector3 _initialPosition;
         private UnityEngine.Camera _cachedCamera;
@@ -109,7 +109,6 @@ namespace Chaos.Gameplay.UI
            _TMPText.rectTransform.SetPositionAndRotation(initialPosition, Quaternion.identity);
 
             _currentPosition = initialPosition;
-            Debug.Log("Position is :   " + initialPosition);
 
             foreach (FloatingCombatTextAnimationData animationData in floatingCombatTextTemplate.PropertiesToAnimate)
             {

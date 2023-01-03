@@ -24,9 +24,9 @@ namespace Chaos.Gameplay.Characters
 
             if(Input.GetKeyUp(KeyCode.Alpha1) == true)
             {
-                _animator.SetTrigger("Attack1");
+                //_animator.SetTrigger("Attack1");
                 //TEST
-                _skillController?.SpawnSkillVFXTest();
+                //_skillController?.SpawnSkillVFXTest();
                 //Debug.Log("Attack triggered");
             }
 
@@ -61,6 +61,16 @@ namespace Chaos.Gameplay.Characters
             var currentSpeed = _movementController.GetCurrentMovementSpeed();
             //Debug.Log("Current speed =   " + currentSpeed);
             _animator.SetFloat("MovementSpeed", currentSpeed);
+        }
+
+        public void TriggerAttackAnimation()
+        {
+            _animator.SetTrigger("Attack1");
+        }
+
+        public void TriggerHitAnimation()
+        {
+            _animator.SetTrigger("Hit");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Chaos.Gameplay.Skills
     public class SkillVFXSpawnTemplate : ScriptableObject
     {
         public CharacterVFXSpawnLocationType VFXSpawnLocationType;
-        public SkillVFXPrefabScript SkillVFXPrefab;
+        public SkillEffectCombatController SkillVFXPrefab;
 
     }
 }

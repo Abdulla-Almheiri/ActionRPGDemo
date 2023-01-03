@@ -12,6 +12,8 @@ namespace Chaos.Gameplay.VFX
         public Color NeutralHighlightColor = Color.white;
         public Color HostileHighlightColor = Color.red;
         public Color FriendlyHighlightColor = Color.green;
+        public Material FlatColorHitMaterial;
+        public AnimationCurve HitFrameAnimationCurve = AnimationCurve.EaseInOut(0, 0, 1, 0);
 
         [Tooltip("Triggered When hit by skillAction with specified element. Highlight amount defaults to 0 after duration is elapsed.")]
         public List<ObjectsMaterialProfileData> MaterialHighlightColorsTriggeredbyElements = new List<ObjectsMaterialProfileData>();

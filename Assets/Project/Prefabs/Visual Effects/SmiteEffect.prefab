@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9092235552526067178
 Transform:
   m_ObjectHideFlags: 0
@@ -5033,7 +5033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6244861292316814822
 Transform:
   m_ObjectHideFlags: 0
@@ -9939,7 +9939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &128769365919788736
 Transform:
   m_ObjectHideFlags: 0
@@ -14823,6 +14823,7 @@ GameObject:
   - component: {fileID: 4825874627786699988}
   - component: {fileID: 7335469836677168637}
   - component: {fileID: 6024815044805923972}
+  - component: {fileID: -8611221011227952610}
   m_Layer: 2
   m_Name: SmiteEffect
   m_TagString: Untagged
@@ -14892,6 +14893,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ElementTest: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   GameUIControllerTest: {fileID: 0}
+--- !u!114 &-8611221011227952610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820445246708541164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bb1698812a4574fa122f04ef0d6b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6820445246776034365
 GameObject:
   m_ObjectHideFlags: 0
@@ -19788,7 +19801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8991743124101490308
 Transform:
   m_ObjectHideFlags: 0
@@ -24694,7 +24707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3940123877580381612
 Transform:
   m_ObjectHideFlags: 0

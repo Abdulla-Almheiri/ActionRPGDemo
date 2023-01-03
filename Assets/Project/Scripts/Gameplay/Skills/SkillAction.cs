@@ -9,8 +9,18 @@ namespace Chaos.Gameplay.Skills
     [System.Serializable]
     public class SkillAction 
     {
-        public SkillActionCoefficient Coefficient;
+        public SkillActionTypeEnum Type = SkillActionTypeEnum.Damage;
+        public float Value = 0f;
+        public float Duration = 0f;
+        public Attribute Attribute;
         public SkillActionElement Element;
+        public SkillVFXSpawnTemplate SkillVFXTemplate;
         
+    }
+
+    public enum SkillActionTypeEnum
+    {
+        Damage,
+        Healing
     }
 }

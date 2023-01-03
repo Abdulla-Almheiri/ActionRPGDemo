@@ -74,6 +74,9 @@
         },
         {
             "m_Id": "90c781f607d54d06a6b1ee6a8908a078"
+        },
+        {
+            "m_Id": "83890cd63a1041b4988fed094be8c6dd"
         }
     ],
     "m_GroupDatas": [],
@@ -110,6 +113,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "19c5572852d544afa36bc95a2703f236"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "c6117982f8ea40639ac7f7e103468866"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "32c51cda58bd4ab791fd1d5c33bb8462"
                 },
                 "m_SlotId": 0
@@ -133,6 +150,20 @@
                     "m_Id": "90c781f607d54d06a6b1ee6a8908a078"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "83890cd63a1041b4988fed094be8c6dd"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "c923e97d44634bd7af86ddec77e22fe4"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -274,11 +305,11 @@
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.DecalData",
     "m_ObjectId": "11ffea5b47b44e1ea06b33e6de6559d4",
     "m_AffectsMetal": true,
-    "m_AffectsAO": false,
+    "m_AffectsAO": true,
     "m_AffectsSmoothness": true,
     "m_AffectsAlbedo": true,
     "m_AffectsNormal": true,
-    "m_AffectsEmission": false,
+    "m_AffectsEmission": true,
     "m_DrawOrder": 0,
     "m_SupportLodCrossFade": false
 }
@@ -497,6 +528,31 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Metallic"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "2c2b003ab7ac4ffda9a76f1831c3dbb6",
+    "m_Id": 0,
+    "m_DisplayName": "Color",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -1113,6 +1169,41 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "83890cd63a1041b4988fed094be8c6dd",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -102.35001373291016,
+            "y": 615.2500610351563,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "2c2b003ab7ac4ffda9a76f1831c3dbb6"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "8c33d692f1a44e7d87eb213d604c0d06"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "84b850430d0547d49e85b987acd3181b",
     "m_Id": 4,
@@ -1181,9 +1272,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 2.0077219009399416,
-        "g": 1.5109660625457764,
-        "b": 0.4553596079349518,
+        "r": 77.8742904663086,
+        "g": 58.711509704589847,
+        "b": 17.939626693725587,
         "a": 0.0
     },
     "isMainColor": false,
@@ -1781,6 +1872,6 @@
     "m_TessellationBackFaceCullEpsilon": -0.25,
     "m_TessellationMaxDisplacement": 0.009999999776482582,
     "m_Version": 1,
-    "inspectorFoldoutMask": 0
+    "inspectorFoldoutMask": 16
 }
 

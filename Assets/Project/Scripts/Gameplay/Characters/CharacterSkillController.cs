@@ -9,11 +9,15 @@ namespace Chaos.Gameplay.Characters
     public class CharacterSkillController : MonoBehaviour
     {
         public GameUIController GameUIController;
+        public GameSkillController GameSkillController;
+        public SkillTemplate SkillTemplateTest;
         public GameObject SkillVFX;
         public CharacterVFXSpawnLocationType SpawnLocationType;
 
         protected CharacterVFXController _characterVFXController;
         protected CharacterMovementController _characterMovementController;
+        private CharacterAnimationController _characterAnimationController;
+        private CharacterCombatController _characterCombatController;
 
         // Start is called before the first frame update
         void Start()
@@ -29,8 +33,10 @@ namespace Chaos.Gameplay.Characters
 
         protected void Initialize()
         {
+            _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterMovementController = GetComponent<CharacterMovementController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
         }
         public void SpawnSkillVFXTest()
         {
@@ -46,12 +52,33 @@ namespace Chaos.Gameplay.Characters
             {
                 return;
             }
-            var spawnedVFX = Instantiate(SkillVFX, spawnPoint);
+            /*
+            var spawnedVFX = Instantiate(SkillTemplateTest.SkillPrefab, spawnPoint);
             spawnedVFX.transform.SetParent(null);
-            spawnedVFX.GetComponent<SkillPrefabCombatController>().GameUIControllerTest = GameUIController;
+            var skillCombatController = spawnedVFX.GetComponent<SkillEffectCombatController>();
+            if(skillCombatController == null)
+            {
+                return;
+            }
+
+
+            skillCombatController.GameUIControllerTest = GameUIController;
+            skillCombatController.Initialize(SkillTemplateTest, _characterCombatController);
+            Debug.Log("SkillActions added");*/
+
+            GameSkillController.SpawnSkillEffectPooled(SkillTemplateTest, spawnPoint, _characterCombatController);
             
         }
 
+
+        public void ActivateSkill(int number)
+        {
+            if(number == 1)
+            {
+                SpawnSkillVFXTest();
+                _characterAnimationController.TriggerAttackAnimation();
+            }
+        }
         
     }
 }

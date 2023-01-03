@@ -4,6 +4,7 @@ using UnityEngine;
 using Chaos.Gameplay.Systems;
 using Chaos.Gameplay.VFX;
 using Chaos.Gameplay.Skills;
+using Chaos.Gameplay.Player;
 
 namespace Chaos.Gameplay.Characters
 {
@@ -13,6 +14,7 @@ namespace Chaos.Gameplay.Characters
         private ObjectsMaterialProfile _objectsMaterialProfile;
         private Color _originalColor;
         private Material _material;
+        private bool _isThisCharacterHostile = true;
         private List<Material> _materials = new List<Material>();
         // Start is called before the first frame update
         void Start()
@@ -40,6 +42,10 @@ namespace Chaos.Gameplay.Characters
             {
                 _materials.Add(renderer.material);
             }
+            if(GetComponent<PlayerController>() != null)
+            {
+                _isThisCharacterHostile = false;
+            } 
         }
 
         public void TriggerHighlightOnMouseHover(float value, Color color)
@@ -82,6 +88,10 @@ namespace Chaos.Gameplay.Characters
         {
             StopAllCoroutines();
             var color = _objectsMaterialProfile.NeutralHighlightColor;
+            if(_isThisCharacterHostile == true)
+            {
+                color = _objectsMaterialProfile.HostileHighlightColor;
+            }
             TriggerHighlightOnMouseHover(1f, color);
         }
 
@@ -124,7 +134,35 @@ namespace Chaos.Gameplay.Characters
             {
                 mat.SetFloat("_HighlightAmount", 0f);
                 mat.SetColor("_HighlightColor", Color.clear);
+                mat.SetFloat("_HitFrameAmount", 0f);
             }
         }
+        public void TriggerHitFrame()
+        {
+            ApplyHitFrameForSeconds(_objectsMaterialProfile.HitFrameAnimationCurve, 1f);
+        }
+        private void ApplyHitFrameForSeconds(AnimationCurve animationCurve, float duration)
+        {
+            StartCoroutine(AnimateHitFrameByCurveCO(animationCurve, duration));
+        }
+
+        private IEnumerator AnimateHitFrameByCurveCO(AnimationCurve animationCurve, float duration)
+        {
+            var wait = new WaitForEndOfFrame();
+            var increment = Time.deltaTime;
+            float progress = 0;
+            while (progress <= 1f + increment)
+            {
+                foreach (Material mat in _materials)
+                {
+                    mat.SetFloat("_HitFrameAmount", animationCurve.Evaluate(progress));
+                }
+                progress += increment;
+                increment = Time.deltaTime;
+                yield return wait;
+            }
+            ResetToDefault();
+        }
+
     }
 }

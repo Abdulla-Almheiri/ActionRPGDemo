@@ -39,6 +39,50 @@ MonoBehaviour:
   NeutralHighlightColor: {r: 0.7735849, g: 0.7516395, b: 0.6239765, a: 1}
   HostileHighlightColor: {r: 1, g: 0, b: 0, a: 1}
   FriendlyHighlightColor: {r: 0, g: 1, b: 0, a: 1}
+  FlatColorHitMaterial: {fileID: 2100000, guid: f2c685d61094ea84eb2de879bde5b986,
+    type: 2}
+  HitFrameAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.1158766
+      value: 0.98753273
+      inSlope: 0.7383541
+      outSlope: 0.7383541
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.13664503
+      value: 0.05386758
+      inSlope: -0.123438634
+      outSlope: -0.123438634
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19685075
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   MaterialHighlightColorsTriggeredbyElements:
   - Element: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
     MaterialHighlightColor: {r: 0.8962264, g: 0.87899566, b: 0.5453453, a: 1}

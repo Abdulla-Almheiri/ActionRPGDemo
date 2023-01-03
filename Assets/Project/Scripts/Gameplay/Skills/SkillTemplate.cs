@@ -23,7 +23,8 @@ namespace Chaos.Gameplay.Skills
 
         [Space(20)]
         [Header("VISUAL EFFECT")]
-
+        public SkillEffectCombatController SkillPrefab;
+        public SkillActionElement SkillElement;
 
         public List<SkillAction> SkillActions = new List<SkillAction>();
 

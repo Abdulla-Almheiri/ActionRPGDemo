@@ -80,6 +80,8 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _HighlightAmount: 0
+    - _HitFrameAmount: 0
+    - _IsHit: 1
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -87,6 +89,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
+    - _Smoothness: 0.5
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -116,6 +119,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _HighlightColor: {r: 1.498039, g: 0.1803922, b: 0.1803922, a: 1}
+    - _HitFrameColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8932254305373369428
 MonoBehaviour:

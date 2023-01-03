@@ -7,6 +7,7 @@ namespace Chaos.Gameplay.Characters
     public class CharacterInputController : MonoBehaviour
     {
         private CharacterMovementController _characterMovementController;
+        private CharacterSkillController _characterSkillController;
         // Start is called before the first frame update
         void Start()
         {
@@ -21,11 +22,17 @@ namespace Chaos.Gameplay.Characters
                 _characterMovementController.MoveToMousePosition();
 
             }
+
+            if(Input.GetKeyDown(KeyCode.Alpha1) == true)
+            {
+                _characterSkillController.ActivateSkill(1);
+            }
         }
 
         private void Initialize()
         {
             _characterMovementController = GetComponent<CharacterMovementController>();
+            _characterSkillController = GetComponent<CharacterSkillController>();
         }
     }
 }
