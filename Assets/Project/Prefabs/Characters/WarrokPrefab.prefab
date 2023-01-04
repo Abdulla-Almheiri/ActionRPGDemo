@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: -2342888417775700775}
   - component: {fileID: 8230261869894096178}
   - component: {fileID: 6617214734728157151}
+  - component: {fileID: 1384313599584435423}
   m_Layer: 0
   m_Name: WarrokPrefab
   m_TagString: Untagged
@@ -1034,6 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameCombatController: {fileID: 0}
   Layer:
     serializedVersion: 2
     m_Bits: 256
@@ -1134,7 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 0}
-  _characterCombatTemplate: {fileID: 11400000, guid: 211877ea1fc3fea43bcc30be8479d5bc,
+  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: ea347636f4d80e249b9bbf59c8b8ca9d,
     type: 2}
 --- !u!114 &6617214734728157151
 MonoBehaviour:
@@ -1148,9 +1150,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f07aa516474034aba7595687f312cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarLocation: {fileID: 0}
+  _healthBarLocation: {fileID: 8770026083219186820}
   GameUIController: {fileID: 0}
   GameUIControllerTest: {fileID: 0}
+--- !u!114 &1384313599584435423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2353453558888526314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517eb4779edd3b488959b378ece2914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2451685129057789390
 GameObject:
   m_ObjectHideFlags: 0

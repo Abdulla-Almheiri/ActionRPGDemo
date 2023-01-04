@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Chaos.Gameplay.Characters
 {
-    public class CharacterAnimationTemplate
+    [CreateAssetMenu(fileName = "new character animation template", menuName = "Content/Characters/Character Animation Template")]
+    public class CharacterAnimationTemplate: ScriptableObject
     {
-
+        public AnimationClip Animation;
     }
 }

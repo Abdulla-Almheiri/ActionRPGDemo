@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Chaos.Systems;
+using Chaos.Gameplay.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
     public class CharacterMovementController : GameController
     {
+        public GameCombatController GameCombatController;
+        public CharacterCombatController CharacterCombatController { private set; get; }
+
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
         public float DefaultMeleeRangeTest = 5f;
@@ -31,6 +35,7 @@ namespace Chaos.Gameplay.Characters
 
             _navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
+            CharacterCombatController = GetComponent<CharacterCombatController>();
             if(_navMeshAgent == null)
             {
                 returnValue = false;
@@ -114,7 +119,8 @@ namespace Chaos.Gameplay.Characters
         {
             float distance = GetUnsignedDistanceBetweenCharacters(targetCharacter);
             //Debug.Log("Distance   is    :    " + distance);
-            if(distance <= DefaultMeleeRangeTest)
+            float combinedMeleeRange = CharacterCombatController.CharacterCombatTemplate.Size + targetCharacter.CharacterCombatController.CharacterCombatTemplate.Size;
+            if (distance <= combinedMeleeRange)
             {
                 return true;
             } else

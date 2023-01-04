@@ -8,5 +8,6 @@ namespace Chaos.Gameplay.Characters
     public class CharacterCombatTemplate : ScriptableObject
     {
         public bool Hostile = true;
+        public float Size = 1f;
     }
 }

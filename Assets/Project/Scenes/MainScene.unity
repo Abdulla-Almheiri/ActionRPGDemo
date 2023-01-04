@@ -604,12 +604,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &589737783 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8770026083219186820, guid: 9f6d8a0f42d251244b0e75afddde237b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3199891489751476805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &762450647 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6766537512342992500, guid: d4ba3fddb907f4f4fb9353b0f3ce25cf,
@@ -1315,6 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameCombatController: {fileID: 0}
   Layer:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -1333,7 +1328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 0}
-  _characterCombatTemplate: {fileID: 0}
+  <CharacterCombatTemplate>k__BackingField: {fileID: 0}
 --- !u!54 &1202613436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1456,11 +1451,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919132148442708646, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 21ab78efd87dce5498a0d17fb998a4b7, type: 2}
+    - target: {fileID: 919132148442708647, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: AnimationTemplateTest
+      value: 
+      objectReference: {fileID: 11400000, guid: fa5ab20db8a6fb246ab73820065f060d,
+        type: 2}
     - target: {fileID: 1347905474224235880, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: GameMaterialController
       value: 
       objectReference: {fileID: 762450649}
+    - target: {fileID: 1361163077978713355, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: <CharacterStatesProfile>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+        type: 2}
     - target: {fileID: 1387308055440193170, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: GameUIController
@@ -1554,10 +1566,21 @@ PrefabInstance:
       propertyPath: GameMaterialController
       value: 
       objectReference: {fileID: 762450649}
+    - target: {fileID: 1384313599584435423, guid: 9f6d8a0f42d251244b0e75afddde237b,
+        type: 3}
+      propertyPath: <CharacterStatesProfile>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+        type: 2}
     - target: {fileID: 2353453558888526314, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
       propertyPath: m_Name
       value: Warrok
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353453558888526314, guid: 9f6d8a0f42d251244b0e75afddde237b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3162359433910922064, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
@@ -1624,11 +1647,6 @@ PrefabInstance:
       propertyPath: GameUIController
       value: 
       objectReference: {fileID: 762450647}
-    - target: {fileID: 6617214734728157151, guid: 9f6d8a0f42d251244b0e75afddde237b,
-        type: 3}
-      propertyPath: _healthBarLocation
-      value: 
-      objectReference: {fileID: 589737783}
     - target: {fileID: 8230261869894096178, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
       propertyPath: GameUIController

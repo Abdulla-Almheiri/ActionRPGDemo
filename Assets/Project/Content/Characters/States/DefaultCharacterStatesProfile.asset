@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1a1b1d45305e94e8ff2437130d8593, type: 3}
+  m_Name: DefaultCharacterStatesProfile
+  m_EditorClassIdentifier: 
+  Idle: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
+  Walking: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+  ExecutingBasicAttack: {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a,
+    type: 2}
+  ExecutingSpecialAttack: {fileID: 11400000, guid: 08621e08ef1f18c4281322444ccebdb0,
+    type: 2}
+  InHitFrame: {fileID: 11400000, guid: 713c41b3d8720e148a9dc6121e03910d, type: 2}
+  Interacting: {fileID: 11400000, guid: 1078848a3277c7e4cbf5f54c52be6c81, type: 2}
+  Dead: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7, type: 2}
+  Dying: {fileID: 11400000, guid: e7b40d76c23b60849bb90b9134238295, type: 2}
+  Reviving: {fileID: 11400000, guid: 10f92b54264648d41bd64bec6ce7982c, type: 2}

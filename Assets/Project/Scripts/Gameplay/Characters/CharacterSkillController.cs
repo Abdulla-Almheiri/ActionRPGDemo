@@ -52,20 +52,6 @@ namespace Chaos.Gameplay.Characters
             {
                 return;
             }
-            /*
-            var spawnedVFX = Instantiate(SkillTemplateTest.SkillPrefab, spawnPoint);
-            spawnedVFX.transform.SetParent(null);
-            var skillCombatController = spawnedVFX.GetComponent<SkillEffectCombatController>();
-            if(skillCombatController == null)
-            {
-                return;
-            }
-
-
-            skillCombatController.GameUIControllerTest = GameUIController;
-            skillCombatController.Initialize(SkillTemplateTest, _characterCombatController);
-            Debug.Log("SkillActions added");*/
-
             GameSkillController.SpawnSkillEffectPooled(SkillTemplateTest, spawnPoint, _characterCombatController);
             
         }

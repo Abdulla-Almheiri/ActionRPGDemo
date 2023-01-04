@@ -11,8 +11,8 @@ namespace Chaos.Gameplay.Characters
     {
         public GameUIController GameUIController;
         public Attribute TestIntellectAttribute;
-        [SerializeField]
-        private CharacterCombatTemplate _characterCombatTemplate;
+        [field:SerializeField]
+        public CharacterCombatTemplate CharacterCombatTemplate { private set; get; }
         private float _maxHealth = 100f;
         private float _currentHealth = 100f;
         private float _maxEnergy = 40f;
@@ -23,6 +23,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterMaterialController _characterMaterialController;
         private CharacterAnimationController _characterAnimationController;
         private CharacterUIController _characterUIController;
+        private CharacterStateController _characterStateController;
 
         private Dictionary<Attribute, CharacterAttributeValueContainer> _characterAttributes = new Dictionary<Attribute, CharacterAttributeValueContainer>();
 
@@ -45,6 +46,9 @@ namespace Chaos.Gameplay.Characters
             _characterMovementController = GetComponent<CharacterMovementController>();
             _characterMaterialController = GetComponent<CharacterMaterialController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
+            _characterStateController = GetComponent<CharacterStateController>();
+
+            SubscribeToCharacterStateChangedEvent();
         }
         public float GetAttributeValue(Attribute attribute)
         {
@@ -150,6 +154,17 @@ namespace Chaos.Gameplay.Characters
         {
             Debug.Log("Health Percentage is     :   " + _currentHealth / _maxHealth * 100f);
             return _currentHealth / _maxHealth * 100f;
+        }
+
+        private void SubscribeToCharacterStateChangedEvent()
+        {
+            _characterStateController?.SubscribeToCharacterStateChanged(OnCharacterStateChanged);
+        }
+
+
+        private void OnCharacterStateChanged(CharacterState newCharacterState, float delay = 0f)
+        {
+            //Debug.Log("Character state changed to  :  CanBAsicAttack  :  " + newCharacterState.CanBasicAttack);
         }
     }
 }

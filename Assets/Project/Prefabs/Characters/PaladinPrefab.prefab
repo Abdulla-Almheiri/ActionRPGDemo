@@ -27,13 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058404943}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000041723246, y: -0.00000044703478, z: 0.000001400709,
+    w: 1}
+  m_LocalPosition: {x: 0.5873064, y: -1.546809, z: 0.05944693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2816831257728037239}
-  m_RootOrder: 10
+  m_Father: {fileID: 629356633996594554}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!2083052967 &2058404946
 VisualEffect:
@@ -45,7 +46,7 @@ VisualEffect:
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 244947b93f0ed4742a6db672e3c79144, type: 3}
   m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_ResourceVersion: 1
@@ -56,10 +57,10 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -9.0596383e-13, y: -0.00000055543774, z: -0.000082421815}
+      - m_Value: {x: 0.00004866521, y: 0.000051054827, z: -0.0001613781}
         m_Name: TransformOfCharacter_angles
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1, z: 0}
+      - m_Value: {x: -0.587302, y: 1.5468106, z: -0.059445024}
         m_Name: TransformOfCharacter_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Property:
     m_Name: TransformOfCharacter
-  Target: {fileID: 7730208679661064675}
+  Target: {fileID: 629356633996594554}
 --- !u!1 &69851004434033809
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +799,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2816831257728037239}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691848191029404644
 GameObject:
@@ -1185,7 +1186,8 @@ Transform:
   m_LocalPosition: {x: -0.0039817938, y: 0.14663428, z: -0.056486204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2058404944}
   m_Father: {fileID: 5065032310643484773}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1243,6 +1245,7 @@ GameObject:
   - component: {fileID: 1501025853648936820}
   - component: {fileID: 1828009498765140676}
   - component: {fileID: 1387308055440193170}
+  - component: {fileID: 1361163077978713355}
   m_Layer: 0
   m_Name: PaladinPrefab
   m_TagString: Untagged
@@ -1272,7 +1275,6 @@ Transform:
   - {fileID: 3106574952508317919}
   - {fileID: 7933581134413185000}
   - {fileID: 6570268250839369308}
-  - {fileID: 2058404944}
   - {fileID: 819397538288695517}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1289,6 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameCombatController: {fileID: 0}
   Layer:
     serializedVersion: 2
     m_Bits: 256
@@ -1475,7 +1478,7 @@ MonoBehaviour:
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460,
     type: 2}
-  _characterCombatTemplate: {fileID: 11400000, guid: 152e47040694c2a40a84050212d859a0,
+  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: 71a50eac8e3d43b4f8627593241cb412,
     type: 2}
 --- !u!114 &1387308055440193170
 MonoBehaviour:
@@ -1492,6 +1495,18 @@ MonoBehaviour:
   _healthBarLocation: {fileID: 819397538288695517}
   GameUIController: {fileID: 0}
   GameUIControllerTest: {fileID: 0}
+--- !u!114 &1361163077978713355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196629630285573069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517eb4779edd3b488959b378ece2914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3317519688389044056
 GameObject:
   m_ObjectHideFlags: 0
