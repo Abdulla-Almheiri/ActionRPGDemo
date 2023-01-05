@@ -51,7 +51,7 @@ namespace Chaos.Gameplay.Characters
                 if (_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController))
                 {
                     //Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
-                    _characterMovementController.StopMovement();
+                    _characterMovementController.StopMovementAndRequestStateChangeToIdle();
                     return;
                 }
 

@@ -7,6 +7,6 @@ namespace Chaos.Gameplay.Characters
     [CreateAssetMenu(fileName = "new character animation template", menuName = "Content/Characters/Character Animation Template")]
     public class CharacterAnimationTemplate: ScriptableObject
     {
-        public AnimationClip Animation;
+        public List<CharacterAnimationData> AnimationData = new List<CharacterAnimationData>();
     }
 }

@@ -14,7 +14,7 @@ namespace Chaos.Gameplay.Skills
 
         public SkillTemplate SkillTemplate { private set; get; }
 
-        private List<SkillAction> _skillActions;
+        private List<SkillActionData> _skillActions;
         private CharacterCombatController _skillActivator;
 
         // Start is called before the first frame update
@@ -40,7 +40,7 @@ namespace Chaos.Gameplay.Skills
             {
                 Debug.Log("List is null");
             }
-            foreach (SkillAction skillAction in _skillActions)
+            foreach (SkillActionData skillAction in _skillActions)
             {
                 character.ApplySkillAction(skillAction, _skillActivator);
             }
@@ -57,7 +57,8 @@ namespace Chaos.Gameplay.Skills
         public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator)
         {
             SkillTemplate = skillTemplate;
-            _skillActions = skillTemplate.SkillActions;
+            //TEST
+           // _skillActions = skillTemplate.SkillActions;
             _skillActivator = activator;
         }
 

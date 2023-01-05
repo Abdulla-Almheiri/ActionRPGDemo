@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Walking
   m_EditorClassIdentifier: 
   AnimationName: Walk
+  Looping: 0
+  NextCharacterStateAfterAnimationFinished: {fileID: 0}
   TransitionImmediatly:
   - {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
   - {fileID: 11400000, guid: 08621e08ef1f18c4281322444ccebdb0, type: 2}
   - {fileID: 11400000, guid: 1078848a3277c7e4cbf5f54c52be6c81, type: 2}
   - {fileID: 11400000, guid: c02333c30e565004db40a6071039a978, type: 2}
-  - {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
   - {fileID: 11400000, guid: 713c41b3d8720e148a9dc6121e03910d, type: 2}
+  - {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
   TransitionAfterFixedDelay:
   - State: {fileID: 11400000, guid: e7b40d76c23b60849bb90b9134238295, type: 2}
     Delay: 0.1

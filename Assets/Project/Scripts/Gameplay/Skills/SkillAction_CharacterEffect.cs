@@ -12,7 +12,7 @@ namespace Chaos.Gameplay.Skills
         protected float _duration;
 
         [SerializeField]
-        protected Attribute _attribute;
+        protected CharacterAttribute _attribute;
 
     }
 }

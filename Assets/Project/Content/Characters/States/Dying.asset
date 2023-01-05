@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Dying
   m_EditorClassIdentifier: 
-  AnimationName: Death
-  NextCharacterStateAfterAnimationFinished: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7,
-    type: 2}
+  CharacterAnimation: {fileID: 0}
+  Looping: 0
+  AutomaticStateTransitionData:
+    State: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7, type: 2}
+    Delay: 1
+  CharacterActions: []
   TransitionImmediatly: []
   TransitionAfterFixedDelay: []
-  TransitionAfterDelayPercentageOfCurrentAnimation:
-  - State: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7, type: 2}
-    Delay: 100
+  TransitionAfterNormalizedTimeOfAnimationElapsed: []
   TransitionAfterForcedStateChange: []
   AlwaysIgnore: []

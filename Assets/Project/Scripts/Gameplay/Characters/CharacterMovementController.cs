@@ -9,9 +9,10 @@ namespace Chaos.Gameplay.Characters
 {
     public class CharacterMovementController : GameController
     {
+        public CharacterStatesProfile CharacterStatesProfile;
         public GameCombatController GameCombatController;
         public CharacterCombatController CharacterCombatController { private set; get; }
-
+        private CharacterStateController _characterStateController;
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
         public float DefaultMeleeRangeTest = 5f;
@@ -22,7 +23,7 @@ namespace Chaos.Gameplay.Characters
 
         void Update()
         {
-
+            ProcessStoppingAndInformStateController();
             
         }
         public override bool Initialize(Game game)
@@ -36,6 +37,7 @@ namespace Chaos.Gameplay.Characters
             _navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
             CharacterCombatController = GetComponent<CharacterCombatController>();
+            _characterStateController = GetComponent<CharacterStateController>();
             if(_navMeshAgent == null)
             {
                 returnValue = false;
@@ -53,14 +55,27 @@ namespace Chaos.Gameplay.Characters
             {
 
             }
+            _characterStateController.SetCurrentCharacterStateWithAnyTransitionType(_characterStateController.CharacterStatesProfile.Walking);
             return navMeshMoveResult;
         }
 
         public bool IsRunning()
         {
-            return false;
+            return _navMeshAgent.velocity.magnitude > 0.01f;
         }
 
+        public void ProcessStoppingAndInformStateController()
+        {
+            if(_characterStateController == null)
+            {
+                return;
+            }
+
+            if (IsRunning() == false)
+            {
+                RequestStateChangeToIdle();
+            }
+        }
         public void MoveToMousePosition()
         {
 
@@ -75,8 +90,18 @@ namespace Chaos.Gameplay.Characters
 
         }
 
-        public void StopMovement()
+        private void RequestStateChangeToIdle()
         {
+            if(_characterStateController == null)
+            {
+                return;
+            }
+
+            _characterStateController.SetCurrentCharacterStateWithAnyTransitionType(_characterStateController.CharacterStatesProfile.Idle);
+        }
+        public void StopMovementAndRequestStateChangeToIdle()
+        {
+            
             _navMeshAgent.isStopped = true;
         }
 

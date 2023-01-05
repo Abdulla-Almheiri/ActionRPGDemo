@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b35e43b327add4bbc097603064e2a5, type: 3}
-  m_Name: PaladinAnimationTemplate
+  m_Script: {fileID: 11500000, guid: af13f54f289dca84394f4f45a2579988, type: 3}
+  m_Name: Death
   m_EditorClassIdentifier: 
-  Animation: {fileID: 7400000, guid: 391a5bc3c73f49141a30127d6dc035cc, type: 2}

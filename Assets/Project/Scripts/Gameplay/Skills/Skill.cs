@@ -6,6 +6,6 @@ namespace Chaos.Gameplay.Skills
 {
     public class Skill
     {
-        protected List<SkillAction> _skillActions = new List<SkillAction>();
+        protected List<SkillActionData> _skillActions = new List<SkillActionData>();
     }
 }

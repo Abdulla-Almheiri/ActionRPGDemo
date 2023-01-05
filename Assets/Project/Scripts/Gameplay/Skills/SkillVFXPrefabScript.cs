@@ -6,9 +6,9 @@ namespace Chaos.Gameplay.Skills
 {
     public abstract class SkillVFXPrefabScript : MonoBehaviour
     {
-        private List<SkillAction> _skillActions;
+        private List<SkillActionData> _skillActions;
 
-        public void Initialize(List<SkillAction> skillActions)
+        public void Initialize(List<SkillActionData> skillActions)
         {
             _skillActions = skillActions;
 

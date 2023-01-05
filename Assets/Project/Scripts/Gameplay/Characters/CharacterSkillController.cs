@@ -45,7 +45,7 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
             _characterMovementController.RotateCharacterInMouseDirection();
-            _characterMovementController.StopMovement();
+            _characterMovementController.StopMovementAndRequestStateChangeToIdle();
             var spawnPoint = _characterVFXController.GetVFXSpawnTransform(SpawnLocationType);
 
             if(spawnPoint == null)

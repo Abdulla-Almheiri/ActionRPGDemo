@@ -7,6 +7,6 @@ namespace Chaos.Gameplay.Skills
 {
     public abstract class SkillTrigger : ScriptableObject
     {
-        public abstract bool Evaluate(CharacterCombatController activator = null, CharacterCombatController receiver = null, SkillAction skillAction = null);
+        public abstract bool Evaluate(CharacterCombatController activator = null, CharacterCombatController receiver = null, SkillActionData skillAction = null);
     }
 }

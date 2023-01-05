@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Idle
   m_EditorClassIdentifier: 
+  CharacterAnimation: {fileID: 0}
   AnimationName: Idle
   Looping: 1
   NextCharacterStateAfterAnimationFinished: {fileID: 0}
+  CharacterActions:
+  - {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320, type: 2}
+  - {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
+  - {fileID: 11400000, guid: 088a68200534f9b40a4405f839c79e76, type: 2}
   TransitionImmediatly:
   - {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
+  - {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
   TransitionAfterFixedDelay:
   - State: {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
     Delay: 0.5

@@ -10,7 +10,7 @@ namespace Chaos.Gameplay.Characters
     public class CharacterCombatController : MonoBehaviour
     {
         public GameUIController GameUIController;
-        public Attribute TestIntellectAttribute;
+        public CharacterAttribute TestIntellectAttribute;
         [field:SerializeField]
         public CharacterCombatTemplate CharacterCombatTemplate { private set; get; }
         private float _maxHealth = 100f;
@@ -25,7 +25,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
 
-        private Dictionary<Attribute, CharacterAttributeValueContainer> _characterAttributes = new Dictionary<Attribute, CharacterAttributeValueContainer>();
+        private Dictionary<CharacterAttribute, CharacterAttributeValueContainer> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeValueContainer>();
 
         private CharacterStateTemplate _characterState;
 
@@ -50,7 +50,7 @@ namespace Chaos.Gameplay.Characters
 
             SubscribeToCharacterStateChangedEvent();
         }
-        public float GetAttributeValue(Attribute attribute)
+        public float GetAttributeValue(CharacterAttribute attribute)
         {
             if(_characterAttributes.TryGetValue(attribute, out CharacterAttributeValueContainer valueContainer))
             {
@@ -76,7 +76,7 @@ namespace Chaos.Gameplay.Characters
             Debug.Log("Healing taken:   " + value);
         }
 
-       public void ApplySkillAction(SkillAction skillAction, CharacterCombatController activator)
+       public void ApplySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
             if(skillAction.Type == SkillActionTypeEnum.Damage && activator != this)
             {
@@ -89,7 +89,7 @@ namespace Chaos.Gameplay.Characters
             }
         }
         
-        private void ApplyDamageBySkillAction(SkillAction skillAction, CharacterCombatController activator)
+        private void ApplyDamageBySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
             if(activator == null)
             {
@@ -98,7 +98,7 @@ namespace Chaos.Gameplay.Characters
             var finalValue = activator.GetAttributeValue(skillAction.Attribute) * skillAction.Value / 100f;
             TakeDamage(finalValue);
         }
-        private void ApplyHealingBySkillAction(SkillAction skillAction, CharacterCombatController activator)
+        private void ApplyHealingBySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
             if (activator == null)
             {
@@ -140,10 +140,11 @@ namespace Chaos.Gameplay.Characters
             bool isActivatedBySelf = activator == this;
             if(isActivatedBySelf == true)
             {
-                if(skillEffect.SkillTemplate.SkillActions.Find(x => x.Type == SkillActionTypeEnum.Damage) != null)
+                //TEST
+               /* if(skillEffect.SkillTemplate.SkillActions.Find(x => x.Type == SkillActionTypeEnum.Damage) != null)
                 {
                     return;
-                }
+                }*/
             }
             TriggerHitByElement(skillEffect.SkillTemplate.SkillElement);
             _characterMaterialController?.TriggerHitFrame();

@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Reviving
   m_EditorClassIdentifier: 
-  AlwaysTransition: []
+  CharacterAnimation: {fileID: 0}
+  Looping: 0
+  AutomaticStateTransitionData:
+    State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
+    Delay: 1
+  CharacterActions: []
+  TransitionImmediatly: []
   TransitionAfterFixedDelay: []
-  TransitionAfterDelayPercentageOfCurrentAnimation: []
+  TransitionAfterNormalizedTimeOfAnimationElapsed: []
+  TransitionAfterForcedStateChange: []
+  AlwaysIgnore: []

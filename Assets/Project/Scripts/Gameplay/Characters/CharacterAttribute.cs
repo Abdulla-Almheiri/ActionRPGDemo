@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Chaos.Gameplay.Skills;
 
 namespace Chaos.Gameplay.Characters
 {
-    [System.Serializable]
-    public class CharacterAttribute
+    [CreateAssetMenu(fileName = "new character attribute", menuName = "Content/Characters/Character Attribute")]
+    public class CharacterAttribute : ScriptableObject
     {
-        public SkillActionCoefficient Attribute;
+        
     }
 }

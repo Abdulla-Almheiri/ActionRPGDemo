@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41b35e43b327add4bbc097603064e2a5, type: 3}
+  m_Name: PaladinAnimationTemplate
+  m_EditorClassIdentifier: 
+  AnimationData:
+  - Animation: {fileID: 11400000, guid: 79a9a8ab129c1f147a97bf85bb16ff3a, type: 2}
+    AnimationClip: {fileID: 7400000, guid: 391a5bc3c73f49141a30127d6dc035cc, type: 2}
+    IsLooping: 0
+    BaseAnimationSpeed: 1
+    ImpactPoint: 0
+    TrimAnimationFrom: 1
+    TrimBlendDuration: 0.2
+    AnimationScalingData:
+    - CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+        type: 2}
+      Scaling: 1
+  - Animation: {fileID: 11400000, guid: f5aeaae7b9ade9d49935ad09b546da38, type: 2}
+    AnimationClip: {fileID: 0}
+    IsLooping: 1
+    BaseAnimationSpeed: 0
+    ImpactPoint: 0
+    TrimAnimationFrom: 1
+    TrimBlendDuration: 0.2
+    AnimationScalingData:
+    - CharacterAttribute: {fileID: 0}
+      Scaling: 0

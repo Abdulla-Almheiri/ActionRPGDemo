@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Dead
   m_EditorClassIdentifier: 
-  AlwaysTransition: []
+  CharacterAnimation: {fileID: 0}
+  Looping: 1
+  AutomaticStateTransitionData:
+    State: {fileID: 0}
+    Delay: 0
+  CharacterActions: []
+  TransitionImmediatly:
+  - {fileID: 0}
   TransitionAfterFixedDelay: []
-  TransitionAfterDelayPercentageOfCurrentAnimation: []
+  TransitionAfterNormalizedTimeOfAnimationElapsed: []
+  TransitionAfterForcedStateChange:
+  - {fileID: 11400000, guid: 10f92b54264648d41bd64bec6ce7982c, type: 2}
+  AlwaysIgnore: []

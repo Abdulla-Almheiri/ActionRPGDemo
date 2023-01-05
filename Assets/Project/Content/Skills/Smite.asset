@@ -25,9 +25,15 @@ MonoBehaviour:
     type: 3}
   SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   SkillActions:
-  - Type: 0
-    Value: 20
-    Duration: 0
-    Attribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
-    Element: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
-    SkillVFXTemplate: {fileID: 0}
+  - SkillAction: {fileID: 0}
+    Data:
+      SkillAction: {fileID: 0}
+      SkillModifier:
+        Attribute: {fileID: 0}
+        Coefficient: 1
+      Type: 0
+      Value: 0
+      Duration: 0
+      Attribute: {fileID: 0}
+      Element: {fileID: 0}
+      SkillVFXTemplate: {fileID: 0}

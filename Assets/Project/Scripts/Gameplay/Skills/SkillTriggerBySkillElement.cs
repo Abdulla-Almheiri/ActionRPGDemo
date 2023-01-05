@@ -13,7 +13,7 @@ namespace Chaos.Gameplay.Skills
         public bool SkillElementReceived = false;
         public bool SkillElementDone = true;
 
-        public override bool Evaluate(CharacterCombatController activator = null, CharacterCombatController receiver = null, SkillAction skillAction = null)
+        public override bool Evaluate(CharacterCombatController activator = null, CharacterCombatController receiver = null, SkillActionData skillAction = null)
         {
             if(skillAction == null)
             {

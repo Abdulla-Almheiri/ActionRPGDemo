@@ -26,7 +26,7 @@ namespace Chaos.Gameplay.Skills
         public SkillEffectCombatController SkillPrefab;
         public SkillActionElement SkillElement;
 
-        public List<SkillAction> SkillActions = new List<SkillAction>();
+        public List<SkillTemplateSkillActionEntry> SkillActions = new List<SkillTemplateSkillActionEntry>();
 
 
                 /*

@@ -7,38 +7,23 @@ namespace Chaos.Gameplay.Characters
     [CreateAssetMenu(fileName = "new character state", menuName = "Content/Characters/Character State")]
     public class CharacterState : ScriptableObject
     {
-        /*public bool CanMove = true;
-        public bool CanBasicAttack = true;
-        public bool CanSpecialAttack = true;
-        public bool CanDefend = true;
-        public bool Damageable = true;
-        public bool Healable = true;
-        public bool Highlightable = true;*/
-        public string AnimationName = "";
+        public CharacterAnimation CharacterAnimation;
         public bool Looping = false;
-        public CharacterState NextCharacterStateAfterAnimationFinished;
+        
+        [Tooltip("Delay is normalized elapsed time of current animation.")]
+        public CharacterStateTransitionData AutomaticStateTransitionData;
+        [Space(10)]
+        [Header("Allowed Actions")]
+        public List<CharacterAction> CharacterActions = new List<CharacterAction>();
+
+        [Space(10)]
+        [Header("Allowed Transitions")]
         public List<CharacterState> TransitionImmediatly = new List<CharacterState>();
-        public List<CharacterStateData> TransitionAfterFixedDelay = new List<CharacterStateData>();
-        public List<CharacterStateData> TransitionAfterDelayPercentageOfCurrentAnimation = new List<CharacterStateData>();
+        public List<CharacterStateTransitionData> TransitionAfterFixedDelay = new List<CharacterStateTransitionData>();
+        public List<CharacterStateTransitionData> TransitionAfterNormalizedTimeOfAnimationElapsed = new List<CharacterStateTransitionData>();
         public List<CharacterState> TransitionAfterForcedStateChange = new List<CharacterState>();
+        [Space(10)]
+        [Header("No Transitions Possible")]
         public List<CharacterState> AlwaysIgnore = new List<CharacterState>();
-
-        /*public CharacterState(bool canMove, bool canBasicAttack, bool canSpecialAttack, bool canDefend, bool damageable, bool healable)
-        {
-            CanMove = canMove;
-            CanBasicAttack = canBasicAttack;
-            CanSpecialAttack = canSpecialAttack;
-            CanDefend = canDefend;
-            Damageable = damageable;
-            Healable = healable;
-        }*/
-    }
-
-    public enum CharacterStateDataEnum
-    {
-        AlwaysInterrupt,
-        InterruptAfterFixedDelay,
-        InterruptAfterPercentageOfCurrentAnimation,
-        Uninterruptible
     }
 }

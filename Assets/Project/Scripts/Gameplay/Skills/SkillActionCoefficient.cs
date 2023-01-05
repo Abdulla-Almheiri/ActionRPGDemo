@@ -10,7 +10,7 @@ namespace Chaos.Gameplay.Skills
     {
         public float Value = 0f;
         public float Duration = 0f;
-        public Attribute Attribute;
+        public CharacterAttribute Attribute;
 
 
     }

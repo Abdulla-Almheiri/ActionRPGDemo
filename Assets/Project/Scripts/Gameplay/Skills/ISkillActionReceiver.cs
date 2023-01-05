@@ -6,6 +6,6 @@ namespace Chaos.Gameplay.Skills
 {
     public interface ISkillActionReceiver
     {
-        void ReceiveSkillAction(SkillAction skillAction);
+        void ReceiveSkillAction(SkillActionData skillAction);
     }
 }
