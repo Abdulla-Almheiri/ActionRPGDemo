@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: PaladinAnimationTemplate
   m_EditorClassIdentifier: 
   AnimationData:
+  - Animation: {fileID: 11400000, guid: 3e45ff6c8af25844d8620f664a0f5ec8, type: 2}
+    AnimationClip: {fileID: 7400000, guid: 78c3d1de612211d428408cfe9d7dc320, type: 2}
+    IsLooping: 1
+    BaseAnimationSpeed: 1
+    ImpactPoint: 0
+    TrimAnimationFrom: 1
+    TrimBlendDuration: 0.2
+    CharacterAttributeAnimationScalingData:
+      CharacterAttribute: {fileID: 11400000, guid: b0d14e30465a4ca4b8381ccf722af632,
+        type: 2}
+      Scaling: 1
   - Animation: {fileID: 11400000, guid: 79a9a8ab129c1f147a97bf85bb16ff3a, type: 2}
     AnimationClip: {fileID: 7400000, guid: 391a5bc3c73f49141a30127d6dc035cc, type: 2}
     IsLooping: 0
@@ -20,8 +31,8 @@ MonoBehaviour:
     ImpactPoint: 0
     TrimAnimationFrom: 1
     TrimBlendDuration: 0.2
-    AnimationScalingData:
-    - CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+    CharacterAttributeAnimationScalingData:
+      CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
         type: 2}
       Scaling: 1
   - Animation: {fileID: 11400000, guid: f5aeaae7b9ade9d49935ad09b546da38, type: 2}
@@ -31,6 +42,18 @@ MonoBehaviour:
     ImpactPoint: 0
     TrimAnimationFrom: 1
     TrimBlendDuration: 0.2
-    AnimationScalingData:
-    - CharacterAttribute: {fileID: 0}
-      Scaling: 0
+    CharacterAttributeAnimationScalingData:
+      CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+        type: 2}
+      Scaling: 1
+  - Animation: {fileID: 11400000, guid: b939772f13b73384b8b53fecd3b946df, type: 2}
+    AnimationClip: {fileID: 7400000, guid: 20c12b21d8873ed40bd314775ea41cc9, type: 2}
+    IsLooping: 1
+    BaseAnimationSpeed: 1
+    ImpactPoint: 0
+    TrimAnimationFrom: 1
+    TrimBlendDuration: 0.2
+    CharacterAttributeAnimationScalingData:
+      CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+        type: 2}
+      Scaling: 1

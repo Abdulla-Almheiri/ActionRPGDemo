@@ -43,12 +43,12 @@ namespace Chaos.Gameplay.Characters
         private void Initialize(CharacterState initialCharacterState)
         {
             _characterAnimationController = GetComponent<CharacterAnimationController>();
-            _currentCharacterState = initialCharacterState;
+            //_currentCharacterState = initialCharacterState;
             _initialCharacterstate = initialCharacterState;
 
             _currentStateDurations = new float[5];
+            AttemptCharacterStateChange(initialCharacterState);
             ResetStateDurations();
-
             //_currentState = new CharacterState(true, true, true, true, true, true);
         }
         public CharacterState GetCurrentCharacterState()
@@ -70,9 +70,11 @@ namespace Chaos.Gameplay.Characters
                 } else if(duration == 0f)
                 {
                     ChangeCharacterStateAndTriggerEvent(newCharacterState);
+                    return true;
                 } else
                 {
                     ChangeCharacterStateAndTriggerEvent(newCharacterState);
+                    return true;
                 }
 
             } 
@@ -152,31 +154,37 @@ namespace Chaos.Gameplay.Characters
             OnCharacterStateChanged -= unsubscriber;
         }
 
-        private float GetActualDelayDurationOfTransition(CharacterState previousState, CharacterState nextState)
+        private float GetActualDelayDurationOfTransition(CharacterState nextState, CharacterState previousState = null)
         {
-            var state = previousState.TransitionImmediatly.Find(x=> x == nextState);
-
-            if (state != null)
+            if(nextState == null)
             {
                 return 0f;
             }
 
-            var state2 = previousState.TransitionAfterFixedDelay.Find(x => x.State == nextState);
-
-            if (state2 != null)
+            if(previousState == null)
             {
-                return state2.Delay;
+                previousState = _currentCharacterState;
             }
 
-            var state3 = previousState.TransitionAfterNormalizedTimeOfAnimationElapsed.Find(x => x.State == nextState);
-
-            if(state3 != null && state3.Delay > 0f)
+            if(previousState == null)
             {
-                var animationData = _characterAnimationController.GetCharacterAnimationDataFromTemplate(previousState);
-                return _characterAnimationController.GetActualAnimationDuration(animationData);
+                return 0f;
             }
 
-            return 0f;
+            // FIX HERE NOW?
+
+
+            var state = previousState.Transitions.Find(x=> x.TransitionData.State == nextState);
+            if(state == null)
+            {
+                return 0f;
+            }
+
+            var data = _characterAnimationController.GetCharacterAnimationDataFromTemplate(nextState);
+            var transitionDelay = state.TransitionData.ActualDelayInSeconds(_characterAnimationController);
+            Debug.Log("TRANSITION DELAY IS :          " + transitionDelay);
+            return transitionDelay;
+
         }
         private void ExtendCurrentCharacterStateDurationIfTemporary(float newDuration)
         {
@@ -243,8 +251,15 @@ namespace Chaos.Gameplay.Characters
         }
         private void ChangeCharacterStateAndTriggerEvent(CharacterState newCharacterState, float delay = 0f)
         {
+            var blendDuration = GetActualDelayDurationOfTransition(newCharacterState);
+
             _currentCharacterState = newCharacterState;
-            InvokeCharacterStateChangedEvent(newCharacterState, delay);
+            //InvokeCharacterStateChangedEvent(newCharacterState, delay);
+            var data = _characterAnimationController.GetCharacterAnimationDataFromTemplate(newCharacterState);
+            
+            //FIX BLEND DURATION HERE
+            Debug.Log("Animation change requested. New CharacterState  :    " + newCharacterState + " And blendDuration is  :  " + blendDuration);
+            RequestAnimationChange(data, blendDuration);
         }
         private bool IsImmediateCharacterStateTransitionPossible(CharacterState newCharacterState)
         {
@@ -295,6 +310,16 @@ namespace Chaos.Gameplay.Characters
             {
                 OnCharacterStateChanged.Invoke(newCharacterState, delay);
             }
+        }
+
+        private void RequestAnimationChange(CharacterAnimationData animationData, float blendDuration)
+        {
+            if(_characterAnimationController == null || animationData == null || animationData.Animation == null)
+            {
+                return;
+            }
+
+            _characterAnimationController.PlayCharacterAnimationFromCharacterAnimationData(animationData, blendDuration);
         }
 
         private IEnumerator QueueNextCharacterStateCO(CharacterState newCharacterState, float delay)

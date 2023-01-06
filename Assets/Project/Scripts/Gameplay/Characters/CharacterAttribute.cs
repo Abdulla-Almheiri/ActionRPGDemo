@@ -7,6 +7,7 @@ namespace Chaos.Gameplay.Characters
     [CreateAssetMenu(fileName = "new character attribute", menuName = "Content/Characters/Character Attribute")]
     public class CharacterAttribute : ScriptableObject
     {
+        public int RatingAmountRequiredForOnePercentIncrease = 10;
         
     }
 }

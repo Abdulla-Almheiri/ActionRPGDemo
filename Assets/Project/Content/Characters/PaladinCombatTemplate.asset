@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3df2b21416714341b848ea3ea79a53d, type: 3}
-  m_Name: PlayerCombatTemplate
+  m_Name: PaladinCombatTemplate
   m_EditorClassIdentifier: 
   Hostile: 0
+  Size: 1
+  BaseCharacterAttributes:
+  - CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+      type: 2}
+    BaseRating: 5000

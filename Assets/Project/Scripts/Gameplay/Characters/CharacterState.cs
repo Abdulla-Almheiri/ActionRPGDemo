@@ -8,10 +8,13 @@ namespace Chaos.Gameplay.Characters
     public class CharacterState : ScriptableObject
     {
         public CharacterAnimation CharacterAnimation;
-        public bool Looping = false;
-        
+        public bool IsAnimationLooping = false;
+
         [Tooltip("Delay is normalized elapsed time of current animation.")]
         public CharacterStateTransitionData AutomaticStateTransitionData;
+        public List<CharacterStateTransitionAdditionalData> Transitions = new List<CharacterStateTransitionAdditionalData>();
+
+
         [Space(10)]
         [Header("Allowed Actions")]
         public List<CharacterAction> CharacterActions = new List<CharacterAction>();

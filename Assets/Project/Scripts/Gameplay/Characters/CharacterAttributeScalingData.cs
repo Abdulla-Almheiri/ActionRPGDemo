@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Chaos.Gameplay.Characters
 {
     [System.Serializable]
-    public class CharacterAttributeAnimationScalingData 
+    public class CharacterAttributeScalingData 
     {
         public CharacterAttribute CharacterAttribute;
         [Range(-10f, 10f)]

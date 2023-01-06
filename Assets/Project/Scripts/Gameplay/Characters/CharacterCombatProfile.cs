@@ -10,5 +10,6 @@ namespace Chaos.Gameplay.Characters
         public CharacterActionCommandData BasicAttack;
         public CharacterActionCommandData SpecialAttack;
         public CharacterActionCommandData Hit;
+
     }
 }

@@ -53,12 +53,22 @@ namespace Chaos.Gameplay.Characters
             var navMeshMoveResult = _navMeshAgent.SetDestination(targetPoint);
             if (navMeshMoveResult == true)
             {
-
+                RequestStateChange(_characterStateController.CharacterStatesProfile.Walking);
             }
-            _characterStateController.SetCurrentCharacterStateWithAnyTransitionType(_characterStateController.CharacterStatesProfile.Walking);
+
             return navMeshMoveResult;
         }
 
+        private void RequestStateChange(CharacterState newCharacterState )
+        {
+            if(_characterStateController == null)
+            {
+                return;
+            }
+
+            _characterStateController.AttemptCharacterStateChange(newCharacterState, 0.5f);
+
+        }
         public bool IsRunning()
         {
             return _navMeshAgent.velocity.magnitude > 0.01f;
@@ -73,7 +83,7 @@ namespace Chaos.Gameplay.Characters
 
             if (IsRunning() == false)
             {
-                RequestStateChangeToIdle();
+                RequestStateChange(CharacterStatesProfile.Idle);
             }
         }
         public void MoveToMousePosition()

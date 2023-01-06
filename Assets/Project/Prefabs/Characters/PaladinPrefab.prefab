@@ -1291,6 +1291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterStatesProfile: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+    type: 2}
   GameCombatController: {fileID: 0}
   Layer:
     serializedVersion: 2
@@ -1330,6 +1332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3d8fc70e1fbdb429edc74a146f071e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimationTemplateTest: {fileID: 11400000, guid: 8f6127bac8e1ec24db54853ca365bd61,
+    type: 2}
 --- !u!95 &919132148442708646
 Animator:
   serializedVersion: 4
@@ -1340,7 +1344,7 @@ Animator:
   m_GameObject: {fileID: 3196629630285573069}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b88a18b5ff146bb498cd5e4331fc40b6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 21ab78efd87dce5498a0d17fb998a4b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1475,10 +1479,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c630bd50086a04fb8c535072b862ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TESTATTRIBUTE: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b, type: 2}
+  <GameCombatProfile>k__BackingField: {fileID: 11400000, guid: bb53cf970bc23d142a56c7732295b67f,
+    type: 2}
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460,
     type: 2}
-  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: 71a50eac8e3d43b4f8627593241cb412,
+  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: 152e47040694c2a40a84050212d859a0,
     type: 2}
 --- !u!114 &1387308055440193170
 MonoBehaviour:
@@ -1507,6 +1514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517eb4779edd3b488959b378ece2914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CharacterStatesProfile>k__BackingField: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+    type: 2}
 --- !u!1 &3317519688389044056
 GameObject:
   m_ObjectHideFlags: 0

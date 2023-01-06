@@ -11,7 +11,7 @@ namespace Chaos.Gameplay.Characters
         public void OnEnable()
         {
             AnimationHash = Animator.StringToHash(name);
-            Debug.Log("Name is  :  " + name + ".  And hash is   :   " + AnimationHash);
+            //Debug.Log("Name is  :  " + name + ".  And hash is   :   " + AnimationHash);
         }
     }
 }

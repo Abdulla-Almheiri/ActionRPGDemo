@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Chaos.Gameplay.Skills;
 using Chaos.Gameplay.Systems;
+using System.Linq;
 
 namespace Chaos.Gameplay.Characters
 {
 
     public class CharacterCombatController : MonoBehaviour
     {
+        public CharacterAttribute TESTATTRIBUTE;
+        [field:SerializeField]
+        public GameCombatProfile GameCombatProfile {private set; get;}
+        public int Level { private set; get; } = 1;
         public GameUIController GameUIController;
         public CharacterAttribute TestIntellectAttribute;
         [field:SerializeField]
@@ -25,7 +30,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
 
-        private Dictionary<CharacterAttribute, CharacterAttributeValueContainer> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeValueContainer>();
+        private Dictionary<CharacterAttribute, CharacterAttributeData> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeData>();
 
         private CharacterStateTemplate _characterState;
 
@@ -33,9 +38,9 @@ namespace Chaos.Gameplay.Characters
         public void Start()
         {
             //TEST
-            if (TestIntellectAttribute != null)
+           if (TestIntellectAttribute != null)
             {
-                _characterAttributes.Add(TestIntellectAttribute, new CharacterAttributeValueContainer(50f, 0f));
+                _characterAttributes[TestIntellectAttribute] =  new CharacterAttributeData(TestIntellectAttribute, 50f);
             }
 
             Initialize();
@@ -48,13 +53,22 @@ namespace Chaos.Gameplay.Characters
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterStateController = GetComponent<CharacterStateController>();
 
+            ResetAttributesFromCombatTemplate();
+
             SubscribeToCharacterStateChangedEvent();
         }
-        public float GetAttributeValue(CharacterAttribute attribute)
+        public float GetAttributeValue(CharacterAttribute characterAttribute)
         {
-            if(_characterAttributes.TryGetValue(attribute, out CharacterAttributeValueContainer valueContainer))
+            if(characterAttribute == null)
             {
-                return valueContainer.Value;
+                return 0f;
+            }
+
+            if(_characterAttributes.TryGetValue(characterAttribute, out CharacterAttributeData valueContainer))
+            {
+                //Fix here
+                Debug.Log("Attribute " + characterAttribute.name + "is   :   " + valueContainer.BaseRating);
+                return valueContainer.BaseRating;
             }
             return 0f;
         }
@@ -64,7 +78,6 @@ namespace Chaos.Gameplay.Characters
             ClampHealth();
             _characterUIController?.UpdateHealth();
             GameUIController?.SpawnDamageTextAtScreenPositionTest(Mathf.Floor(value).ToString(), transform);
-            Debug.Log("Damage taken:   " + value);
         }
 
         private void TakeHealing(float value)
@@ -73,9 +86,33 @@ namespace Chaos.Gameplay.Characters
             ClampHealth();
             _characterUIController?.UpdateHealth();
             GameUIController?.SpawnDamageTextAtScreenPositionTest(Mathf.Floor(value).ToString(), transform);
-            Debug.Log("Healing taken:   " + value);
         }
 
+        public float GetPercentageFromRatingByCharacterAttribute(CharacterAttribute characterAttribute)
+        {
+            if(characterAttribute == null)
+            {
+                return 0f;
+            }
+            var attributeValue = GetAttributeValue(characterAttribute);
+            return ConvertCharacterAttributeRatingToPercentageByGameCombatProfile(characterAttribute, attributeValue, GameCombatProfile);
+        }
+
+        private float ConvertCharacterAttributeRatingToPercentageByGameCombatProfile(CharacterAttribute characterAttribute, float rating, GameCombatProfile gameCombatProfile)
+        {
+            var attributeData = gameCombatProfile.CharacterAttributeRatingConverstionDetails.Find(x => x.CharacterAttribute == characterAttribute);
+            Debug.Log("Converstiono attribute is  :   " + gameCombatProfile.CharacterAttributeRatingConverstionDetails.FirstOrDefault().CharacterAttribute.name);
+            Debug.Log("Input attribute is  :   " + characterAttribute.name);
+            if (attributeData == null)
+            {
+                Debug.Log("NULLL IN CONVERT");
+                return 0f;
+            } else
+            {
+                Debug.Log("RATING RETRUNED");
+                return attributeData.GetActualBasePercentageByRatingAndLevel(rating, Level, this);
+            }
+        }
        public void ApplySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
             if(skillAction.Type == SkillActionTypeEnum.Damage && activator != this)
@@ -153,7 +190,6 @@ namespace Chaos.Gameplay.Characters
 
         public float GetHealthPercentage()
         {
-            Debug.Log("Health Percentage is     :   " + _currentHealth / _maxHealth * 100f);
             return _currentHealth / _maxHealth * 100f;
         }
 
@@ -161,7 +197,24 @@ namespace Chaos.Gameplay.Characters
         {
             _characterStateController?.SubscribeToCharacterStateChanged(OnCharacterStateChanged);
         }
+        private void ResetAttributesFromCombatTemplate()
+        {
+            if(CharacterCombatTemplate == null)
+            {
+                Debug.Log("CharacterCombatTemplate == null");
+                return;
+            }
 
+            foreach(CharacterAttributeData data in CharacterCombatTemplate.BaseCharacterAttributes)
+            {
+                _characterAttributes[data.CharacterAttribute] = data;
+
+               if( _characterAttributes.TryGetValue(data.CharacterAttribute, out CharacterAttributeData characterAttributeData))
+                {
+                    Debug.Log("Attribute value        =   " + characterAttributeData.BaseRating);
+                }
+            }
+        }
 
         private void OnCharacterStateChanged(CharacterState newCharacterState, float delay = 0f)
         {

@@ -12,6 +12,7 @@ namespace Chaos.Gameplay.Characters
         protected CharacterSkillController _skillController;
         protected CharacterVFXController _characterVFXController;
         private CharacterStateController _characterStateController;
+        private CharacterCombatController _characterCombatController;
         private string _lastAnimationPlayed1;
         protected Animator _animator;
 
@@ -90,6 +91,8 @@ namespace Chaos.Gameplay.Characters
             _skillController = GetComponent<CharacterSkillController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
+            //_lastAnimationPlayed = 
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }
         public void TriggerAttackAnimation()
@@ -112,30 +115,33 @@ namespace Chaos.Gameplay.Characters
         }
         public void PlayCharacterAnimationFromCharacterAnimationData(CharacterAnimationData characterAnimationData, float blendDuration = 0f)
         {
-            var looping = _animator.GetCurrentAnimatorStateInfo(0).loop;
-            if(looping == true)
+            if (_animator == null || characterAnimationData == null || characterAnimationData.Animation == null)
             {
-                if(_lastAnimationPlayed.Animation == characterAnimationData.Animation)
-                {
-                    return;
-                }
+                return;
             }
 
-            if(blendDuration > 0f)
-            {
-                blendDuration = Mathf.Max(1f, blendDuration);
-                _animator.CrossFade(characterAnimationData.Animation.AnimationHash, blendDuration);
-            }   
-            else if(blendDuration == 0f)
-            {
-                _animator.Play(characterAnimationData.Animation.AnimationHash);
-            }
+            var looping = _animator.GetCurrentAnimatorStateInfo(0).loop;
+            _animator.CrossFade(characterAnimationData.Animation.AnimationHash, blendDuration);
+
+            SetAnimatorPlaybackSpeed(characterAnimationData.GetFinalAnimationSpeed(_characterCombatController));
+
         }
         public CharacterAnimationData GetCharacterAnimationDataFromTemplate(CharacterState characterState)
         {
+            if(characterState == null || characterState.CharacterAnimation == null)
+            {
+                return null;
+            }
+            
             var data = AnimationTemplateTest.AnimationData.Find(x => x.Animation == characterState.CharacterAnimation);
             return data;
 
+        }
+
+        public CharacterAttributeScalingData GetCharacterAttributeScalingDataFromTemplate(CharacterState characterState)
+        {
+            var scalingData = AnimationTemplateTest.AnimationData.Find(x => x.CharacterAttributeAnimationScalingData.CharacterAttribute == characterState);
+            return scalingData.CharacterAttributeAnimationScalingData;
         }
         public void RepeatLastAnimationPlayed(float blendDuration = 0f)
         {
@@ -222,6 +228,7 @@ namespace Chaos.Gameplay.Characters
         }
         private float GetBaseAnimationClipDuration(CharacterAnimationData animationData)
         {
+            Debug.Log("Clip " + animationData.AnimationClip.name + " length is          :     " + animationData.AnimationClip.length);
             return animationData.AnimationClip.length;
         }
 
@@ -233,12 +240,16 @@ namespace Chaos.Gameplay.Characters
 
         private float GetModifiedAnimationDuration(CharacterAnimationData animationData)
         {
-            return GetTrimmedAnimationDuration(animationData) * animationData.BaseAnimationSpeed;
+            if(animationData.BaseAnimationSpeed == 0f)
+            {
+                return 0f;
+            }
+            return GetTrimmedAnimationDuration(animationData) / animationData.GetFinalAnimationSpeed(_characterCombatController);
         }
         public float GetActualAnimationDuration(CharacterAnimationData animationData)
         {
             float duration = GetModifiedAnimationDuration(animationData);
-            duration *= _currentAnimatorPlaybackSpeedModifier;
+            duration /= _currentAnimatorPlaybackSpeedModifier;
             return duration;
         }
 
@@ -263,8 +274,8 @@ namespace Chaos.Gameplay.Characters
                 _animator.Play(_characterStateController.CharacterStatesProfile.Idle.CharacterAnimation.AnimationHash);
             }
             _animator.CrossFade(newCharacterState.CharacterAnimation.AnimationHash, delay);
-            _lastAnimationPlayed.Animation = newCharacterState.CharacterAnimation;
-            Debug.Log("Playing animation  : " + newCharacterState.CharacterAnimation.AnimationHash);
+            _lastAnimationPlayed = GetCharacterAnimationDataFromTemplate(newCharacterState);
+            //Debug.Log("Playing animation  : " + newCharacterState.CharacterAnimation.AnimationHash);
             if(newCharacterState.AutomaticStateTransitionData != null)
             {
                 RequestCharacterStateChangeToNextStateAfterAnimationIsFinished(newCharacterState.AutomaticStateTransitionData.State, delay);

@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: InHitFrame
   m_EditorClassIdentifier: 
-  AnimationName: Hit
-  Looping: 0
-  NextCharacterStateAfterAnimationFinished: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a,
-    type: 2}
+  CharacterAnimation: {fileID: 0}
+  IsAnimationLooping: 0
+  Transitions: []
+  AutomaticStateTransitionData:
+    State: {fileID: 0}
+    Type: 1
+    Delay: 1
+  CharacterActions: []
   TransitionImmediatly: []
   TransitionAfterFixedDelay:
   - State: {fileID: 11400000, guid: e7b40d76c23b60849bb90b9134238295, type: 2}
+    Type: 1
     Delay: 0
-  TransitionAfterDelayPercentageOfCurrentAnimation: []
+  TransitionAfterNormalizedTimeOfAnimationElapsed: []
   TransitionAfterForcedStateChange: []
   AlwaysIgnore: []

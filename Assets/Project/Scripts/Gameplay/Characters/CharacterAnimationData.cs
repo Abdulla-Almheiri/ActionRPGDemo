@@ -17,6 +17,24 @@ namespace Chaos.Gameplay.Characters
         public float TrimAnimationFrom = 1f;
         [Range(0f, 5f)]
         public float TrimBlendDuration = 0.2f;
-        public List<CharacterAttributeAnimationScalingData> AnimationScalingData = new List<CharacterAttributeAnimationScalingData>();
+        public CharacterAttributeScalingData CharacterAttributeAnimationScalingData;
+
+        public float GetFinalAnimationSpeed(CharacterCombatController combatController)
+        {
+            float multiplier = 1f;
+            if(combatController == null)
+            {
+                return multiplier;
+            }
+
+            multiplier += CharacterAttributeAnimationScalingData.Scaling-1f;
+
+            return multiplier*BaseAnimationSpeed;
+        }
+
+        private float GetAnimationSpeedCharacterAttributeScalingMultiplierFromCombatController(CharacterCombatController combatController)
+        {
+            return 0f;
+        }
     }
 }
