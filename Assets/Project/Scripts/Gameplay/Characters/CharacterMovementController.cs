@@ -9,6 +9,9 @@ namespace Chaos.Gameplay.Characters
 {
     public class CharacterMovementController : GameController
     {
+        public CharacterAction MovementActionTest;
+        public CharacterAction StopMovementAction;
+        public CharacterAction SpeedUpAction;
         public CharacterStatesProfile CharacterStatesProfile;
         public GameCombatController GameCombatController;
         public CharacterCombatController CharacterCombatController { private set; get; }
@@ -25,6 +28,10 @@ namespace Chaos.Gameplay.Characters
         {
             ProcessStoppingAndInformStateController();
             
+            if(Input.GetKeyUp(KeyCode.F) == true)
+            {
+                _characterStateController.TriggerCharacterAction(SpeedUpAction);
+            }
         }
         public override bool Initialize(Game game)
         {
@@ -43,12 +50,17 @@ namespace Chaos.Gameplay.Characters
                 returnValue = false;
             }
 
+            SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
 
 
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {
+            if(_characterStateController.IsActionAllowed(MovementActionTest) == false)
+            {
+                return false;
+            }
             _navMeshAgent.isStopped = false;
             var navMeshMoveResult = _navMeshAgent.SetDestination(targetPoint);
             if (navMeshMoveResult == true)
@@ -100,7 +112,7 @@ namespace Chaos.Gameplay.Characters
 
         }
 
-        private void RequestStateChangeToIdle()
+        /*private void RequestStateChangeToIdle()
         {
             if(_characterStateController == null)
             {
@@ -108,13 +120,50 @@ namespace Chaos.Gameplay.Characters
             }
 
             _characterStateController.SetCurrentCharacterStateWithAnyTransitionType(_characterStateController.CharacterStatesProfile.Idle);
-        }
-        public void StopMovementAndRequestStateChangeToIdle()
+        }*/
+        /*public void StopMovementAndRequestStateChangeToIdle()
         {
             
             _navMeshAgent.isStopped = true;
+        }*/
+        private void SubscribeToCharacterActionTriggeredEvent()
+        {
+            if(_characterStateController == null)
+            {
+                return;
+            }
+
+            _characterStateController.SubscribeToCharacterActionTriggered(OnCharacterActionTriggered);
         }
 
+        private void UnsubscribeToCharacterActionTriggeredEvent()
+        {
+            if (_characterStateController == null)
+            {
+                return;
+            }
+
+            _characterStateController.UnsubscribeToCharacterActionTriggered(OnCharacterActionTriggered);
+        }
+
+        private void OnCharacterActionTriggered(CharacterAction characterAction)
+        {
+            if(characterAction == StopMovementAction)
+            {
+                StopMovment();
+            }
+            Debug.Log("Action triggered by event     :   " + characterAction.name);
+        }
+
+        private void StopMovment()
+        {
+            if(_navMeshAgent == null)
+            {
+                return;
+            }
+
+            _navMeshAgent.isStopped = true;
+        }
         public void MoveToGameObject(GameObject targetGameObject)
         {
             MoveToWorldPoint(targetGameObject.gameObject.transform.position);
@@ -162,6 +211,11 @@ namespace Chaos.Gameplay.Characters
             {
                 return false;
             }
+        }
+
+        public void OnDisable()
+        {
+            UnsubscribeToCharacterActionTriggeredEvent();
         }
     }
 }

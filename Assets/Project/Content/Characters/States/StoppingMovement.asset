@@ -10,23 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
-  m_Name: Dead
+  m_Name: StoppingMovement
   m_EditorClassIdentifier: 
-  CharacterAnimation: {fileID: 11400000, guid: 79a9a8ab129c1f147a97bf85bb16ff3a, type: 2}
+  CharacterAnimation: {fileID: 11400000, guid: b939772f13b73384b8b53fecd3b946df, type: 2}
   IsAnimationLooping: 0
-  TriggeredBy: {fileID: 0}
-  AutomaticStateTransitionData: {fileID: 0}
+  TriggeredBy: {fileID: 11400000, guid: 2414e4efd87a54344868cc4fd50148cf, type: 2}
+  AutomaticStateTransitionData: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a,
+    type: 2}
   CausedCondition:
     Condition: {fileID: 0}
     Duration: 0
-  Transitions: []
-  Actions:
-  - CharacterAction: {fileID: 0}
-    TransitionTo: {fileID: 0}
-    TransitionData:
-      State: {fileID: 0}
-      Type: 0
-      Delay: 0
+  Transitions:
+  - TransitionData:
+      State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
+      Type: 1
+      Delay: 0.1
       AttributeScaling:
         CharacterAttribute: {fileID: 0}
         Scaling: 0
+    TriggeredByActions:
+    - {fileID: 0}
+  Actions: []

@@ -9,6 +9,11 @@ namespace Chaos.Gameplay.Characters
     {
         public bool Hostile = true;
         public float Size = 1f;
+        [Space(10)]
+        [Header("Core Attributes")]
+        [Space(5)]
+        public CharacterAttribute Health;
+        public CharacterAttribute Energy;
 
         public List<CharacterAttributeData> BaseCharacterAttributes = new List<CharacterAttributeData>();
     }

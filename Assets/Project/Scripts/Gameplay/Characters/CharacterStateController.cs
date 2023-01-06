@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using Chaos.Gameplay.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
     public class CharacterStateController : MonoBehaviour
     {
+        public CharacterAction CharacterActionTEST;
+
         [field:SerializeField]
         public CharacterStatesProfile CharacterStatesProfile { private set; get; }
         public delegate void CharacterStateChanged(CharacterState newCharacterState, float delay = 0f);
+        public delegate void CharacterActionTriggered(CharacterAction newCharacterAction);
 
         private event CharacterStateChanged OnCharacterStateChanged;
+        private event CharacterActionTriggered OnCharacterActionTriggered;
+
         private CharacterState _currentCharacterState;
         private CharacterState _initialCharacterstate;
         private float _currentStateElapsedTime = 0f;
@@ -32,10 +38,10 @@ namespace Chaos.Gameplay.Characters
         public void Update()
         {
             ProcessCurrentCharacterStateElapsedTime();
-
+            ProcessUnallowedActionsList();
             if(Input.GetKeyUp(KeyCode.S))
             {
-                SetCurrentCharacterStateWithAnyTransitionType(CharacterStatesProfile.ExecutingBasicAttack);
+                TriggerCharacterAction(CharacterActionTEST);
             }
         }
 
@@ -51,9 +57,56 @@ namespace Chaos.Gameplay.Characters
             ResetStateDurations();
             //_currentState = new CharacterState(true, true, true, true, true, true);
         }
+
+        private void ProcessUnallowedActionsList()
+        {
+            
+            foreach (CharacterAction action in _unallowedCharacterActions.Keys.ToList())
+            {
+                if (_unallowedCharacterActions[action] > 0f)
+                {
+                    _unallowedCharacterActions[action] -= Time.deltaTime;
+                }
+            }
+        }
         public CharacterState GetCurrentCharacterState()
         {
             return _currentCharacterState;
+        }
+        public bool TriggerCharacterAction(CharacterAction characterAction)
+        {
+            if(characterAction == null || characterAction.TransitionToState == null)
+            {
+                return false;
+            }
+            if(IsActionAllowed(characterAction) == false)
+            {
+                return false;
+            }
+
+            Debug.Log("Triggered action :  " + characterAction);
+            InvokeCharacterActionTriggeredEvent(characterAction);
+            var attempt = AttemptCharacterStateChange(characterAction.TransitionToState);
+            if(attempt == true)
+            {
+                AddUnallowedActionsFromTriggeredAction(characterAction);
+                
+            }
+            return attempt;
+        }
+
+        private void AddUnallowedActionsFromTriggeredAction(CharacterAction characterAction)
+        {
+            var listOfActions = characterAction.TransitionToState.CausedCondition.Condition.ActionsNotAllowed;
+            var duration = characterAction.TransitionToState.CausedCondition.Duration;
+
+            foreach (CharacterAction action in listOfActions)
+            {
+                if(_unallowedCharacterActions.TryAdd(action, duration) != true)
+                {
+                    _unallowedCharacterActions[action] = Mathf.Max(duration, _unallowedCharacterActions[action]);
+                }
+            }
         }
         public bool AttemptCharacterStateChange(CharacterState newCharacterState, float duration = 0f)
         {
@@ -82,7 +135,7 @@ namespace Chaos.Gameplay.Characters
 
             //SetCurrentCharacterStateWithAnyTransitionType
         }
-        public bool SetCurrentCharacterStateIfTransitionIsImmediateOnly(CharacterState newCharacterState)
+        /*public bool SetCurrentCharacterStateIfTransitionIsImmediateOnly(CharacterState newCharacterState)
         {
             if (IsImmediateCharacterStateTransitionPossible(newCharacterState) == true)
             {
@@ -135,15 +188,12 @@ namespace Chaos.Gameplay.Characters
             {
                 return false;
             }
-        }
-        public void QueueNextCharacterState(CharacterState newCharacterState, float delay)
+        }*/
+        public void QueueNextCharacterState(CharacterState newCharacterState, float additionalDelay = 0f)
         {
-            /*if(SetCurrentCharacterStateIfTransitionIsImmediateOnly(newCharacterState) == true)
-            {
-                return;
-            }*/
+
             StopAllCoroutines();
-            StartCoroutine(QueueNextCharacterStateCO(newCharacterState, delay));
+            StartCoroutine(QueueNextCharacterStateCO(newCharacterState, additionalDelay));
         }
         public void SubscribeToCharacterStateChanged(CharacterStateChanged subscriber)
         {
@@ -154,6 +204,14 @@ namespace Chaos.Gameplay.Characters
             OnCharacterStateChanged -= unsubscriber;
         }
 
+        public void SubscribeToCharacterActionTriggered(CharacterActionTriggered subscriber)
+        {
+            OnCharacterActionTriggered += subscriber;
+        }
+        public void UnsubscribeToCharacterActionTriggered(CharacterActionTriggered unsubscriber)
+        {
+            OnCharacterActionTriggered -= unsubscriber;
+        }
         private float GetActualDelayDurationOfTransition(CharacterState nextState, CharacterState previousState = null)
         {
             if(nextState == null)
@@ -182,7 +240,6 @@ namespace Chaos.Gameplay.Characters
 
             var data = _characterAnimationController.GetCharacterAnimationDataFromTemplate(nextState);
             var transitionDelay = state.TransitionData.ActualDelayInSeconds(_characterAnimationController);
-            Debug.Log("TRANSITION DELAY IS :          " + transitionDelay);
             return transitionDelay;
 
         }
@@ -209,7 +266,7 @@ namespace Chaos.Gameplay.Characters
         {
             return _currentStateElapsedTime > 0f;
         }
-        private bool IsActionAllowed(CharacterAction characterAction)
+        public bool IsActionAllowed(CharacterAction characterAction)
         {
             if(RemainingDurationCharacterActionUnallowed(characterAction) > 0)
             {
@@ -258,10 +315,10 @@ namespace Chaos.Gameplay.Characters
             var data = _characterAnimationController.GetCharacterAnimationDataFromTemplate(newCharacterState);
             
             //FIX BLEND DURATION HERE
-            Debug.Log("Animation change requested. New CharacterState  :    " + newCharacterState + " And blendDuration is  :  " + blendDuration);
+            //Debug.Log("Animation change requested. New CharacterState  :    " + newCharacterState + " And blendDuration is  :  " + blendDuration);
             RequestAnimationChange(data, blendDuration);
         }
-        private bool IsImmediateCharacterStateTransitionPossible(CharacterState newCharacterState)
+        /*private bool IsImmediateCharacterStateTransitionPossible(CharacterState newCharacterState)
         {
             if(_currentCharacterState.TransitionImmediatly.Contains(newCharacterState) == true)
             {
@@ -269,9 +326,9 @@ namespace Chaos.Gameplay.Characters
             }
 
             return false;
-        }
+        }*/
 
-        private bool IsCharacterStateTransitionPossibleAfterFixedDelay(CharacterState newCharacterState, out float delay)
+        /*private bool IsCharacterStateTransitionPossibleAfterFixedDelay(CharacterState newCharacterState, out float delay)
         {
             delay = 0f;
             var state = _currentCharacterState.TransitionAfterFixedDelay.Find(x => x.State == newCharacterState);
@@ -283,9 +340,9 @@ namespace Chaos.Gameplay.Characters
                 delay = state.Delay;
                 return true;
             }
-        }
+        }*/
 
-        private bool IsCharacterStateTransitionPossibleAfterPercentageOfAnimationDelay(CharacterState newCharacterState, out float delay)
+        /*private bool IsCharacterStateTransitionPossibleAfterPercentageOfAnimationDelay(CharacterState newCharacterState, out float delay)
         {
             delay = 0f;
             var state = _currentCharacterState.TransitionAfterNormalizedTimeOfAnimationElapsed.Find(x => x.State == newCharacterState);
@@ -298,12 +355,12 @@ namespace Chaos.Gameplay.Characters
                 delay = state.Delay;
                 return true;
             }
-        }
+        }*/
 
-        private bool IsCharacterStateTransitionPossibleIfForced(CharacterState newCharacterState)
+        /*private bool IsCharacterStateTransitionPossibleIfForced(CharacterState newCharacterState)
         {
             return _currentCharacterState.TransitionAfterForcedStateChange.Contains(newCharacterState);
-        }
+        }*/
         private void InvokeCharacterStateChangedEvent(CharacterState newCharacterState, float delay = 0f)
         {
             if (OnCharacterStateChanged != null)
@@ -312,6 +369,13 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
+        private void InvokeCharacterActionTriggeredEvent(CharacterAction characterAction)
+        {
+            if (OnCharacterActionTriggered != null)
+            {
+                OnCharacterActionTriggered.Invoke(characterAction);
+            }
+        }
         private void RequestAnimationChange(CharacterAnimationData animationData, float blendDuration)
         {
             if(_characterAnimationController == null || animationData == null || animationData.Animation == null)
@@ -327,7 +391,7 @@ namespace Chaos.Gameplay.Characters
             var wait = new WaitForSeconds(Mathf.Max(0, delay));
             yield return wait;
             //TEST
-            ChangeCharacterStateAndTriggerEvent(newCharacterState);
+            AttemptCharacterStateChange(newCharacterState);
         }
 
         IEnumerator ReturnToDefaultStateCO(float delay)

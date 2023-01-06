@@ -1309,6 +1309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementActionTest: {fileID: 0}
+  StopMovementAction: {fileID: 0}
+  SpeedUpAction: {fileID: 0}
   CharacterStatesProfile: {fileID: 0}
   GameCombatController: {fileID: 0}
   Layer:
@@ -1377,7 +1380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1646788661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +1572,12 @@ PrefabInstance:
       propertyPath: GameMaterialController
       value: 
       objectReference: {fileID: 762450649}
+    - target: {fileID: 1384313599584435423, guid: 9f6d8a0f42d251244b0e75afddde237b,
+        type: 3}
+      propertyPath: CharacterActionTEST
+      value: 
+      objectReference: {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320,
+        type: 2}
     - target: {fileID: 1384313599584435423, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
       propertyPath: <CharacterStatesProfile>k__BackingField

@@ -26,15 +26,21 @@ namespace Chaos.Gameplay.Characters
             {
                 return multiplier;
             }
-
-            multiplier += CharacterAttributeAnimationScalingData.Scaling-1f;
-
+            float additionalScaling = GetAnimationSpeedCharacterAttributeScalingMultiplierFromCombatController(combatController);
+            multiplier += (CharacterAttributeAnimationScalingData.Scaling*additionalScaling);
             return multiplier*BaseAnimationSpeed;
         }
 
         private float GetAnimationSpeedCharacterAttributeScalingMultiplierFromCombatController(CharacterCombatController combatController)
         {
-            return 0f;
+            float multiplier = 0f;
+            if (combatController == null || CharacterAttributeAnimationScalingData.CharacterAttribute == null)
+            {
+                return multiplier;
+            }
+            float percentFromRating = combatController.GetPercentageFromRatingByCharacterAttribute(CharacterAttributeAnimationScalingData.CharacterAttribute);
+            multiplier += (percentFromRating / 100f);
+            return multiplier;
         }
     }
 }

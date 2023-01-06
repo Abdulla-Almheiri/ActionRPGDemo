@@ -12,14 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: ExecutingBasicAttack
   m_EditorClassIdentifier: 
-  AnimationName: BasicAttack
-  Looping: 0
-  NextCharacterStateAfterAnimationFinished: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a,
+  CharacterAnimation: {fileID: 11400000, guid: 79a9a8ab129c1f147a97bf85bb16ff3a, type: 2}
+  IsAnimationLooping: 0
+  TriggeredBy: {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320, type: 2}
+  AutomaticStateTransitionData: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a,
     type: 2}
-  TransitionImmediatly: []
-  TransitionAfterFixedDelay:
-  - State: {fileID: 11400000}
-    Delay: 0.5
-  TransitionAfterDelayPercentageOfCurrentAnimation: []
-  TransitionAfterForcedStateChange: []
-  AlwaysIgnore: []
+  CausedCondition:
+    Condition: {fileID: 11400000, guid: 002b529a749a58c45b5f3fa1ba3a4074, type: 2}
+    Duration: 0.5
+  Transitions:
+  - TransitionData:
+      State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
+      Type: 1
+      Delay: 0.75
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+          type: 2}
+        Scaling: 0
+    TriggeredByActions:
+    - {fileID: 11400000, guid: 717aa5cb256b99748934964a44f5fe25, type: 2}
+  - TransitionData:
+      State: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+      Type: 1
+      Delay: 0.75
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+          type: 2}
+        Scaling: 0
+    TriggeredByActions:
+    - {fileID: 11400000, guid: 717aa5cb256b99748934964a44f5fe25, type: 2}
+  Actions:
+  - CharacterAction: {fileID: 0}
+    TransitionTo: {fileID: 0}
+    TransitionData:
+      State: {fileID: 0}
+      Type: 0
+      Delay: 0
+      AttributeScaling:
+        CharacterAttribute: {fileID: 0}
+        Scaling: 0

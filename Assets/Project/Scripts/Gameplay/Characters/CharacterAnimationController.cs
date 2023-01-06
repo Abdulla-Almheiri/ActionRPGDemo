@@ -47,7 +47,7 @@ namespace Chaos.Gameplay.Characters
 
             if (Input.GetKeyUp(KeyCode.F) == true)
             {
-                _animator.SetTrigger("Death");
+                //_animator.SetTrigger("Death");
                 //Debug.Log("Death triggered");
             }
 
@@ -65,7 +65,7 @@ namespace Chaos.Gameplay.Characters
 
             if (Input.GetKeyUp(KeyCode.Z))
             {
-                Debug.Log("Animation HASH  :  " + Animator.StringToHash("Base Layer.Hit"));
+                //Debug.Log("Animation HASH  :  " + Animator.StringToHash("Base Layer.Hit"));
                 _animator.CrossFade(Animator.StringToHash("Base Layer.Hit"), 0.2f);
             }
 
@@ -228,7 +228,7 @@ namespace Chaos.Gameplay.Characters
         }
         private float GetBaseAnimationClipDuration(CharacterAnimationData animationData)
         {
-            Debug.Log("Clip " + animationData.AnimationClip.name + " length is          :     " + animationData.AnimationClip.length);
+            //Debug.Log("Clip " + animationData.AnimationClip.name + " length is          :     " + animationData.AnimationClip.length);
             return animationData.AnimationClip.length;
         }
 
@@ -278,7 +278,8 @@ namespace Chaos.Gameplay.Characters
             //Debug.Log("Playing animation  : " + newCharacterState.CharacterAnimation.AnimationHash);
             if(newCharacterState.AutomaticStateTransitionData != null)
             {
-                RequestCharacterStateChangeToNextStateAfterAnimationIsFinished(newCharacterState.AutomaticStateTransitionData.State, delay);
+                //Fix here
+                //RequestCharacterStateChangeToNextStateAfterAnimationIsFinished(newCharacterState.AutomaticStateTransitionData.State, delay);
             }
         }
 

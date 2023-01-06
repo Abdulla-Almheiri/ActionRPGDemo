@@ -67,7 +67,7 @@ namespace Chaos.Gameplay.Characters
             if(_characterAttributes.TryGetValue(characterAttribute, out CharacterAttributeData valueContainer))
             {
                 //Fix here
-                Debug.Log("Attribute " + characterAttribute.name + "is   :   " + valueContainer.BaseRating);
+                //Debug.Log("Attribute " + characterAttribute.name + "is   :   " + valueContainer.BaseRating);
                 return valueContainer.BaseRating;
             }
             return 0f;
@@ -101,15 +101,11 @@ namespace Chaos.Gameplay.Characters
         private float ConvertCharacterAttributeRatingToPercentageByGameCombatProfile(CharacterAttribute characterAttribute, float rating, GameCombatProfile gameCombatProfile)
         {
             var attributeData = gameCombatProfile.CharacterAttributeRatingConverstionDetails.Find(x => x.CharacterAttribute == characterAttribute);
-            Debug.Log("Converstiono attribute is  :   " + gameCombatProfile.CharacterAttributeRatingConverstionDetails.FirstOrDefault().CharacterAttribute.name);
-            Debug.Log("Input attribute is  :   " + characterAttribute.name);
             if (attributeData == null)
             {
-                Debug.Log("NULLL IN CONVERT");
                 return 0f;
             } else
             {
-                Debug.Log("RATING RETRUNED");
                 return attributeData.GetActualBasePercentageByRatingAndLevel(rating, Level, this);
             }
         }
@@ -201,7 +197,6 @@ namespace Chaos.Gameplay.Characters
         {
             if(CharacterCombatTemplate == null)
             {
-                Debug.Log("CharacterCombatTemplate == null");
                 return;
             }
 
@@ -211,7 +206,6 @@ namespace Chaos.Gameplay.Characters
 
                if( _characterAttributes.TryGetValue(data.CharacterAttribute, out CharacterAttributeData characterAttributeData))
                 {
-                    Debug.Log("Attribute value        =   " + characterAttributeData.BaseRating);
                 }
             }
         }

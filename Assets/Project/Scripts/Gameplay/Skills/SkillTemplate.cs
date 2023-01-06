@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Chaos.Gameplay.Characters;
 
 namespace Chaos.Gameplay.Skills
 {
@@ -16,6 +17,7 @@ namespace Chaos.Gameplay.Skills
         [Space(20)]
         [Header("ACTIVATION")]
         public SkillActivationData SkillActivationData;
+        public CharacterAction CharacterActionTriggered;
 
         [Space(20)]
         [Header("TRIGGER")]

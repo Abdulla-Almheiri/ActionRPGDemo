@@ -14,44 +14,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterAnimation: {fileID: 11400000, guid: b939772f13b73384b8b53fecd3b946df, type: 2}
   IsAnimationLooping: 1
-  AutomaticStateTransitionData:
-    State: {fileID: 0}
-    Type: 2
-    Delay: 0
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
+  TriggeredBy: {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
+  AutomaticStateTransitionData: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc,
+    type: 2}
+  CausedCondition:
+    Condition: {fileID: 0}
+    Duration: 0
   Transitions:
   - TransitionData:
       State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
-      Type: 1
+      Type: 0
       Delay: 0.2
       AttributeScaling:
-        CharacterAttribute: {fileID: 0}
-        Scaling: 0
-    TriggeredByActions: []
-  CharacterActions: []
-  TransitionImmediatly:
-  - {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
-  - {fileID: 11400000, guid: 08621e08ef1f18c4281322444ccebdb0, type: 2}
-  - {fileID: 11400000, guid: 1078848a3277c7e4cbf5f54c52be6c81, type: 2}
-  - {fileID: 11400000, guid: c02333c30e565004db40a6071039a978, type: 2}
-  - {fileID: 11400000, guid: 713c41b3d8720e148a9dc6121e03910d, type: 2}
-  TransitionAfterFixedDelay:
-  - State: {fileID: 11400000, guid: e7b40d76c23b60849bb90b9134238295, type: 2}
-    Type: 1
-    Delay: 0.1
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
-  - State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
-    Type: 0
-    Delay: 0
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
-  TransitionAfterNormalizedTimeOfAnimationElapsed: []
-  TransitionAfterForcedStateChange: []
-  AlwaysIgnore:
-  - {fileID: 11400000, guid: 10f92b54264648d41bd64bec6ce7982c, type: 2}
-  - {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7, type: 2}
+        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+          type: 2}
+        Scaling: 1
+    TriggeredByActions:
+    - {fileID: 11400000, guid: 2414e4efd87a54344868cc4fd50148cf, type: 2}
+  - TransitionData:
+      State: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
+      Type: 0
+      Delay: 0.93
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+          type: 2}
+        Scaling: 1
+    TriggeredByActions:
+    - {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
+  Actions:
+  - CharacterAction: {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
+    TransitionTo: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
+    TransitionData:
+      State: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
+      Type: 0
+      Delay: 0.2
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+          type: 2}
+        Scaling: 1

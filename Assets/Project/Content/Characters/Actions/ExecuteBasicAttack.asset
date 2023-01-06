@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionToState: {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
   RemovesAnyCondition: 0
-  RemoveCharacterConditions: []
+  RemoveCharacterConditions:
+  - {fileID: 11400000, guid: 7fc9c40b986427948a459f6dfb876e38, type: 2}

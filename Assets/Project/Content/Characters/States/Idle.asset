@@ -14,16 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterAnimation: {fileID: 11400000, guid: 3e45ff6c8af25844d8620f664a0f5ec8, type: 2}
   IsAnimationLooping: 1
-  AutomaticStateTransitionData:
-    State: {fileID: 0}
-    Type: 2
-    Delay: 0
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
+  TriggeredBy: {fileID: 0}
+  AutomaticStateTransitionData: {fileID: 0}
+  CausedCondition:
+    Condition: {fileID: 0}
+    Duration: 0
   Transitions:
   - TransitionData:
-      State: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+      State: {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
+      Type: 0
+      Delay: 0
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 813b35cf9a03e4941a8f8cd2a97ed97a,
+          type: 2}
+        Scaling: 1
+    TriggeredByActions:
+    - {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320, type: 2}
+  - TransitionData:
+      State: {fileID: 11400000, guid: d7bc1b35ca0c625479cf294baa406592, type: 2}
       Type: 0
       Delay: 0
       AttributeScaling:
@@ -31,20 +39,3 @@ MonoBehaviour:
         Scaling: 0
     TriggeredByActions:
     - {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
-  CharacterActions:
-  - {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320, type: 2}
-  - {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
-  - {fileID: 11400000, guid: 088a68200534f9b40a4405f839c79e76, type: 2}
-  TransitionImmediatly:
-  - {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
-  - {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
-  TransitionAfterFixedDelay:
-  - State: {fileID: 11400000, guid: 571bcc7716a1fe24d95aabe5ceb8407a, type: 2}
-    Type: 1
-    Delay: 0.5
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
-  TransitionAfterNormalizedTimeOfAnimationElapsed: []
-  TransitionAfterForcedStateChange: []
-  AlwaysIgnore: []

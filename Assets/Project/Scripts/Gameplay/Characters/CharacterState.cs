@@ -9,13 +9,14 @@ namespace Chaos.Gameplay.Characters
     {
         public CharacterAnimation CharacterAnimation;
         public bool IsAnimationLooping = false;
-
+        public CharacterAction TriggeredBy;
         [Tooltip("Delay is normalized elapsed time of current animation.")]
-        public CharacterStateTransitionData AutomaticStateTransitionData;
+        public CharacterState AutomaticStateTransitionData;
+        public CharacterConditionData CausedCondition;
         public List<CharacterStateTransitionAdditionalData> Transitions = new List<CharacterStateTransitionAdditionalData>();
 
-
-        [Space(10)]
+        public List<CharacterActionData> Actions = new List<CharacterActionData>();
+       /* [Space(10)]
         [Header("Allowed Actions")]
         public List<CharacterAction> CharacterActions = new List<CharacterAction>();
 
@@ -27,6 +28,6 @@ namespace Chaos.Gameplay.Characters
         public List<CharacterState> TransitionAfterForcedStateChange = new List<CharacterState>();
         [Space(10)]
         [Header("No Transitions Possible")]
-        public List<CharacterState> AlwaysIgnore = new List<CharacterState>();
+        public List<CharacterState> AlwaysIgnore = new List<CharacterState>();*/
     }
 }

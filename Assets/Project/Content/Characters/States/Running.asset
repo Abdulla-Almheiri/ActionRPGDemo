@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
+  m_Name: Running
+  m_EditorClassIdentifier: 
+  CharacterAnimation: {fileID: 11400000, guid: 89df968f954232243b488b9716a99f96, type: 2}
+  IsAnimationLooping: 1
+  TriggeredBy: {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
+  AutomaticStateTransitionData: {fileID: 0}
+  CausedCondition:
+    Condition: {fileID: 11400000, guid: 49b4549053a0d214e903ea660e20787f, type: 2}
+    Duration: 0
+  Transitions:
+  - TransitionData:
+      State: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+      Type: 0
+      Delay: 1.64
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+          type: 2}
+        Scaling: 1
+    TriggeredByActions:
+    - {fileID: 0}
+  Actions:
+  - CharacterAction: {fileID: 11400000, guid: 41a9ce4ce8e39d84abe15a30ca559f66, type: 2}
+    TransitionTo: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+    TransitionData:
+      State: {fileID: 11400000, guid: 5f19a65ca2e8b7f4d97bf29402a627e9, type: 2}
+      Type: 0
+      Delay: 0.2
+      AttributeScaling:
+        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+          type: 2}
+        Scaling: 1

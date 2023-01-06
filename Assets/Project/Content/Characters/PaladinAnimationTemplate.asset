@@ -47,7 +47,18 @@ MonoBehaviour:
         type: 2}
       Scaling: 1
   - Animation: {fileID: 11400000, guid: b939772f13b73384b8b53fecd3b946df, type: 2}
-    AnimationClip: {fileID: 7400000, guid: 20c12b21d8873ed40bd314775ea41cc9, type: 2}
+    AnimationClip: {fileID: 7400000, guid: 202bc97a31f75804083e7c5fb02583c1, type: 2}
+    IsLooping: 1
+    BaseAnimationSpeed: 1
+    ImpactPoint: 0
+    TrimAnimationFrom: 1
+    TrimBlendDuration: 0.2
+    CharacterAttributeAnimationScalingData:
+      CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
+        type: 2}
+      Scaling: 1
+  - Animation: {fileID: 11400000, guid: 89df968f954232243b488b9716a99f96, type: 2}
+    AnimationClip: {fileID: 7400000, guid: 90f877aae862c7f4390965f47781669a, type: 2}
     IsLooping: 1
     BaseAnimationSpeed: 1
     ImpactPoint: 0

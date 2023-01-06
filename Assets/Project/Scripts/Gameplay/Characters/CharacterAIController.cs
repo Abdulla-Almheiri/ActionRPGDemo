@@ -40,11 +40,11 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
-            ProcessChaseBehaviour();
+           // ProcessChaseBehaviour();
 
         }
 
-        private void ProcessChaseBehaviour()
+        /*private void ProcessChaseBehaviour()
         {
             if (_characterAITemplate.ChasePlayer == true)
             {
@@ -60,6 +60,6 @@ namespace Chaos.Gameplay.Characters
                     _characterMovementController.MoveToGameObject(PlayerTest);
                 }
             }
-        }
+        }*/
     }
 }

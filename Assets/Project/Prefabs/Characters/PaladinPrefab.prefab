@@ -1291,6 +1291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementActionTest: {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
+  StopMovementAction: {fileID: 0}
+  SpeedUpAction: {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
   CharacterStatesProfile: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
     type: 2}
   GameCombatController: {fileID: 0}
@@ -1514,6 +1517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517eb4779edd3b488959b378ece2914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterActionTEST: {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320,
+    type: 2}
   <CharacterStatesProfile>k__BackingField: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
     type: 2}
 --- !u!1 &3317519688389044056
