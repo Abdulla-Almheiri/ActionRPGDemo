@@ -12,14 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Reviving
   m_EditorClassIdentifier: 
-  CharacterAnimation: {fileID: 0}
-  Looping: 0
-  AutomaticStateTransitionData:
-    State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
-    Delay: 1
-  CharacterActions: []
-  TransitionImmediatly: []
-  TransitionAfterFixedDelay: []
-  TransitionAfterNormalizedTimeOfAnimationElapsed: []
-  TransitionAfterForcedStateChange: []
-  AlwaysIgnore: []
+  CharacterAnimation: {fileID: 11400000, guid: 73f67a5fe0493db41952e70985e4f9ff, type: 2}
+  IsAnimationLooping: 0
+  TriggeredBy: {fileID: 11400000, guid: 3a72124b8f0bc3246beba7c4488a0138, type: 2}
+  AutomaticStateTransitionData: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7,
+    type: 2}
+  CausedCondition:
+    Condition: {fileID: 0}
+    Duration: 0
+  Transitions:
+  - TransitionData:
+      State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
+      Type: 1
+      Delay: 1
+      AttributeScaling:
+        CharacterAttribute: {fileID: 0}
+        Scaling: 0
+    TriggeredByActions:
+    - {fileID: 11400000, guid: 3a72124b8f0bc3246beba7c4488a0138, type: 2}
+  Actions: []

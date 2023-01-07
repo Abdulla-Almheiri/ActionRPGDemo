@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Dying
   m_EditorClassIdentifier: 
-  CharacterAnimation: {fileID: 0}
+  CharacterAnimation: {fileID: 11400000, guid: 3fb979b082df54442972757032dbfa9d, type: 2}
   IsAnimationLooping: 0
-  AutomaticStateTransitionData:
-    State: {fileID: 11400000, guid: 9387985ab53e4184b86e7ee867ce9bf7, type: 2}
-    Type: 2
-    Delay: 1
-    AttributeScaling:
-      CharacterAttribute: {fileID: 0}
-      Scaling: 0
+  TriggeredBy: {fileID: 0}
+  AutomaticStateTransitionData: {fileID: 0}
+  CausedCondition:
+    Condition: {fileID: 0}
+    Duration: 0
   Transitions:
   - TransitionData:
       State: {fileID: 0}
@@ -30,9 +28,4 @@ MonoBehaviour:
         CharacterAttribute: {fileID: 0}
         Scaling: 0
     TriggeredByActions: []
-  CharacterActions: []
-  TransitionImmediatly: []
-  TransitionAfterFixedDelay: []
-  TransitionAfterNormalizedTimeOfAnimationElapsed: []
-  TransitionAfterForcedStateChange: []
-  AlwaysIgnore: []
+  Actions: []

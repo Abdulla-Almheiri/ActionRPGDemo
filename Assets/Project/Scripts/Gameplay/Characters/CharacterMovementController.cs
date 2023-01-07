@@ -16,9 +16,12 @@ namespace Chaos.Gameplay.Characters
         public GameCombatController GameCombatController;
         public CharacterCombatController CharacterCombatController { private set; get; }
         private CharacterStateController _characterStateController;
+        private CharacterAnimationController _characterAnimationController;
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
         public float DefaultMeleeRangeTest = 5f;
+
+        private float _baseSpeed = 0f;
         void Start()
         {
             Initialize(null);
@@ -31,6 +34,10 @@ namespace Chaos.Gameplay.Characters
             if(Input.GetKeyUp(KeyCode.F) == true)
             {
                 _characterStateController.TriggerCharacterAction(SpeedUpAction);
+            }
+            if(IsRunning())
+            {
+                _characterAnimationController.Animator.SetFloat("Speed", _navMeshAgent.velocity.magnitude);
             }
         }
         public override bool Initialize(Game game)
@@ -45,15 +52,17 @@ namespace Chaos.Gameplay.Characters
 
             CharacterCombatController = GetComponent<CharacterCombatController>();
             _characterStateController = GetComponent<CharacterStateController>();
+            _characterAnimationController = GetComponent<CharacterAnimationController>();
             if(_navMeshAgent == null)
             {
                 returnValue = false;
             }
 
+            _baseSpeed = _navMeshAgent.speed;
+
             SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
-
 
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {

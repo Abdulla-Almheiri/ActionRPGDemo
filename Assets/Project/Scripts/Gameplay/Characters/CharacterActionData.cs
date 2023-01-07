@@ -9,6 +9,5 @@ namespace Chaos.Gameplay.Characters
     {
         public CharacterAction CharacterAction;
         public CharacterState TransitionTo;
-        public CharacterStateTransitionData TransitionData;
     }
 }

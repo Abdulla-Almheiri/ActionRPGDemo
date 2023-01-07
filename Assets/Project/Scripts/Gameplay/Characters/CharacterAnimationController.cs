@@ -14,7 +14,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterStateController _characterStateController;
         private CharacterCombatController _characterCombatController;
         private string _lastAnimationPlayed1;
-        protected Animator _animator;
+        public Animator Animator;
 
         private CharacterAnimationData _lastAnimationPlayed;
 
@@ -53,20 +53,26 @@ namespace Chaos.Gameplay.Characters
 
             if (Input.GetKeyUp(KeyCode.H) == true)
             {
-                _animator.SetTrigger("Hit");
+                Animator.SetTrigger("Hit");
                 //Debug.Log("Hit triggered");
             }
 
             if (Input.GetKeyUp(KeyCode.A))
             {
 
-                _animator.CrossFade("Base Layer.Attack1", 0.2f);
+                Animator.CrossFade("Base.Slash", 0.2f);
             }
 
             if (Input.GetKeyUp(KeyCode.Z))
             {
-                //Debug.Log("Animation HASH  :  " + Animator.StringToHash("Base Layer.Hit"));
-                _animator.CrossFade(Animator.StringToHash("Base Layer.Hit"), 0.2f);
+                Debug.Log("Normalized time is  :    "  +  Animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+                Animator.CrossFade(Animator.StringToHash("Sword.Sheath"), 0.2f);
+
+            }
+
+            if(Animator.GetFloat("ImpactFrame") > 0.1f)
+            {
+                Debug.Log("IMPAAAAACTING");
             }
 
         }
@@ -87,7 +93,7 @@ namespace Chaos.Gameplay.Characters
         private void Initialize()
         {
             _movementController = GetComponent<CharacterMovementController>();
-            _animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
             _skillController = GetComponent<CharacterSkillController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
@@ -97,16 +103,16 @@ namespace Chaos.Gameplay.Characters
         }
         public void TriggerAttackAnimation()
         {
-            _animator.SetTrigger("Attack1");
+            Animator.SetTrigger("Attack1");
         }
 
         public void TriggerHitAnimation()
         {
-            _animator.SetTrigger("Hit");
+            Animator.SetTrigger("Hit");
         }
         public float GetCurrentAnimatorPlaybackSpeed()
         {
-            return _animator.speed;
+            return Animator.speed;
         }
         public void PlayCharacterAnimationFromCharacterState(CharacterState characterState, float blendDuration)
         {
@@ -115,13 +121,13 @@ namespace Chaos.Gameplay.Characters
         }
         public void PlayCharacterAnimationFromCharacterAnimationData(CharacterAnimationData characterAnimationData, float blendDuration = 0f)
         {
-            if (_animator == null || characterAnimationData == null || characterAnimationData.Animation == null)
+            if (Animator == null || characterAnimationData == null || characterAnimationData.Animation == null)
             {
                 return;
             }
 
-            var looping = _animator.GetCurrentAnimatorStateInfo(0).loop;
-            _animator.CrossFade(characterAnimationData.Animation.AnimationHash, blendDuration);
+            var looping = Animator.GetCurrentAnimatorStateInfo(0).loop;
+            Animator.CrossFade(characterAnimationData.Animation.AnimationHash, blendDuration);
 
             SetAnimatorPlaybackSpeed(characterAnimationData.GetFinalAnimationSpeed(_characterCombatController));
 
@@ -157,7 +163,7 @@ namespace Chaos.Gameplay.Characters
         private void CrossFadeToTargetAnimation(CharacterAnimationData targetAnimation, float blendDuration)
         {
             blendDuration = Mathf.Max(0f, blendDuration);
-            _animator.CrossFade(targetAnimation.Animation.AnimationHash,blendDuration);
+            Animator.CrossFade(targetAnimation.Animation.AnimationHash,blendDuration);
         }
         private void CrossFadeAnimatorPlaybackSpeed(float targetValue, float duration)
         {
@@ -213,11 +219,11 @@ namespace Chaos.Gameplay.Characters
         private void SetAnimatorPlaybackSpeed(float newSpeed)
         {
             _currentAnimatorPlaybackSpeed = newSpeed;
-            _animator.speed = newSpeed;
+            Animator.speed = newSpeed;
         }
         private void HandleRunningAnimation()
         {
-            if(_animator == null || _movementController == null)
+            if(Animator == null || _movementController == null)
             {
                 return;
             }
@@ -271,9 +277,9 @@ namespace Chaos.Gameplay.Characters
         {
             if (_lastAnimationPlayed != null && _lastAnimationPlayed.Animation == newCharacterState)
             {
-                _animator.Play(_characterStateController.CharacterStatesProfile.Idle.CharacterAnimation.AnimationHash);
+                Animator.Play(_characterStateController.CharacterStatesProfile.Idle.CharacterAnimation.AnimationHash);
             }
-            _animator.CrossFade(newCharacterState.CharacterAnimation.AnimationHash, delay);
+            Animator.CrossFade(newCharacterState.CharacterAnimation.AnimationHash, delay);
             _lastAnimationPlayed = GetCharacterAnimationDataFromTemplate(newCharacterState);
             //Debug.Log("Playing animation  : " + newCharacterState.CharacterAnimation.AnimationHash);
             if(newCharacterState.AutomaticStateTransitionData != null)
@@ -285,7 +291,7 @@ namespace Chaos.Gameplay.Characters
 
         private void RequestCharacterStateChangeToNextStateAfterAnimationIsFinished(CharacterState newCharacterState, float delay)
         {
-            float currentAnimationDelay = _animator.GetCurrentAnimatorStateInfo(0).length;
+            float currentAnimationDelay = Animator.GetCurrentAnimatorStateInfo(0).length;
             _characterStateController.QueueNextCharacterState(newCharacterState, currentAnimationDelay);
         }
 

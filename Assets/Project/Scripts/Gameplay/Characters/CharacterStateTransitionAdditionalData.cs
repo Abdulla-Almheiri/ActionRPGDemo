@@ -8,6 +8,5 @@ namespace Chaos.Gameplay.Characters
     public class CharacterStateTransitionAdditionalData 
     {
         public CharacterStateTransitionData TransitionData;
-        public List<CharacterAction> TriggeredByActions = new List<CharacterAction>();
     }
 }

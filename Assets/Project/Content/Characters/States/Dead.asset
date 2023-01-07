@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9251edd891b9754d966aa37079e2abd, type: 3}
   m_Name: Dead
   m_EditorClassIdentifier: 
-  CharacterAnimation: {fileID: 11400000, guid: 79a9a8ab129c1f147a97bf85bb16ff3a, type: 2}
+  CharacterAnimation: {fileID: 11400000, guid: 3fb979b082df54442972757032dbfa9d, type: 2}
   IsAnimationLooping: 0
-  TriggeredBy: {fileID: 0}
-  AutomaticStateTransitionData: {fileID: 0}
-  CausedCondition:
-    Condition: {fileID: 0}
-    Duration: 0
-  Transitions: []
-  Actions:
-  - CharacterAction: {fileID: 0}
-    TransitionTo: {fileID: 0}
+  TriggeredBy: {fileID: 11400000, guid: b0b0c958dad4cf74da7a8964a1811f51, type: 2}
+  AutomaticStateTransitionData:
     TransitionData:
       State: {fileID: 0}
+      Type: 1
+      Delay: 1
+      AttributeScaling:
+        CharacterAttribute: {fileID: 0}
+        Scaling: 0
+  Transitions:
+  - TransitionData:
+      State: {fileID: 11400000, guid: 10f92b54264648d41bd64bec6ce7982c, type: 2}
       Type: 0
       Delay: 0
       AttributeScaling:

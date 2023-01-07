@@ -12,10 +12,10 @@ namespace Chaos.Gameplay.Characters
         public CharacterAction TriggeredBy;
         [Tooltip("Delay is normalized elapsed time of current animation.")]
         public CharacterState AutomaticStateTransitionData;
-        public CharacterConditionData CausedCondition;
+        //public CharacterConditionData CausedCondition;
         public List<CharacterStateTransitionAdditionalData> Transitions = new List<CharacterStateTransitionAdditionalData>();
 
-        public List<CharacterActionData> Actions = new List<CharacterActionData>();
+       // public List<CharacterActionData> Actions = new List<CharacterActionData>();
        /* [Space(10)]
         [Header("Allowed Actions")]
         public List<CharacterAction> CharacterActions = new List<CharacterAction>();

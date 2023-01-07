@@ -9,7 +9,7 @@ namespace Chaos.Gameplay.Characters
     {
         public bool CanReceiveHealing = true;
         public bool CanReceiveDamage = true;
-
+        public bool PreventAllActions = false;
         public List<CharacterAction> ActionsNotAllowed = new List<CharacterAction>();
     }
 }

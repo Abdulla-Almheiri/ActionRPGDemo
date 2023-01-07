@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events ;
 using Chaos.Gameplay.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
     public class CharacterStateController : MonoBehaviour
     {
+        public UnityEvent EventTest;
         public CharacterAction CharacterActionTEST;
+        public CharacterAction CancelAttackActionTEST;
 
         [field:SerializeField]
         public CharacterStatesProfile CharacterStatesProfile { private set; get; }
@@ -42,6 +45,11 @@ namespace Chaos.Gameplay.Characters
             if(Input.GetKeyUp(KeyCode.S))
             {
                 TriggerCharacterAction(CharacterActionTEST);
+            }
+
+            if(Input.GetKeyUp(KeyCode.E))
+            {
+                TriggerCharacterAction(CancelAttackActionTEST);
             }
         }
 
@@ -97,8 +105,13 @@ namespace Chaos.Gameplay.Characters
 
         private void AddUnallowedActionsFromTriggeredAction(CharacterAction characterAction)
         {
-            var listOfActions = characterAction.TransitionToState.CausedCondition.Condition.ActionsNotAllowed;
+            //FIX HERE
+           /* var listOfActions = characterAction?.TransitionToState?.CausedCondition?.Condition?.ActionsNotAllowed;
             var duration = characterAction.TransitionToState.CausedCondition.Duration;
+            if(listOfActions == null)
+            {
+                return;
+            }
 
             foreach (CharacterAction action in listOfActions)
             {
@@ -106,7 +119,7 @@ namespace Chaos.Gameplay.Characters
                 {
                     _unallowedCharacterActions[action] = Mathf.Max(duration, _unallowedCharacterActions[action]);
                 }
-            }
+            }*/
         }
         public bool AttemptCharacterStateChange(CharacterState newCharacterState, float duration = 0f)
         {

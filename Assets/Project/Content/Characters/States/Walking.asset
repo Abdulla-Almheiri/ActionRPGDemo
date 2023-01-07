@@ -15,11 +15,7 @@ MonoBehaviour:
   CharacterAnimation: {fileID: 11400000, guid: b939772f13b73384b8b53fecd3b946df, type: 2}
   IsAnimationLooping: 1
   TriggeredBy: {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
-  AutomaticStateTransitionData: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc,
-    type: 2}
-  CausedCondition:
-    Condition: {fileID: 0}
-    Duration: 0
+  AutomaticStateTransitionData: {fileID: 0}
   Transitions:
   - TransitionData:
       State: {fileID: 11400000, guid: 19f184c85342ad940966f82d5a3b747a, type: 2}
@@ -29,25 +25,10 @@ MonoBehaviour:
         CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
           type: 2}
         Scaling: 1
-    TriggeredByActions:
-    - {fileID: 11400000, guid: 2414e4efd87a54344868cc4fd50148cf, type: 2}
   - TransitionData:
       State: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
       Type: 0
       Delay: 0.93
-      AttributeScaling:
-        CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
-          type: 2}
-        Scaling: 1
-    TriggeredByActions:
-    - {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
-  Actions:
-  - CharacterAction: {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
-    TransitionTo: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
-    TransitionData:
-      State: {fileID: 11400000, guid: 25637208e6856844680128a22a9778bc, type: 2}
-      Type: 0
-      Delay: 0.2
       AttributeScaling:
         CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
           type: 2}
