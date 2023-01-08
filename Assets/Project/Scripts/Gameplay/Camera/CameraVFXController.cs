@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Chaos.Gameplay.VFX;
+using Chaos.Gameplay.Characters;
 using UnityEngine.Rendering;
 
 namespace Chaos.Gameplay.Camera
 {
     public class CameraVFXController : MonoBehaviour
     {
+        public CharacterAnimationController CharacterAnimationControllerTest;
         public ScreenVolumeVisualEffect ScreenVFXTest;
         public float VolumeWeightUpdateTicksPerSeconds = 30f;
         private Volume _volumeComponent;
         private WaitForSeconds _coroutineWait;
         private IEnumerator _currentCoroutine;
+        private UnityEngine.Camera _cachedCamera;
 
         // Start is called before the first frame update
         void Start()
@@ -27,10 +30,24 @@ namespace Chaos.Gameplay.Camera
             {
                 ApplyScreenVisualEffectWithTween(ScreenVFXTest);
             }
+
+            //SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
+            
+            SetCameraFoV(40f - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);
         }
 
+        private void SetVolumeWeight(float value)
+        {
+            _volumeComponent.weight = value;
+        }
+
+        private void SetCameraFoV(float value)
+        {
+            _cachedCamera.fieldOfView = value;
+        }
         public void Initialize()
         {
+            _cachedCamera = UnityEngine.Camera.main;
             _volumeComponent = GetComponentInChildren<Volume>();
             if (VolumeWeightUpdateTicksPerSeconds > 0)
             {
@@ -39,6 +56,9 @@ namespace Chaos.Gameplay.Camera
             {
                 _coroutineWait = new WaitForSeconds(1f / 30f);
             }
+
+            _volumeComponent.profile = ScreenVFXTest.VolumeProfile;
+            SetVolumeWeight(0f);
         }
 
         public void ChangeCameraVolumeProfile(VolumeProfile targetVolume)

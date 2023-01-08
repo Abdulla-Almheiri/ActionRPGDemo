@@ -31,6 +31,21 @@ namespace Chaos.Gameplay.Characters
             return multiplier*BaseAnimationSpeed;
         }
 
+        public float GetFinalAnimationDuration(CharacterCombatController combatController)
+        {
+            var duration = GetBaseAnimationDuration() * GetFinalAnimationSpeed(combatController);
+            return duration;
+        }
+
+        public float GetBaseAnimationDuration()
+        {
+            return AnimationClip.length;
+        }
+
+        public bool IsAnimationLooping()
+        {
+            return AnimationClip.isLooping;
+        }
         private float GetAnimationSpeedCharacterAttributeScalingMultiplierFromCombatController(CharacterCombatController combatController)
         {
             float multiplier = 0f;

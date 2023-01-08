@@ -8,11 +8,13 @@ namespace Chaos.Gameplay.Camera
 {
     public class CameraMovementController : MonoBehaviour
     {
+        public float LerpSpeedTest = 0.1f;
         [SerializeField]
         private GamePlayerController _gamePlayerController;
         protected CharacterMovementController _characterMovementController;
         protected Transform _playerTransform;
         private Vector3 _offset;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -34,7 +36,7 @@ namespace Chaos.Gameplay.Camera
 
         private void FollowCharacterMovement()
         {
-            gameObject.transform.position = _offset + _playerTransform.position;
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, _offset + _playerTransform.position, LerpSpeedTest);
         }
     }
 }

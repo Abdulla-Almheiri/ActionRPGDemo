@@ -9,6 +9,10 @@ namespace Chaos.Gameplay.Characters
 {
     public class CharacterMovementController : GameController
     {
+        [SerializeField]
+        private Transform _rootCharacterTransform;
+        private Vector3 _initialRootCharacterPosition;
+        private Quaternion _initialRootCharacterRotation;
         public CharacterAction MovementActionTest;
         public CharacterAction StopMovementAction;
         public CharacterAction SpeedUpAction;
@@ -20,7 +24,8 @@ namespace Chaos.Gameplay.Characters
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
         public float DefaultMeleeRangeTest = 5f;
-
+        private Vector3 _destination;
+        private bool _onPath = false;
         private float _baseSpeed = 0f;
         void Start()
         {
@@ -33,13 +38,31 @@ namespace Chaos.Gameplay.Characters
             
             if(Input.GetKeyUp(KeyCode.F) == true)
             {
-                _characterStateController.TriggerCharacterAction(SpeedUpAction);
+                _characterAnimationController.Animator.speed = 0f;
             }
-            if(IsRunning())
+
+            if (Input.GetKeyUp(KeyCode.G) == true)
+            {
+                _characterAnimationController.Animator.speed = 1f;
+            }
+            /*if(IsRunning())
             {
                 _characterAnimationController.Animator.SetFloat("Speed", _navMeshAgent.velocity.magnitude);
+            }*/
+            //Debug.Log("Animator playback speed     is   :     " + _characterAnimationController.Animator.speed);
+
+            //RotateCharacterXZTowardsPoint(_navMeshAgent.transform.position);
+            transform.LookAt(_navMeshAgent.transform);
+
+            if (Mathf.Abs((_navMeshAgent.nextPosition - transform.position).magnitude) <= _navMeshAgent.radius*2)
+            {
+                Debug.Log("WITHIN RANGE OF POINT");
+                _onPath = false;
+                
+                _characterAnimationController.PlayCharacterAnimationFromCharacterState(CharacterStatesProfile.Idle, 0.2f);
             }
         }
+
         public override bool Initialize(Game game)
         {
             var returnValue = base.Initialize(game);
@@ -59,25 +82,46 @@ namespace Chaos.Gameplay.Characters
             }
 
             _baseSpeed = _navMeshAgent.speed;
+            _navMeshAgent.updatePosition = false;
+            _navMeshAgent.updateRotation = true;
 
+            _initialRootCharacterPosition = _rootCharacterTransform.localPosition;
+            _initialRootCharacterRotation = _rootCharacterTransform.rotation;
             SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
 
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {
-            if(_characterStateController.IsActionAllowed(MovementActionTest) == false)
-            {
-                return false;
-            }
-            _navMeshAgent.isStopped = false;
-            var navMeshMoveResult = _navMeshAgent.SetDestination(targetPoint);
-            if (navMeshMoveResult == true)
-            {
-                RequestStateChange(_characterStateController.CharacterStatesProfile.Walking);
-            }
+            /* if(_characterStateController.IsActionAllowed(MovementActionTest) == false)
+             {
+                 return false;
+             }
+             _navMeshAgent.isStopped = false;
+             var navMeshMoveResult = _navMeshAgent.SetDestination(targetPoint);
+             if (navMeshMoveResult == true)
+             {
+                 RequestStateChange(_characterStateController.CharacterStatesProfile.Walking);
+             }
 
-            return navMeshMoveResult;
+             return navMeshMoveResult;*/
+
+            /* if(_navMeshAgent.SetDestination(targetPoint))
+             {
+                 _destination = targetPoint;
+                 _onPath = true;
+                 _characterAnimationController.PlayCharacterAnimationFromCharacterState(CharacterStatesProfile.Walking, 0.2f);
+             } 
+            */
+
+            if(_navMeshAgent.SetDestination(targetPoint))
+            {
+                _characterAnimationController.PlayCharacterAnimationFromCharacterState(CharacterStatesProfile.Walking, 0.2f);
+                //RotateCharacterXZTowardsPoint(targetPoint);
+                return true;
+            }
+            //RotateCharacterInMouseDirection();
+            return false;
         }
 
         private void RequestStateChange(CharacterState newCharacterState )
@@ -166,12 +210,14 @@ namespace Chaos.Gameplay.Characters
 
         private void StopMovment()
         {
-            if(_navMeshAgent == null)
+            /*if(_navMeshAgent == null)
             {
                 return;
             }
 
-            _navMeshAgent.isStopped = true;
+            _navMeshAgent.isStopped = true;*/
+
+            _characterAnimationController.Animator.CrossFadeInFixedTime("Base.Idle", 0.2f);
         }
         public void MoveToGameObject(GameObject targetGameObject)
         {
@@ -184,10 +230,25 @@ namespace Chaos.Gameplay.Characters
             return currentSpeed;
         }
 
+        public void RotateCharacterXZTowardsPoint(Vector3 point)
+        {
+            //Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+             Ray ray = UnityEngine.Camera.main.ViewportPointToRay(point);
+             RaycastHit rayHit;
+
+             if (Physics.Raycast(ray, out rayHit, Layer))
+             {
+                 var direction = (rayHit.point - transform.position);
+                 direction.y = 0;
+                 direction = direction.normalized;
+                 transform.rotation = Quaternion.LookRotation(direction);
+             }
+
+        }
+
         public void RotateCharacterInMouseDirection()
         {
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
-
             RaycastHit rayHit;
 
             if (Physics.Raycast(ray, out rayHit, Layer))
@@ -196,6 +257,7 @@ namespace Chaos.Gameplay.Characters
                 direction.y = 0;
                 direction = direction.normalized;
                 transform.rotation = Quaternion.LookRotation(direction);
+
             }
         }
 

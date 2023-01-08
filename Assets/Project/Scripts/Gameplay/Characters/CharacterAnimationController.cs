@@ -7,6 +7,7 @@ namespace Chaos.Gameplay.Characters
 {
     public class CharacterAnimationController : MonoBehaviour
     {
+        public Transform child;
         public CharacterAnimationTemplate AnimationTemplateTest;
         protected CharacterMovementController _movementController;
         protected CharacterSkillController _skillController;
@@ -70,11 +71,23 @@ namespace Chaos.Gameplay.Characters
 
             }
 
-            if(Animator.GetFloat("ImpactFrame") > 0.1f)
+           /* if(Animator.GetFloat("ImpactFrame") > 0.1f)
             {
                 Debug.Log("IMPAAAAACTING");
-            }
+            }*/
 
+        }
+
+        public void OnAnimatorMove()
+        {
+            Animator.ApplyBuiltinRootMotion();
+           /* AnimatorStateInfo stateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("Base.MultiSlash") != true)
+            {
+                transform.position += Animator.deltaPosition;
+                //Animator.ApplyBuiltinRootMotion();
+            }*/
+            //transform.rotation =  Animator.deltaRotation;
         }
         public void OnEnable()
         {
@@ -98,6 +111,7 @@ namespace Chaos.Gameplay.Characters
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterCombatController = GetComponent<CharacterCombatController>();
+            Animator.applyRootMotion = true;
             //_lastAnimationPlayed = 
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }
