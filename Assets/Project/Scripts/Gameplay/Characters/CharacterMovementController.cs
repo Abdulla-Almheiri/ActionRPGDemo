@@ -52,15 +52,14 @@ namespace Chaos.Gameplay.Characters
             //Debug.Log("Animator playback speed     is   :     " + _characterAnimationController.Animator.speed);
 
             //RotateCharacterXZTowardsPoint(_navMeshAgent.transform.position);
-            transform.LookAt(_navMeshAgent.transform);
+
 
             if (Mathf.Abs((_navMeshAgent.nextPosition - transform.position).magnitude) <= _navMeshAgent.radius*2)
             {
-                Debug.Log("WITHIN RANGE OF POINT");
-                _onPath = false;
-                
-                _characterAnimationController.PlayCharacterAnimationFromCharacterState(CharacterStatesProfile.Idle, 0.2f);
+
             }
+
+            _characterAnimationController.Animator.SetFloat("MovementSpeed", _navMeshAgent.velocity.normalized.magnitude);
         }
 
         public override bool Initialize(Game game)
@@ -82,11 +81,6 @@ namespace Chaos.Gameplay.Characters
             }
 
             _baseSpeed = _navMeshAgent.speed;
-            _navMeshAgent.updatePosition = false;
-            _navMeshAgent.updateRotation = true;
-
-            _initialRootCharacterPosition = _rootCharacterTransform.localPosition;
-            _initialRootCharacterRotation = _rootCharacterTransform.rotation;
             SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
@@ -114,14 +108,10 @@ namespace Chaos.Gameplay.Characters
              } 
             */
 
-            if(_navMeshAgent.SetDestination(targetPoint))
-            {
-                _characterAnimationController.PlayCharacterAnimationFromCharacterState(CharacterStatesProfile.Walking, 0.2f);
-                //RotateCharacterXZTowardsPoint(targetPoint);
-                return true;
-            }
+            _navMeshAgent.isStopped = false;
+            _navMeshAgent.SetDestination(targetPoint);
             //RotateCharacterInMouseDirection();
-            return false;
+            return true;
         }
 
         private void RequestStateChange(CharacterState newCharacterState )
@@ -210,14 +200,12 @@ namespace Chaos.Gameplay.Characters
 
         private void StopMovment()
         {
-            /*if(_navMeshAgent == null)
+            if(_navMeshAgent == null)
             {
                 return;
             }
 
-            _navMeshAgent.isStopped = true;*/
-
-            _characterAnimationController.Animator.CrossFadeInFixedTime("Base.Idle", 0.2f);
+            _navMeshAgent.isStopped = true;
         }
         public void MoveToGameObject(GameObject targetGameObject)
         {

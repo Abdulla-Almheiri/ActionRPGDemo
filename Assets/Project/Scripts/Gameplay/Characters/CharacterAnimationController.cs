@@ -78,17 +78,6 @@ namespace Chaos.Gameplay.Characters
 
         }
 
-        public void OnAnimatorMove()
-        {
-            Animator.ApplyBuiltinRootMotion();
-           /* AnimatorStateInfo stateInfo = Animator.GetCurrentAnimatorStateInfo(0);
-            if (stateInfo.IsName("Base.MultiSlash") != true)
-            {
-                transform.position += Animator.deltaPosition;
-                //Animator.ApplyBuiltinRootMotion();
-            }*/
-            //transform.rotation =  Animator.deltaRotation;
-        }
         public void OnEnable()
         {
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();

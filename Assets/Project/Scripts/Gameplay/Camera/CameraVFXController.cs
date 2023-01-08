@@ -31,7 +31,7 @@ namespace Chaos.Gameplay.Camera
                 ApplyScreenVisualEffectWithTween(ScreenVFXTest);
             }
 
-            //SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
+            SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
             
             SetCameraFoV(40f - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);
         }
