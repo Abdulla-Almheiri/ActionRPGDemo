@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 49cafd22bed16ed4ea012d8490965103
+guid: 688ca5798bbf3dd4fab7336e81662020
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Sword And Shield Run (1)
-  - first:
-      74: 7917747251892844560
-    second: Sword And Shield Run
+    second: Run To Stop
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Run (1)
+      name: Run To Stop
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 27
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -52,10 +49,10 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0

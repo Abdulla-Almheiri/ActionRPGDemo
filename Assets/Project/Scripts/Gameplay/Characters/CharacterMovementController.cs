@@ -27,6 +27,9 @@ namespace Chaos.Gameplay.Characters
         private Vector3 _destination;
         private bool _onPath = false;
         private float _baseSpeed = 0f;
+
+        private Vector2 _velocity;
+        private Vector2 SmoothDeltaPosition;
         void Start()
         {
             Initialize(null);
@@ -34,8 +37,8 @@ namespace Chaos.Gameplay.Characters
 
         void Update()
         {
-            ProcessStoppingAndInformStateController();
-            
+            //ProcessStoppingAndInformStateController();
+            SyncAgentAndAnimator();
             if(Input.GetKeyUp(KeyCode.F) == true)
             {
                 _characterAnimationController.Animator.speed = 0f;
@@ -54,14 +57,89 @@ namespace Chaos.Gameplay.Characters
             //RotateCharacterXZTowardsPoint(_navMeshAgent.transform.position);
 
 
-            if (Mathf.Abs((_navMeshAgent.nextPosition - transform.position).magnitude) <= _navMeshAgent.radius*2)
-            {
 
+            if(_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
+            {
+                _characterAnimationController.Animator.SetBool("IsMoving", false);
+            } else
+            {
+                transform.rotation = Quaternion.LookRotation(_navMeshAgent.nextPosition);
             }
 
-            _characterAnimationController.Animator.SetFloat("MovementSpeed", _navMeshAgent.velocity.normalized.magnitude);
+            var distance = Vector3.Distance(transform.position, _navMeshAgent.nextPosition);
+            Debug.Log("Distance is         :    " + distance);
+
+            _characterAnimationController.Animator.SetFloat("MovementSpeed", distance);
         }
 
+        public void OnAnimatorMove()
+        {
+            
+            Vector3 rootPosition = _characterAnimationController.Animator.rootPosition;
+            rootPosition.y = _navMeshAgent.nextPosition.y;
+            //_navMeshAgent.transform.position = rootPosition;
+            //transform.LookAt(_navMeshAgent.nextPosition);
+            transform.position = rootPosition;
+            /*if ((transform.position - _navMeshAgent.nextPosition).magnitude > 3f )
+            {
+                transform.LookAt(_navMeshAgent.nextPosition);
+            } else
+            {
+                _characterAnimationController.Animator.CrossFadeInFixedTime("StopRun", 0.15f);
+            }*/
+
+            /*if((_navMeshAgent.destination - transform.position).magnitude < _navMeshAgent.stoppingDistance/2f)
+            {
+                Debug.Log("Magnitutde is      :   " + (_navMeshAgent.transform.position - transform.position).magnitude);
+                _characterAnimationController.Animator.CrossFadeInFixedTime("Idle", 0.15f);
+            }*/
+            /*transform.position = rootPosition;
+            _navMeshAgent.nextPosition = rootPosition;
+            transform.rotation = _characterAnimationController.Animator.rootRotation;*/
+
+            /*bool shouldMove = _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance;
+            Vector2 velocity = _characterAnimationController.Animator.deltaPosition * _navMeshAgent.speed * _navMeshAgent.speed;
+            _characterAnimationController.Animator.SetTrigger("Move");
+            _characterAnimationController.Animator.SetFloat("Movement", velocity.magnitude);*/
+        }
+        private void SyncAgentAndAnimator()
+        {
+            /*Vector3 worldDeltaPosition = _navMeshAgent.nextPosition - transform.position;
+            worldDeltaPosition.y = 0f;
+            float dx = Vector3.Dot(transform.right, worldDeltaPosition);
+            float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
+            Vector2 deltaPosition = new Vector2(dx, dy);
+
+            float smooth = Mathf.Min(1, Time.deltaTime / 0.1f);
+            SmoothDeltaPosition = Vector2.Lerp(SmoothDeltaPosition, deltaPosition, smooth);
+
+            _velocity = SmoothDeltaPosition / Time.deltaTime;
+            if(_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            {
+                _velocity = Vector2.Lerp(
+                    Vector2.zero,
+                    _velocity,
+                    _navMeshAgent.remainingDistance / _navMeshAgent.stoppingDistance
+                    );
+            }
+
+            bool shouldMove = _velocity.magnitude > 0.5f && _navMeshAgent.remainingDistance > _navMeshAgent.stoppingDistance;
+
+
+            _characterAnimationController.Animator.SetBool("IsMoving", shouldMove);
+            _characterAnimationController.Animator.SetFloat("Movement", _velocity.magnitude);
+
+            float deltaMagnitude = worldDeltaPosition.magnitude;
+            if(deltaMagnitude > _navMeshAgent.radius /2f)
+            {
+                transform.position = Vector3.Lerp(_characterAnimationController.Animator.rootPosition,
+                    _navMeshAgent.nextPosition,
+                    smooth);
+            }*/
+
+
+
+        }
         public override bool Initialize(Game game)
         {
             var returnValue = base.Initialize(game);
@@ -81,12 +159,19 @@ namespace Chaos.Gameplay.Characters
             }
 
             _baseSpeed = _navMeshAgent.speed;
+            _navMeshAgent.updatePosition = false;
+            //_navMeshAgent.updateRotation = false;
             SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
 
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {
+            if((targetPoint - transform.position).magnitude < _navMeshAgent.stoppingDistance)
+            {
+                Debug.Log("Point Ignored");
+                return false;
+            }
             /* if(_characterStateController.IsActionAllowed(MovementActionTest) == false)
              {
                  return false;
@@ -108,9 +193,14 @@ namespace Chaos.Gameplay.Characters
              } 
             */
 
-            _navMeshAgent.isStopped = false;
-            _navMeshAgent.SetDestination(targetPoint);
-            //RotateCharacterInMouseDirection();
+            //_navMeshAgent.isStopped = false;
+            if(_navMeshAgent.SetDestination(targetPoint))
+            {
+                _characterAnimationController.Animator.SetBool("IsMoving", true);
+            }
+            //transform.LookAt(targetPoint);
+           // _characterAnimationController.Animator.CrossFadeInFixedTime("Walk", 0.2f);
+            
             return true;
         }
 

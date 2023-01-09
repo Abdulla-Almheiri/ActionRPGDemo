@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc275350b9058934cadb6741efcf5d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LerpSpeedTest: 0.01
+  LerpSpeedTest: 0.03
   _gamePlayerController: {fileID: 762450651}
 --- !u!114 &1116769758
 MonoBehaviour:
@@ -1782,6 +1782,16 @@ PrefabInstance:
       propertyPath: GameCombatController
       value: 
       objectReference: {fileID: 1481368701}
+    - target: {fileID: 2350276917829032458, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: m_Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2350276917829032458, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2816831257728037239, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: m_RootOrder

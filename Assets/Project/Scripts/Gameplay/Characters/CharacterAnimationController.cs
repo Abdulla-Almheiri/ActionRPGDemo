@@ -78,6 +78,8 @@ namespace Chaos.Gameplay.Characters
 
         }
 
+
+
         public void OnEnable()
         {
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
