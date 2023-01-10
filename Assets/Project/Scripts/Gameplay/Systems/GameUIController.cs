@@ -41,7 +41,7 @@ namespace Chaos.Gameplay.Systems
             var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
             if(spawn == null)
             {
-                
+                Debug.Log("Spawn is null");
                 return;
             }
             spawn.gameObject.SetActive(true);

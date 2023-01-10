@@ -14,6 +14,9 @@ namespace Chaos.Gameplay.Characters
         protected CharacterVFXController _characterVFXController;
         private CharacterStateController _characterStateController;
         private CharacterCombatController _characterCombatController;
+        private CharacterMovementController _characterMovementController;
+
+
         private string _lastAnimationPlayed1;
         public Animator Animator;
 
@@ -40,10 +43,7 @@ namespace Chaos.Gameplay.Characters
             HandleRunningAnimation();
             if(Input.GetKeyUp(KeyCode.Alpha1) == true)
             {
-                //_animator.SetTrigger("Attack1");
-                //TEST
-                //_skillController?.SpawnSkillVFXTest();
-                //Debug.Log("Attack triggered");
+                TriggerAction("Slash");
             }
 
             if (Input.GetKeyUp(KeyCode.F) == true)
@@ -66,8 +66,7 @@ namespace Chaos.Gameplay.Characters
 
             if (Input.GetKeyUp(KeyCode.Z))
             {
-                Debug.Log("Normalized time is  :    "  +  Animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-                Animator.CrossFade(Animator.StringToHash("Sword.Sheath"), 0.2f);
+                TriggerAction("Cast");
 
             }
 
@@ -78,7 +77,15 @@ namespace Chaos.Gameplay.Characters
 
         }
 
-
+        private void TriggerAction(string actionName, bool stopMovement = true)
+        {
+            Animator.SetTrigger(actionName);
+            if (stopMovement == true)
+            {
+                _characterMovementController.StopMovement();
+                _characterMovementController.RotateCharacterInMouseDirection();
+            }
+        }
 
         public void OnEnable()
         {
@@ -102,7 +109,7 @@ namespace Chaos.Gameplay.Characters
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterCombatController = GetComponent<CharacterCombatController>();
-            Animator.applyRootMotion = true;
+            _characterMovementController = GetComponent<CharacterMovementController>();
             //_lastAnimationPlayed = 
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }

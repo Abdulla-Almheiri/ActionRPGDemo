@@ -179,6 +179,7 @@ namespace Chaos.Gameplay.Characters
                     return;
                 }*/
             }
+            _characterUIController.GameUIController.SpawnDamageTextAtScreenPositionTest(Random.Range(0, 150).ToString(), transform);
             TriggerHitByElement(skillEffect.SkillTemplate.SkillElement);
             _characterMaterialController?.TriggerHitFrame();
             _characterAnimationController?.TriggerHitAnimation();

@@ -39,7 +39,7 @@ ModelImporter:
       name: Paladin_slash
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 8
       lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0

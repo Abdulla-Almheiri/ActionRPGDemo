@@ -1762,6 +1762,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 919132148442708646, guid: be0095cc562786a498ed75ee1bd1579e,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1347905474224235880, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: GameMaterialController
@@ -1785,7 +1790,7 @@ PrefabInstance:
     - target: {fileID: 2350276917829032458, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: m_Speed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2350276917829032458, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
@@ -1900,7 +1905,7 @@ PrefabInstance:
     - target: {fileID: 2353453558888526314, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3162359433910922064, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
@@ -1967,6 +1972,17 @@ PrefabInstance:
       propertyPath: AnimationTemplateTest
       value: 
       objectReference: {fileID: 11400000, guid: 8f6127bac8e1ec24db54853ca365bd61,
+        type: 2}
+    - target: {fileID: 3199891489099731911, guid: 9f6d8a0f42d251244b0e75afddde237b,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 6ef85ee343aca1f4487bad3dcb0443a1, type: 3}
+    - target: {fileID: 3199891489099731911, guid: 9f6d8a0f42d251244b0e75afddde237b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 34269a4bfed05c94da9304470a9e41fb,
         type: 2}
     - target: {fileID: 6617214734728157151, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}

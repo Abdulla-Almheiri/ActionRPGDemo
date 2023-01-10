@@ -35,23 +35,28 @@ namespace Chaos.Gameplay.Skills
                 return;
             }
 
-            character.TriggerHitBySkillEffect(this, _skillActivator);
+           // character.TriggerHitBySkillEffect(this, _skillActivator);
             if (_skillActions == null)
             {
                 Debug.Log("List is null");
             }
-            foreach (SkillActionData skillAction in _skillActions)
+            /*foreach (SkillActionData skillAction in _skillActions)
             {
                 character.ApplySkillAction(skillAction, _skillActivator);
-            }
-
+            }*/
+            
             character.TriggerHitBySkillEffect(this, _skillActivator);
 
         }
         private void OnTriggerEnter(Collider other)
         {
             var otherCombatController = other.gameObject.GetComponent<CharacterCombatController>();
+            if(otherCombatController.gameObject.GetComponent<PlayerController>() == true)
+            {
+                return;
+            }
             TriggerHitOnCharacter(otherCombatController);
+            //otherCombatController.TriggerHitBySkillEffect(this, _skillActivator);
         }
 
         public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator)

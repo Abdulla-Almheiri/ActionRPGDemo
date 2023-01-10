@@ -10,7 +10,7 @@ namespace Chaos.Utilities.GameObjects
         private float _elapsedTime = 0f;
         void Start()
         {
-            //Destroy(gameObject, Mathf.Max(0f, Delay));
+            //Destroy(gameObject, 10f);
         }
 
         public void Update()
