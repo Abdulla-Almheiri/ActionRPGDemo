@@ -42,7 +42,7 @@ namespace Chaos.Gameplay.Characters
 
         void Update()
         {
-            if(_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance)
+            if(_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance/2f)
             {
                 _navMeshAgent.updateRotation = false;
                 //_characterAnimationController.Animator.CrossFadeInFixedTime("Idle", 0.2f);
@@ -50,6 +50,17 @@ namespace Chaos.Gameplay.Characters
             _characterAnimationController.Animator.SetFloat("Velocity", _navMeshAgent.velocity.magnitude/_navMeshAgent.speed);
         }
 
+      /*  public void OnAnimatorMove()
+        {
+            if(_navMeshAgent.SetDestination(_characterAnimationController.Animator.deltaPosition))
+            {
+                transform.position = _characterAnimationController.Animator.rootPosition;
+                _rootCharacterTransform.position -= _characterAnimationController.Animator.deltaPosition;
+            } else
+            {
+                
+            }
+        }*/
 
         public override bool Initialize(Game game)
         {
@@ -78,7 +89,6 @@ namespace Chaos.Gameplay.Characters
         {
             if((targetPoint - transform.position).sqrMagnitude < _navMeshAgent.stoppingDistance)
             {
-                Debug.Log("Point Ignored");
                 return false;
             }
 
@@ -183,6 +193,7 @@ namespace Chaos.Gameplay.Characters
             }
 
             _navMeshAgent.isStopped = true;
+            _navMeshAgent.velocity = Vector3.zero;
         }
         public void MoveToGameObject(GameObject targetGameObject)
         {

@@ -16,9 +16,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterCombatController _characterCombatController;
         private CharacterMovementController _characterMovementController;
 
-
-        private string _lastAnimationPlayed1;
-        public Animator Animator;
+        public Animator Animator { private set; get; }
 
         private CharacterAnimationData _lastAnimationPlayed;
 
@@ -34,50 +32,12 @@ namespace Chaos.Gameplay.Characters
         //private AnimatorPlaybackSystem _animatorPlaybackSystem;
 
         void Start()
-        {
-            
+        { 
             Initialize();
         }
-        void Update()
-        {
-            HandleRunningAnimation();
-            if(Input.GetKeyUp(KeyCode.Alpha1) == true)
-            {
-                TriggerAction("Slash");
-            }
 
-            if (Input.GetKeyUp(KeyCode.F) == true)
-            {
-                //_animator.SetTrigger("Death");
-                //Debug.Log("Death triggered");
-            }
 
-            if (Input.GetKeyUp(KeyCode.H) == true)
-            {
-                Animator.SetTrigger("Hit");
-                //Debug.Log("Hit triggered");
-            }
-
-            if (Input.GetKeyUp(KeyCode.A))
-            {
-
-                Animator.CrossFade("Base.Slash", 0.2f);
-            }
-
-            if (Input.GetKeyUp(KeyCode.Z))
-            {
-                TriggerAction("Cast");
-
-            }
-
-           /* if(Animator.GetFloat("ImpactFrame") > 0.1f)
-            {
-                Debug.Log("IMPAAAAACTING");
-            }*/
-
-        }
-
-        private void TriggerAction(string actionName, bool stopMovement = true)
+        public void TriggerAnimatorAction(string actionName, bool stopMovement = true)
         {
             Animator.SetTrigger(actionName);
             if (stopMovement == true)
@@ -232,17 +192,6 @@ namespace Chaos.Gameplay.Characters
         {
             _currentAnimatorPlaybackSpeed = newSpeed;
             Animator.speed = newSpeed;
-        }
-        private void HandleRunningAnimation()
-        {
-            if(Animator == null || _movementController == null)
-            {
-                return;
-            }
-
-            var currentSpeed = _movementController.GetCurrentMovementSpeed();
-            //Debug.Log("Current speed =   " + currentSpeed);
-            //_animator.SetFloat("MovementSpeed", currentSpeed);
         }
         private float GetBaseAnimationClipDuration(CharacterAnimationData animationData)
         {

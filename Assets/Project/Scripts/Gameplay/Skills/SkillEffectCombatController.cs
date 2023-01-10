@@ -16,18 +16,6 @@ namespace Chaos.Gameplay.Skills
 
         private List<SkillActionData> _skillActions;
         private CharacterCombatController _skillActivator;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         private void TriggerHitOnCharacter(CharacterCombatController character)
         {
             if(character == null)
@@ -38,7 +26,7 @@ namespace Chaos.Gameplay.Skills
            // character.TriggerHitBySkillEffect(this, _skillActivator);
             if (_skillActions == null)
             {
-                Debug.Log("List is null");
+                
             }
             /*foreach (SkillActionData skillAction in _skillActions)
             {

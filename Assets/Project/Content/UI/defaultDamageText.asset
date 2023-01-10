@@ -16,7 +16,7 @@ MonoBehaviour:
   PropertiesToAnimate:
   - PropertyToAnimate: 1
     DurationInSeconds: 5
-    CurveMultiplier: 300
+    CurveMultiplier: 200
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
@@ -52,7 +52,7 @@ MonoBehaviour:
       m_RotationOrder: 0
   - PropertyToAnimate: 2
     DurationInSeconds: 5
-    CurveMultiplier: 2
+    CurveMultiplier: 1
     AnimationCurve:
       serializedVersion: 2
       m_Curve:

@@ -7,10 +7,12 @@ namespace Chaos.Gameplay.Characters
     public class CharacterRootMotionCorrectionScript : MonoBehaviour
     {
         private Animator _animator;
+        private CharacterMovementController _characterMovementController;
         // Start is called before the first frame update
         void Start()
         {
             _animator = GetComponentInParent<Animator>();
+            _characterMovementController = GetComponentInParent<CharacterMovementController>();
         }
 
         // Update is called once per frame
@@ -19,10 +21,9 @@ namespace Chaos.Gameplay.Characters
             //transform.parent.transform.position += _animator.deltaPosition;
         }
 
-        /*private void OnAnimatorMove()
+        private void OnAnimatorMove()
         {
             Debug.Log("ANIMATOR MOVED");
-            transform.transform.position -= _animator.deltaPosition;
-        }*/
+        }
     }
 }
