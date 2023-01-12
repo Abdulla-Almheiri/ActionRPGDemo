@@ -13,52 +13,53 @@ MonoBehaviour:
   m_Name: defaultDamageText
   m_EditorClassIdentifier: 
   Color: {r: 1, g: 1, b: 1, a: 1}
+  StartingPositionVariationAmount: {x: 0, y: 0}
   PropertiesToAnimate:
   - PropertyToAnimate: 1
     DurationInSeconds: 5
-    CurveMultiplier: 200
+    CurveMultiplier: 300
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+        time: 0.0027503967
+        value: 0.40518188
+        inSlope: 0.7619714
+        outSlope: 0.34885216
+        tangentMode: 65
         weightedMode: 0
         inWeight: 0
-        outWeight: 0
+        outWeight: 0.038842678
       - serializedVersion: 3
-        time: 0.15368786
-        value: 0.75256765
-        inSlope: 1.201561
-        outSlope: 1.201561
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.5255585
-        outWeight: 0.33333334
+        time: 0.24602008
+        value: 0.49004704
+        inSlope: 0.34885216
+        outSlope: 0.33832705
+        tangentMode: 5
+        weightedMode: 2
+        inWeight: 0.054833286
+        outWeight: 0.15847647
       - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
+        time: 0.89559937
+        value: 0.543972
+        inSlope: 0.08301523
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 5
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.21094659
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
   - PropertyToAnimate: 2
     DurationInSeconds: 5
-    CurveMultiplier: 1
+    CurveMultiplier: 2
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.0063171387
+        time: 0.0041656494
+        value: 0.8867798
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -66,20 +67,20 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.15368786
-        value: 0.75256765
-        inSlope: 1.201561
-        outSlope: 1.201561
-        tangentMode: 0
+        time: 0.136892
+        value: 0.6420101
+        inSlope: -1.5023825
+        outSlope: -0.7322883
+        tangentMode: 1
         weightedMode: 0
         inWeight: 0.5255585
-        outWeight: 0.33333334
+        outWeight: 0.17810342
       - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
+        time: 0.59007215
+        value: 0.62012124
+        inSlope: Infinity
         outSlope: 0
-        tangentMode: 0
+        tangentMode: 7
         weightedMode: 0
         inWeight: 0
         outWeight: 0

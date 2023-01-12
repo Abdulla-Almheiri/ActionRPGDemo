@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Chaos.Gameplay.Systems;
+
 
 namespace Chaos.Gameplay.Characters
 {
@@ -15,5 +17,18 @@ namespace Chaos.Gameplay.Characters
             CharacterAttribute = characterAttribute;
             BaseRating = ratingValue;
         }
+
+       /* public float FinalValue(GameCombatProfile combatProfile, CharacterAttribute attribute = null)
+        {
+            if(attribute == null)
+            {
+                attribute = CharacterAttribute;
+                if(attribute == null)
+                {
+                    return 0f;
+                }
+            }
+            combatProfile.CharacterAttributeRatingConverstionDetails.Find(x => x.CharacterAttribute)
+        }*/
     }
 }

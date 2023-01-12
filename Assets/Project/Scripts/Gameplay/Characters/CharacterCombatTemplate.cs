@@ -9,12 +9,16 @@ namespace Chaos.Gameplay.Characters
     {
         public bool Hostile = true;
         public float Size = 1f;
-        [Space(10)]
-        [Header("Core Attributes")]
-        [Space(5)]
-        public CharacterAttribute Health;
-        public CharacterAttribute Energy;
+        [Tooltip("Reduced by HitRecovery. Increased by Skill's HitPower when hit.")]
+        public float BaseHitFrameDuration = 0.3f;
 
-        public List<CharacterAttributeData> BaseCharacterAttributes = new List<CharacterAttributeData>();
+        [Space(10)]
+        [Header("Core Combat Attributes")]
+        [Space(5)]
+        public CharacterAttributeData Health;
+        public CharacterAttributeData Energy;
+
+        public List<CharacterAttributeData> PrimaryCharacterAttributes = new List<CharacterAttributeData>();
+        public List<CharacterAttributeData> SecondaryCharacterAttributes = new List<CharacterAttributeData>();
     }
 }

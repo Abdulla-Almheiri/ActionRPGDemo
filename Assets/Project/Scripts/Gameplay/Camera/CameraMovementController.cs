@@ -15,7 +15,6 @@ namespace Chaos.Gameplay.Camera
         protected Transform _playerTransform;
         private Vector3 _offset;
 
-        // Start is called before the first frame update
         void Start()
         {
             Initialize();
@@ -28,7 +27,6 @@ namespace Chaos.Gameplay.Camera
             _offset = gameObject.transform.position - _playerTransform.position;
         }
 
-        // Update is called once per frame
         void Update()
         {
             FollowCharacterMovement();

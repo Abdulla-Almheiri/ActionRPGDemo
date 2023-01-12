@@ -9,7 +9,7 @@ namespace Chaos.Gameplay.Skills
     [System.Serializable]
     public class SkillActionData 
     {
-        public SkillAction<SkillActionData> SkillAction;
+        public SkillAction SkillAction;
         public SkillModifier SkillModifier;
         public SkillActionTypeEnum Type = SkillActionTypeEnum.Damage;
         public float Value = 0f;

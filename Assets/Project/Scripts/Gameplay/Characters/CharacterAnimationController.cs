@@ -61,6 +61,7 @@ namespace Chaos.Gameplay.Characters
         }
 
 
+
         private void Initialize()
         {
             _movementController = GetComponent<CharacterMovementController>();
@@ -73,10 +74,10 @@ namespace Chaos.Gameplay.Characters
             //_lastAnimationPlayed = 
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }
-        public void TriggerAttackAnimation()
+        /*public void TriggerAttackAnimation()
         {
             Animator.SetTrigger("Attack1");
-        }
+        }*/
 
         public void TriggerHitAnimation()
         {

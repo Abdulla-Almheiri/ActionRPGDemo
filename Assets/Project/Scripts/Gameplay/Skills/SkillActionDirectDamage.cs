@@ -6,22 +6,8 @@ using UnityEngine;
 namespace Chaos.Gameplay.Skills
 {
     [CreateAssetMenu(fileName = "new directDamage skillAction", menuName = "Content/Skills/SkillAction DirectDamage")]
-    public class SkillActionDirectDamage : SkillAction<SkillActionDataDirectDamage>
+    public class SkillActionDirectDamage: ScriptableObject
     {
-        /*[SerializeField]
-        protected SkillActionCoefficient _damage;
-        [SerializeField]
-        protected SkillActionCoefficient _healing;
-        [SerializeField]
-        protected SkillActionCoefficient _sacrificeDamage;
-        [SerializeField]
-        protected SkillActionCoefficient _friendlyFire;
-        [SerializeField]
-        protected SkillActionCoefficient _drainResource;*/
-        public override void ApplyToCharacter(CharacterCombatController activator, CharacterCombatController receiver, SkillTemplate skillTemplate)
-        {
-
-        }
             
     }
 }

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Smite
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
-  Name: Heal
+  Name: Smite
   Description: Heals the caster for a moderate amount.
   SkillActivationData:
     EnergyCost: 5
-    RechargeTime: 5
+    RechargeTime: 1
+  CharacterActionTriggered: {fileID: 0}
   SkillTriggerData:
     TriggerChance: 100
     SkillTrigger: {fileID: 0}
@@ -25,15 +26,18 @@ MonoBehaviour:
     type: 3}
   SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   SkillActions:
-  - SkillAction: {fileID: 0}
-    Data:
-      SkillAction: {fileID: 0}
-      SkillModifier:
-        Attribute: {fileID: 0}
-        Coefficient: 1
-      Type: 0
-      Value: 0
-      Duration: 0
-      Attribute: {fileID: 0}
-      Element: {fileID: 0}
-      SkillVFXTemplate: {fileID: 0}
+  - TriggerData:
+      TriggerChance: 100
+      SkillTrigger: {fileID: 0}
+    ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
+    DamageScaled: 10
+    DamageFlat: 0
+    HealingScaled: 0
+    HealingFlat: 0
+    DrainHealthFlat: 0
+    DrainHealthPercentageOfDamage: 0
+    EnergyReturnFlat: 0
+    EnergyReturnPercentageOfSkillEnergyCost: 0
+    EnergyReturnPercentageOfDamageDone: 0
+    EnergyReturnPercentageOfHealingDone: 0
+    AppliesState: {fileID: 0}

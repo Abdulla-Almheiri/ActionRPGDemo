@@ -44,6 +44,8 @@ namespace Chaos.Gameplay.Systems
                 Debug.Log("Spawn is null");
                 return;
             }
+
+
             spawn.gameObject.SetActive(true);
             spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Initialize(worldPoint, FloatingCombatTextTemplate);
             spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Play(worldPoint, FloatingCombatTextTemplate, true);

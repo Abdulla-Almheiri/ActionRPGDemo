@@ -13,3 +13,14 @@ MonoBehaviour:
   m_Name: EnemyCombatTemplate
   m_EditorClassIdentifier: 
   Hostile: 1
+  Size: 2
+  BaseHitFrameDuration: 0.3
+  Health:
+    CharacterAttribute: {fileID: 11400000, guid: b0d14e30465a4ca4b8381ccf722af632,
+      type: 2}
+    BaseRating: 0
+  Energy:
+    CharacterAttribute: {fileID: 0}
+    BaseRating: 0
+  PrimaryCharacterAttributes: []
+  SecondaryCharacterAttributes: []

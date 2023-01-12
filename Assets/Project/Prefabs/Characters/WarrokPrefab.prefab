@@ -1011,11 +1011,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1035,6 +1035,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rootCharacterTransform: {fileID: 7472219358674275268}
+  MovementActionTest: {fileID: 0}
+  StopMovementAction: {fileID: 0}
+  SpeedUpAction: {fileID: 0}
+  CharacterStatesProfile: {fileID: 0}
   GameCombatController: {fileID: 0}
   Layer:
     serializedVersion: 2
@@ -1067,6 +1072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3d8fc70e1fbdb429edc74a146f071e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  child: {fileID: 0}
+  AnimationTemplateTest: {fileID: 11400000, guid: 8f6127bac8e1ec24db54853ca365bd61,
+    type: 2}
 --- !u!54 &919132148592761777
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1134,6 +1142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c630bd50086a04fb8c535072b862ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TESTATTRIBUTE: {fileID: 0}
+  <GameCombatProfile>k__BackingField: {fileID: 0}
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 0}
   <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: ea347636f4d80e249b9bbf59c8b8ca9d,
@@ -1165,6 +1175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4517eb4779edd3b488959b378ece2914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventTest:
+    m_PersistentCalls:
+      m_Calls: []
+  CharacterActionTEST: {fileID: 11400000, guid: a94b8ba9f6803394c88e9e40cdac4320,
+    type: 2}
+  CancelAttackActionTEST: {fileID: 0}
+  <CharacterStatesProfile>k__BackingField: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+    type: 2}
 --- !u!1 &2451685129057789390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1239,7 @@ Transform:
   m_GameObject: {fileID: 2552780984333111985}
   m_LocalRotation: {x: 1.7989667e-15, y: -0.0000000010978753, z: -0.0000008681557,
     w: 1}
-  m_LocalPosition: {x: 0.000000113798265, y: 0.9648966, z: 0.030758597}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2581,7 +2599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6822269238794282420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.65, z: 0}
+  m_LocalPosition: {x: 0, y: 2.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

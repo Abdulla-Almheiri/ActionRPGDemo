@@ -17,13 +17,13 @@ namespace Chaos.Gameplay.Camera
         private IEnumerator _currentCoroutine;
         private UnityEngine.Camera _cachedCamera;
 
-        // Start is called before the first frame update
+
         void Start()
         {
             Initialize();
         }
 
-        // Update is called once per frame
+
         void Update()
         {
             if(Input.GetKeyDown(KeyCode.S) == true)

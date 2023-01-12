@@ -21,6 +21,7 @@ namespace Chaos.Gameplay.Characters
         public CharacterCombatController CharacterCombatController { private set; get; }
         private CharacterStateController _characterStateController;
         private CharacterAnimationController _characterAnimationController;
+        private CharacterCombatController _characterCombatController;
         public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
         public float DefaultMeleeRangeTest = 5f;
@@ -75,6 +76,7 @@ namespace Chaos.Gameplay.Characters
             CharacterCombatController = GetComponent<CharacterCombatController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
             if(_navMeshAgent == null)
             {
                 returnValue = false;
@@ -87,7 +89,12 @@ namespace Chaos.Gameplay.Characters
 
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {
-            if((targetPoint - transform.position).sqrMagnitude < _navMeshAgent.stoppingDistance)
+            if (_characterCombatController.Alive == false)
+            {
+                return false ;
+            }
+
+            if ((targetPoint - transform.position).sqrMagnitude < _navMeshAgent.stoppingDistance)
             {
                 return false;
             }
@@ -130,6 +137,10 @@ namespace Chaos.Gameplay.Characters
         }
         public void MoveToMousePosition()
         {
+            if(_characterCombatController.Alive == false)
+            {
+                return;
+            }
 
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
 

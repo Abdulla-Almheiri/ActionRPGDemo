@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hostile: 0
   Size: 1
-  Health: {fileID: 0}
-  Energy: {fileID: 0}
-  BaseCharacterAttributes:
-  - CharacterAttribute: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b,
-      type: 2}
-    BaseRating: 100
+  BaseHitFrameDuration: 0.3
+  Health:
+    CharacterAttribute: {fileID: 0}
+    BaseRating: 0
+  Energy:
+    CharacterAttribute: {fileID: 0}
+    BaseRating: 0
+  PrimaryCharacterAttributes: []
+  SecondaryCharacterAttributes: []

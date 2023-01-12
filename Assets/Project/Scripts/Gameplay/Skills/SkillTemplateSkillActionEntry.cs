@@ -7,7 +7,7 @@ namespace Chaos.Gameplay.Skills
     [System.Serializable]
     public class SkillTemplateSkillActionEntry
     {
-        public SkillAction<SkillActionData> SkillAction;
+        public SkillAction SkillAction;
         public SkillActionData Data;
     }
 }

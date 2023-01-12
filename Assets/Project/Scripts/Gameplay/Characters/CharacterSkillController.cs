@@ -19,6 +19,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterAnimationController _characterAnimationController;
         private CharacterCombatController _characterCombatController;
 
+
         // Start is called before the first frame update
         void Start()
         {
@@ -62,7 +63,7 @@ namespace Chaos.Gameplay.Characters
             if(number == 1)
             {
                 SpawnSkillVFXTest();
-                _characterAnimationController.TriggerAttackAnimation();
+                _characterAnimationController.TriggerAnimatorAction("Slash");
             }
         }
         

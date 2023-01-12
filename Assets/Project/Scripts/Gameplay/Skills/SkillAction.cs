@@ -5,8 +5,21 @@ using Chaos.Gameplay.Characters;
 
 namespace Chaos.Gameplay.Skills
 {
-    public abstract class SkillAction<T> : ScriptableObject where T: SkillActionData
+    [System.Serializable]
+    public class SkillAction 
     {
-        public abstract void ApplyToCharacter(CharacterCombatController activator, CharacterCombatController receiver, SkillTemplate skillTemplate);
+        public SkillTriggerData TriggerData;
+        public CharacterAttribute ScalingAttribute;
+        public float DamageScaled;
+        public float DamageFlat;
+        public float HealingScaled;
+        public float HealingFlat;
+        public float DrainHealthFlat;
+        public float DrainHealthPercentageOfDamage;
+        public float EnergyReturnFlat;
+        public float EnergyReturnPercentageOfSkillEnergyCost;
+        public float EnergyReturnPercentageOfDamageDone;
+        public float EnergyReturnPercentageOfHealingDone;
+        public CharacterState AppliesState;
     }
 }

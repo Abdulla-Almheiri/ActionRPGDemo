@@ -29,9 +29,12 @@ namespace Chaos.Gameplay.Characters
         private CharacterAnimationController _characterAnimationController;
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
+        private Rigidbody _characterRigidBody;
 
         private Dictionary<CharacterAttribute, CharacterAttributeData> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeData>();
+        public Dictionary<CharacterAttribute, float> CoreCharacterAttributes { private set; get; } = new Dictionary<CharacterAttribute, float>();
 
+        public bool Alive { set; get; } = true;
         private CharacterStateTemplate _characterState;
 
 
@@ -41,10 +44,16 @@ namespace Chaos.Gameplay.Characters
            if (TestIntellectAttribute != null)
             {
                 _characterAttributes[TestIntellectAttribute] =  new CharacterAttributeData(TestIntellectAttribute, 50f);
+                CoreCharacterAttributes[TestIntellectAttribute] = 70f;
             }
 
             Initialize();
         }
+        public void Update()
+        {
+            
+        }
+
         public void Initialize()
         {
             _characterUIController = GetComponent<CharacterUIController>();
@@ -52,10 +61,14 @@ namespace Chaos.Gameplay.Characters
             _characterMaterialController = GetComponent<CharacterMaterialController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterStateController = GetComponent<CharacterStateController>();
+            _characterRigidBody = GetComponent<Rigidbody>();
 
-            ResetAttributesFromCombatTemplate();
+           // ResetAttributesFromCombatTemplate();
 
             SubscribeToCharacterStateChangedEvent();
+            Alive = true;
+            _currentHealth = _maxHealth;
+            _currentEnergy = _maxEnergy;
         }
         public float GetAttributeValue(CharacterAttribute characterAttribute)
         {
@@ -72,16 +85,99 @@ namespace Chaos.Gameplay.Characters
             }
             return 0f;
         }
+
+        public void TriggerHitBySkillAction(CharacterCombatController activator, SkillTemplate skill, SkillAction skillAction, List<SkillModifier> modifiers = null)
+        {
+            if (Alive == false)
+            {
+                return;
+            }
+
+
+            bool hasAttribute = activator.CoreCharacterAttributes.TryGetValue(skillAction.ScalingAttribute, out float attributeValue);
+            float energyReturn = 0f;
+            Debug.Log("Has attribute  :   " + hasAttribute);
+            if(hasAttribute && attributeValue != 0f)
+            {
+                if (skillAction.DamageScaled != 0)
+                {
+                    var damage = (skillAction.DamageScaled / 100f) * attributeValue;
+                    TakeDamage(damage);
+
+                    if(skillAction.DrainHealthPercentageOfDamage != 0)
+                    {
+                        var drain = (skillAction.DrainHealthPercentageOfDamage / 100f) * damage;
+                        TakeHealing(drain);
+                    }
+
+                    if (skillAction.EnergyReturnPercentageOfDamageDone != 0)
+                    {
+                        energyReturn = (skillAction.EnergyReturnPercentageOfDamageDone / 100f) * damage;
+                        
+                    }
+                }
+
+                if (skillAction.HealingScaled != 0)
+                {
+                    var healing = (skillAction.HealingScaled / 100f) * attributeValue;
+                    TakeHealing(healing);
+
+                    if (skillAction.EnergyReturnPercentageOfHealingDone != 0)
+                    {
+                        energyReturn = (skillAction.EnergyReturnPercentageOfHealingDone / 100f) * healing;
+                    }
+                }
+            }
+
+
+            if(energyReturn != 0)
+            {
+                GenerateEnergy(energyReturn);
+            }
+
+
+ 
+
+
+
+        }
+
+        private void GenerateEnergy(float amount)
+        {
+            if (Alive == false)
+            {
+                return;
+            }
+
+            _currentEnergy += amount;
+            ClampEnergy();
+        }
+
         private void TakeDamage(float value)
         {
+            if (Alive == false)
+            {
+                return;
+            }
+
             _currentHealth -= value;
             ClampHealth();
             _characterUIController?.UpdateHealth();
             GameUIController?.SpawnDamageTextAtScreenPositionTest(Mathf.Floor(value).ToString(), transform);
+
+            if(_currentHealth <= 0f)
+            {
+                _characterStateController.TriggerDeathState();
+            }
         }
 
         private void TakeHealing(float value)
         {
+            if (Alive == false)
+            {
+                return;
+            }
+
             _currentHealth += value;
             ClampHealth();
             _characterUIController?.UpdateHealth();
@@ -111,7 +207,13 @@ namespace Chaos.Gameplay.Characters
         }
        public void ApplySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
-            if(skillAction.Type == SkillActionTypeEnum.Damage && activator != this)
+            if (Alive == false)
+            {
+                return;
+            }
+
+
+            if (skillAction.Type == SkillActionTypeEnum.Damage && activator != this)
             {
                 ApplyDamageBySkillAction(skillAction, activator);
             }
@@ -124,7 +226,13 @@ namespace Chaos.Gameplay.Characters
         
         private void ApplyDamageBySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
-            if(activator == null)
+            if (Alive == false)
+            {
+                return;
+            }
+
+
+            if (activator == null)
             {
                 return;
             }
@@ -133,6 +241,11 @@ namespace Chaos.Gameplay.Characters
         }
         private void ApplyHealingBySkillAction(SkillActionData skillAction, CharacterCombatController activator)
         {
+            if (Alive == false)
+            {
+                return;
+            }
+
             if (activator == null)
             {
                 return;
@@ -143,6 +256,11 @@ namespace Chaos.Gameplay.Characters
 
         public void TriggerHitByElement(SkillActionElement skillElement)
         {
+            if (Alive == false)
+            {
+                return;
+            }
+
             _characterMaterialController?.TriggerHitEffectBySkillActionElement(skillElement);
         }
         
@@ -160,7 +278,12 @@ namespace Chaos.Gameplay.Characters
 
         public void EngageCharacterInMelee(CharacterCombatController targetCharacter)
         {
-            if(_characterMovementController == null)
+            if (Alive == false)
+            {
+                return;
+            }
+
+            if (_characterMovementController == null)
             {
                 return;
             }
@@ -170,6 +293,11 @@ namespace Chaos.Gameplay.Characters
 
         public void TriggerHitBySkillEffect(SkillEffectCombatController skillEffect, CharacterCombatController activator)
         {
+            if(Alive == false)
+            {
+                return;
+            }
+
             bool isActivatedBySelf = activator == this;
             if(isActivatedBySelf == true)
             {
@@ -179,7 +307,7 @@ namespace Chaos.Gameplay.Characters
                     return;
                 }*/
             }
-            _characterUIController.GameUIController.SpawnDamageTextAtScreenPositionTest(Random.Range(0, 150).ToString(), transform);
+            //_characterUIController.GameUIController.SpawnDamageTextAtScreenPositionTest(Random.Range(0, 150).ToString(), transform);
             TriggerHitByElement(skillEffect.SkillTemplate.SkillElement);
             _characterMaterialController?.TriggerHitFrame();
             _characterAnimationController?.TriggerHitAnimation();
@@ -201,7 +329,7 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
-            foreach(CharacterAttributeData data in CharacterCombatTemplate.BaseCharacterAttributes)
+            foreach(CharacterAttributeData data in CharacterCombatTemplate.PrimaryCharacterAttributes)
             {
                 _characterAttributes[data.CharacterAttribute] = data;
 
@@ -214,6 +342,23 @@ namespace Chaos.Gameplay.Characters
         private void OnCharacterStateChanged(CharacterState newCharacterState, float delay = 0f)
         {
             //Debug.Log("Character state changed to  :  CanBAsicAttack  :  " + newCharacterState.CanBasicAttack);
+        }
+
+        public void TriggerDeath()
+        {
+            Alive = false;
+            _currentHealth = 0f;
+            _currentEnergy = 0f;
+            _characterRigidBody.detectCollisions = false;
+        }
+
+        public void Revive()
+        {
+            _characterUIController.UpdateHealth();
+            Alive = true;
+            _currentHealth = _maxHealth;
+            _currentEnergy = _maxEnergy;
+            _characterRigidBody.detectCollisions = true;
         }
     }
 }

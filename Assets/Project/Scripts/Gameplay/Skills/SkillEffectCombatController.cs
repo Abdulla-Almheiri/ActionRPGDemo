@@ -14,24 +14,31 @@ namespace Chaos.Gameplay.Skills
 
         public SkillTemplate SkillTemplate { private set; get; }
 
-        private List<SkillActionData> _skillActions;
+        private List<SkillAction> _skillActions;
         private CharacterCombatController _skillActivator;
         private void TriggerHitOnCharacter(CharacterCombatController character)
         {
-            if(character == null)
+
+
+            if (character == null)
             {
                 return;
             }
 
-           // character.TriggerHitBySkillEffect(this, _skillActivator);
+            if (character.Alive == false)
+            {
+                return;
+            }
+
+            // character.TriggerHitBySkillEffect(this, _skillActivator);
             if (_skillActions == null)
             {
                 
             }
-            /*foreach (SkillActionData skillAction in _skillActions)
+            foreach (SkillAction skillAction in _skillActions)
             {
-                character.ApplySkillAction(skillAction, _skillActivator);
-            }*/
+                character.TriggerHitBySkillAction( _skillActivator, SkillTemplate, skillAction);
+            }
             
             character.TriggerHitBySkillEffect(this, _skillActivator);
 
@@ -44,14 +51,13 @@ namespace Chaos.Gameplay.Skills
                 return;
             }
             TriggerHitOnCharacter(otherCombatController);
-            //otherCombatController.TriggerHitBySkillEffect(this, _skillActivator);
         }
 
         public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator)
         {
             SkillTemplate = skillTemplate;
             //TEST
-           // _skillActions = skillTemplate.SkillActions;
+           _skillActions = skillTemplate.SkillActions;
             _skillActivator = activator;
         }
 

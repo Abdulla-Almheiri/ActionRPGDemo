@@ -40,18 +40,18 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
-           // ProcessChaseBehaviour();
+            ProcessChaseBehaviour();
 
         }
 
-        /*private void ProcessChaseBehaviour()
+        private void ProcessChaseBehaviour()
         {
             if (_characterAITemplate.ChasePlayer == true)
             {
                 if (_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController))
                 {
                     //Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
-                    _characterMovementController.StopMovementAndRequestStateChangeToIdle();
+                    //_characterMovementController.StopMovementAndRequestStateChangeToIdle();
                     return;
                 }
 
@@ -60,6 +60,6 @@ namespace Chaos.Gameplay.Characters
                     _characterMovementController.MoveToGameObject(PlayerTest);
                 }
             }
-        }*/
+        }
     }
 }

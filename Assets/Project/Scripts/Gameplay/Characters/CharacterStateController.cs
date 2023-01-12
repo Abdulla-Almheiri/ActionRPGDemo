@@ -30,6 +30,7 @@ namespace Chaos.Gameplay.Characters
         private float[] _currentStateDurations;
 
         private CharacterAnimationController _characterAnimationController;
+        private CharacterCombatController _characterCombatController;
 
         private Dictionary<CharacterAction, float> _unallowedCharacterActions = new Dictionary<CharacterAction, float>();
 
@@ -42,9 +43,9 @@ namespace Chaos.Gameplay.Characters
         {
             ProcessCurrentCharacterStateElapsedTime();
             ProcessUnallowedActionsList();
-            if(Input.GetKeyUp(KeyCode.S))
+            if(Input.GetKeyUp(KeyCode.R))
             {
-                TriggerCharacterAction(CharacterActionTEST);
+                TriggerRevive();
             }
 
             if(Input.GetKeyUp(KeyCode.E))
@@ -57,6 +58,7 @@ namespace Chaos.Gameplay.Characters
         private void Initialize(CharacterState initialCharacterState)
         {
             _characterAnimationController = GetComponent<CharacterAnimationController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
             //_currentCharacterState = initialCharacterState;
             _initialCharacterstate = initialCharacterState;
 
@@ -413,6 +415,16 @@ namespace Chaos.Gameplay.Characters
             //_currentCharacterState = CharacterStateEnum.Idle;
         }
 
-        
+        public void TriggerDeathState()
+        {
+            _characterAnimationController.TriggerAnimatorAction("Death");
+            _characterCombatController.TriggerDeath();
+        }
+
+        public void TriggerRevive()
+        {
+            _characterAnimationController.TriggerAnimatorAction("Revive");
+            _characterCombatController.Revive();
+        }
     }
 }

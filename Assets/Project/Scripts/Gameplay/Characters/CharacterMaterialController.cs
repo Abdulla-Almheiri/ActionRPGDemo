@@ -12,6 +12,8 @@ namespace Chaos.Gameplay.Characters
     {
         public GameMaterialController GameMaterialController;
         private ObjectsMaterialProfile _objectsMaterialProfile;
+
+        private CharacterCombatController _characterCombatController;
         private Color _originalColor;
         private Material _material;
         private bool _isThisCharacterHostile = true;
@@ -35,6 +37,7 @@ namespace Chaos.Gameplay.Characters
 
         public void Initialize()
         {
+            _characterCombatController = GetComponent<CharacterCombatController>();
             _objectsMaterialProfile = GameMaterialController.MaterialProfile;
             _material = GetComponentInChildren<Renderer>().material;
             Renderer[] renderers = GetComponentsInChildren<Renderer>();
@@ -86,6 +89,11 @@ namespace Chaos.Gameplay.Characters
         }
         public void OnMouseEnter()
         {
+            if(_characterCombatController.Alive == false)
+            {
+                return;
+            }
+
             StopAllCoroutines();
             var color = _objectsMaterialProfile.NeutralHighlightColor;
             if(_isThisCharacterHostile == true)
@@ -139,6 +147,11 @@ namespace Chaos.Gameplay.Characters
         }
         public void TriggerHitFrame()
         {
+            if (_characterCombatController.Alive == false)
+            {
+                return;
+            }
+
             ApplyHitFrameForSeconds(_objectsMaterialProfile.HitFrameAnimationCurve, 1f);
         }
         private void ApplyHitFrameForSeconds(AnimationCurve animationCurve, float duration)

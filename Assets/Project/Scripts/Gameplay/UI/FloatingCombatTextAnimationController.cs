@@ -106,6 +106,12 @@ namespace Chaos.Gameplay.UI
 
             var initialPosition = _cachedCamera.WorldToScreenPoint(worldPoint.position);
            initialPosition.z = 0f;
+
+            float xVariation = FloatingCombatTextTemplate.StartingPositionVariationAmount.x;
+            float yVariation = FloatingCombatTextTemplate.StartingPositionVariationAmount.y;
+            initialPosition.x +=  Random.Range(-xVariation, xVariation);
+            initialPosition.y += Random.Range(-yVariation, yVariation);
+
            _TMPText.rectTransform.SetPositionAndRotation(initialPosition, Quaternion.identity);
 
             _currentPosition = initialPosition;
