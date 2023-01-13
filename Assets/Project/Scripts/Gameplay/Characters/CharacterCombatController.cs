@@ -51,9 +51,19 @@ namespace Chaos.Gameplay.Characters
         }
         public void Update()
         {
-            
+            ProcessEnergyRegen();
         }
 
+        private void ProcessEnergyRegen()
+        {
+            if(_currentEnergy >= _maxEnergy)
+            {
+                return;
+            }
+
+            _currentEnergy += (_energyRegenPerSecond / Time.deltaTime);
+            ClampEnergy();
+        }
         public void Initialize()
         {
             _characterUIController = GetComponent<CharacterUIController>();
