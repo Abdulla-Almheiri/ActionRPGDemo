@@ -83,6 +83,7 @@ namespace Chaos.Gameplay.Characters
             }
 
             _baseSpeed = _navMeshAgent.speed;
+
             SubscribeToCharacterActionTriggeredEvent();
             return returnValue;
         }
@@ -101,8 +102,8 @@ namespace Chaos.Gameplay.Characters
 
             if (_navMeshAgent.SetDestination(targetPoint))
             {
-                _navMeshAgent.updateRotation = true;
                 _navMeshAgent.isStopped = false;
+                _navMeshAgent.updateRotation = true;
             }
             
             return true;
@@ -152,21 +153,6 @@ namespace Chaos.Gameplay.Characters
             }
 
         }
-
-        /*private void RequestStateChangeToIdle()
-        {
-            if(_characterStateController == null)
-            {
-                return;
-            }
-
-            _characterStateController.SetCurrentCharacterStateWithAnyTransitionType(_characterStateController.CharacterStatesProfile.Idle);
-        }*/
-        /*public void StopMovementAndRequestStateChangeToIdle()
-        {
-            
-            _navMeshAgent.isStopped = true;
-        }*/
         private void SubscribeToCharacterActionTriggeredEvent()
         {
             if(_characterStateController == null)
@@ -231,6 +217,13 @@ namespace Chaos.Gameplay.Characters
                  transform.rotation = Quaternion.LookRotation(direction);
              }
 
+        }
+
+        public void FaceDirectionOfCharacter(CharacterMovementController character)
+        {
+            var direction = character.transform.position;
+            direction.y = 0;
+            transform.LookAt(direction);
         }
 
         public void RotateCharacterInMouseDirection()

@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8069c93cc9903ee4280c4e32f913301e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  HealthBarPrefab: {fileID: 1255081653878379244, guid: 39edd6427e7225c47b1bc8256a5fa9c2,
+    type: 3}
   FloatingCombatTextProfile: {fileID: 0}
   FloatingCombatTextTemplate: {fileID: 11400000, guid: 7842e5cf0bca76642a09c2d1c5e71723,
     type: 2}

@@ -129,3 +129,48 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  - Element: {fileID: 11400000, guid: 7af5f26d9422a154c8315d429e04ca6d, type: 2}
+    MaterialHighlightColor: {r: 0.32983047, g: 0.3301887, b: 0.29436633, a: 0}
+    Duration: 1
+    HighlightPowerCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.22527772
+        value: 0.28167796
+        inSlope: -1.009351
+        outSlope: -1.009351
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.35685596
+        value: 0.9555391
+        inSlope: 0.82833624
+        outSlope: 0.82833624
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.41071153
+        outWeight: 0.26937318
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1.1667253
+        outSlope: -1.1667253
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.5763834
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4

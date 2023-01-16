@@ -8,9 +8,13 @@ namespace Chaos.Gameplay.Characters
     {
         public GameObject PlayerTest;
         private CharacterMovementController _playerMovementController;
+        private CharacterCombatController _playerCombatController;
         [SerializeField]
         protected CharacterAITemplate _characterAITemplate;
-        protected CharacterMovementController _characterMovementController;
+        private CharacterMovementController _characterMovementController;
+        private CharacterSkillController _characterSkillController;
+        private float _decisionRecharge = 1f;
+        private float _decisionRechargeCounter = 0f;
 
         // Start is called before the first frame update
         void Start()
@@ -22,11 +26,14 @@ namespace Chaos.Gameplay.Characters
         void Update()
         {
             ProcessCharacterAI();
+            ProcessAIDecisionRecharge();
         }
 
         public void Initialize()
         {
             _characterMovementController = GetComponent<CharacterMovementController>();
+            _characterSkillController = GetComponent<CharacterSkillController>();
+            _playerCombatController = PlayerTest.GetComponent<CharacterCombatController>();
             if (PlayerTest != null)
             {
                 _playerMovementController = PlayerTest.GetComponent<CharacterMovementController>();
@@ -46,12 +53,30 @@ namespace Chaos.Gameplay.Characters
 
         private void ProcessChaseBehaviour()
         {
+            if(_playerCombatController.Alive == false)
+            {
+                return;
+            }
+
+            if (IsAIDecisionRecharging() == true)
+            {
+                return;
+            }
+
             if (_characterAITemplate.ChasePlayer == true)
             {
                 if (_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController))
                 {
-                    //Debug.Log("CHARACTER IS WITHIN MElEE RANGE");
-                    //_characterMovementController.StopMovementAndRequestStateChangeToIdle();
+
+                    //_characterMovementController.RotateCharacterXZTowardsPoint(_playerMovementController.gameObject.transform.position);
+                    _characterMovementController.FaceDirectionOfCharacter(_playerMovementController);
+                    _characterMovementController.StopMovement();
+                    if (IsAIDecisionRecharging() == false)
+                    {
+                        ActivatePrimaryAttack();
+                        TriggerAIDecisionRecharge();
+                    }
+
                     return;
                 }
 
@@ -60,6 +85,29 @@ namespace Chaos.Gameplay.Characters
                     _characterMovementController.MoveToGameObject(PlayerTest);
                 }
             }
+        }
+
+        private void ActivatePrimaryAttack()
+        {
+            _characterSkillController.ActivateSkill(0);
+        }
+
+        private void ProcessAIDecisionRecharge()
+        {
+            if(_decisionRechargeCounter > 0f)
+            {
+                _decisionRechargeCounter -= Time.deltaTime;
+            }
+        }
+
+        private bool IsAIDecisionRecharging()
+        {
+            return _decisionRechargeCounter > 0f;
+        }
+
+        private void TriggerAIDecisionRecharge()
+        {
+            _decisionRechargeCounter = _decisionRecharge;
         }
     }
 }

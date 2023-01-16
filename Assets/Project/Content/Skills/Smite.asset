@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   Name: Smite
+  SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   Description: Heals the caster for a moderate amount.
   SkillActivationData:
     EnergyCost: 5
@@ -22,9 +23,10 @@ MonoBehaviour:
   SkillTriggerData:
     TriggerChance: 100
     SkillTrigger: {fileID: 0}
-  SkillPrefab: {fileID: 6024815044805923972, guid: a4cbe42d5b08a10438ca47926808e5ab,
+  SkillPrefab: {fileID: 6024815044805923972, guid: 08d014fd87a73ef47bd1bac66f464c4c,
     type: 3}
-  SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
+  SpawnLocationType: {fileID: 11400000, guid: f6434e0a998a6df4faa410b4cb82fbfb, type: 2}
+  CharacterAnimation: {fileID: 11400000, guid: a28e4c937f36d614d89e3a3842df6671, type: 2}
   SkillActions:
   - TriggerData:
       TriggerChance: 100

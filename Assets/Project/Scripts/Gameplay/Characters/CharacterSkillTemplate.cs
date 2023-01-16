@@ -8,7 +8,7 @@ namespace Chaos.Gameplay.Characters
     [CreateAssetMenu(fileName = "new character skill template", menuName = "Content/Characters/Character Skill Template")]
     public class CharacterSkillTemplate : ScriptableObject
     {
-        public SkillTemplate PrimarySkill;
+        public SkillTemplate PrimaryAISkill;
         public List<SkillTemplate> Skills = new List<SkillTemplate>();
     }
 }

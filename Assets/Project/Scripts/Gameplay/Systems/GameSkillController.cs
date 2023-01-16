@@ -8,11 +8,6 @@ namespace Chaos.Gameplay.Systems
 {
     public class GameSkillController : MonoBehaviour
     {
-        public GameObjectPoolTemplate SkillGamePoolTest;
-        private GameObjectPool _skillObjectPool;
-        private GamePoolController _gamePoolController;
-        private Dictionary<string, SkillEffectCombatController> _pooledSkills = new Dictionary<string, SkillEffectCombatController>();
-        // Start is called before the first frame update
         void Start()
         {
 
@@ -26,27 +21,17 @@ namespace Chaos.Gameplay.Systems
 
         private void Initialize()
         {
-            _gamePoolController = GetComponent<GamePoolController>();
-            _skillObjectPool = new GameObjectPool(SkillGamePoolTest, _gamePoolController);
         }
 
-        public void SpawnSkillEffectPooled(SkillTemplate skillTemplate, Transform location, CharacterCombatController activator)
+        public bool SpawnSkillVFX(SkillTemplate skillTemplate, Transform location, CharacterCombatController activator)
         {
-            SkillEffectCombatController skillCombatController;
-            if (_pooledSkills.TryGetValue(skillTemplate.name, out skillCombatController) == true && skillCombatController.gameObject.activeSelf == false)
+            if (skillTemplate == null || skillTemplate.SkillPrefab == null)
             {
-                skillCombatController.transform.position = location.position;
-                skillCombatController.Initialize(skillTemplate, activator);
-                skillCombatController.gameObject.SetActive(true);
-                Debug.Log("First if statement. Object is  :  " + location.gameObject.name);
-
-            } else
-            {
-                var instance = InstantiateSkillEffect(skillTemplate, location, activator);
-                AddSkillInstanceToPool(skillTemplate, instance);
+                return false;
             }
 
-
+            var instance = InstantiateSkillEffect(skillTemplate, location, activator);
+            return true;
         }
 
         private SkillEffectCombatController InstantiateSkillEffect(SkillTemplate skillTemplate, Transform location, CharacterCombatController activator)
@@ -64,12 +49,6 @@ namespace Chaos.Gameplay.Systems
             
             skillCombatController.Initialize(skillTemplate, activator);
             return skillCombatController;
-        }
-
-
-        private void AddSkillInstanceToPool(SkillTemplate skillTemplate, SkillEffectCombatController skillInstance)
-        {
-            _pooledSkills[skillTemplate.name] = skillInstance;
         }
     }
 }

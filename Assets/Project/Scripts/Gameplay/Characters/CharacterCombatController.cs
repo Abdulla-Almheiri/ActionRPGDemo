@@ -49,6 +49,8 @@ namespace Chaos.Gameplay.Characters
 
             Initialize();
         }
+
+        
         public void Update()
         {
             ProcessEnergyRegen();
@@ -73,7 +75,7 @@ namespace Chaos.Gameplay.Characters
             _characterStateController = GetComponent<CharacterStateController>();
             _characterRigidBody = GetComponent<Rigidbody>();
 
-           // ResetAttributesFromCombatTemplate();
+           UpdateCharacterAttributesFromCombatTemplate();
 
             SubscribeToCharacterStateChangedEvent();
             Alive = true;
@@ -109,7 +111,7 @@ namespace Chaos.Gameplay.Characters
             Debug.Log("Has attribute  :   " + hasAttribute);
             if(hasAttribute && attributeValue != 0f)
             {
-                if (skillAction.DamageScaled != 0)
+                if (skillAction.DamageScaled != 0 && activator != this)
                 {
                     var damage = (skillAction.DamageScaled / 100f) * attributeValue;
                     TakeDamage(damage);
@@ -127,7 +129,7 @@ namespace Chaos.Gameplay.Characters
                     }
                 }
 
-                if (skillAction.HealingScaled != 0)
+                if (skillAction.HealingScaled != 0 && activator == this)
                 {
                     var healing = (skillAction.HealingScaled / 100f) * attributeValue;
                     TakeHealing(healing);
@@ -332,7 +334,7 @@ namespace Chaos.Gameplay.Characters
         {
             _characterStateController?.SubscribeToCharacterStateChanged(OnCharacterStateChanged);
         }
-        private void ResetAttributesFromCombatTemplate()
+        private void UpdateCharacterAttributesFromCombatTemplate()
         {
             if(CharacterCombatTemplate == null)
             {
@@ -341,10 +343,12 @@ namespace Chaos.Gameplay.Characters
 
             foreach(CharacterAttributeData data in CharacterCombatTemplate.PrimaryCharacterAttributes)
             {
-                _characterAttributes[data.CharacterAttribute] = data;
-
-               if( _characterAttributes.TryGetValue(data.CharacterAttribute, out CharacterAttributeData characterAttributeData))
+                if(CoreCharacterAttributes.TryGetValue(data.CharacterAttribute, out float value) == true)
                 {
+                    CoreCharacterAttributes[data.CharacterAttribute] = data.BaseRating;
+                } else
+                {
+                    CoreCharacterAttributes.Add(data.CharacterAttribute, data.BaseRating);
                 }
             }
         }

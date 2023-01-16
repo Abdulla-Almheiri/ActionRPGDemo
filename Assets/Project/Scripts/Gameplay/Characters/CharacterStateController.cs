@@ -417,13 +417,13 @@ namespace Chaos.Gameplay.Characters
 
         public void TriggerDeathState()
         {
-            _characterAnimationController.TriggerAnimatorAction("Death");
+            _characterAnimationController.TriggerAnimation("Death");
             _characterCombatController.TriggerDeath();
         }
 
         public void TriggerRevive()
         {
-            _characterAnimationController.TriggerAnimatorAction("Revive");
+            _characterAnimationController.TriggerAnimation("Revive");
             _characterCombatController.Revive();
         }
     }

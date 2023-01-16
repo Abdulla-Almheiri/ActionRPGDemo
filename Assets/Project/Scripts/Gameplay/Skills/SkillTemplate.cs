@@ -11,6 +11,7 @@ namespace Chaos.Gameplay.Skills
         [Header("SKILL DESCRIPTION")]
         public Sprite Icon;
         public string Name;
+        public SkillActionElement SkillElement;
         [TextArea(5, 15)]
         public string Description;
 
@@ -26,7 +27,8 @@ namespace Chaos.Gameplay.Skills
         [Space(20)]
         [Header("VISUAL EFFECT")]
         public SkillEffectCombatController SkillPrefab;
-        public SkillActionElement SkillElement;
+        public CharacterVFXSpawnLocationType SpawnLocationType;
+        public CharacterAnimation CharacterAnimation;
 
         [Space(20)]
         [Header("Combat")]

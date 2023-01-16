@@ -1399,9 +1399,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027fcf2fb93553b43bfa9594bf650168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CharacterSkillTemplate>k__BackingField: {fileID: 11400000, guid: cb800fcac02e17f45bf1e9ca6d07e94a,
+    type: 2}
   GameUIController: {fileID: 0}
   GameSkillController: {fileID: 0}
   SkillTemplateTest: {fileID: 11400000, guid: dfb5fa548dbcccf479c595cfa088df9d, type: 2}
+  SkillTemplateHolyLight: {fileID: 11400000, guid: e65bd15dcdbb7bc478d9840bda833a20,
+    type: 2}
   SkillVFX: {fileID: 6820445246708541164, guid: a4cbe42d5b08a10438ca47926808e5ab,
     type: 3}
   SpawnLocationType: {fileID: 11400000, guid: ee43a4c395630b340a822cdd8232723e, type: 2}
@@ -2188,7 +2192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4526894600839521570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.288, z: 0}
+  m_LocalPosition: {x: 0, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

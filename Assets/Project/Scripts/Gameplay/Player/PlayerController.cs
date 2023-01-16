@@ -12,16 +12,6 @@ namespace Chaos.Gameplay.Player
 
         public void Update()
         {
-
-            if (Input.GetKeyUp(KeyCode.Alpha1) == true)
-            {
-                _characterAnimationController.TriggerAnimatorAction("Slash");
-            }
-
-            if (Input.GetKeyUp(KeyCode.X) == true)
-            {
-                _characterAnimationController.TriggerAnimatorAction("MultiSlash");
-            }
         }
 
         public void Start()

@@ -12,11 +12,12 @@ namespace Chaos.Gameplay.Camera
         public CharacterAnimationController CharacterAnimationControllerTest;
         public ScreenVolumeVisualEffect ScreenVFXTest;
         public float VolumeWeightUpdateTicksPerSeconds = 30f;
+
         private Volume _volumeComponent;
         private WaitForSeconds _coroutineWait;
         private IEnumerator _currentCoroutine;
         private UnityEngine.Camera _cachedCamera;
-
+        private float _currentCamFoV;
 
         void Start()
         {
@@ -33,7 +34,7 @@ namespace Chaos.Gameplay.Camera
 
             SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
             
-            SetCameraFoV(40f - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);
+            SetCameraFoV(_currentCamFoV - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);
         }
 
         private void SetVolumeWeight(float value)
@@ -59,6 +60,7 @@ namespace Chaos.Gameplay.Camera
 
             _volumeComponent.profile = ScreenVFXTest.VolumeProfile;
             SetVolumeWeight(0f);
+            _currentCamFoV = _cachedCamera.fieldOfView;
         }
 
         public void ChangeCameraVolumeProfile(VolumeProfile targetVolume)

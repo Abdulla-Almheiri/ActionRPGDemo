@@ -9,13 +9,11 @@ namespace Chaos.Gameplay.Skills
 {
     public class SkillEffectCombatController : MonoBehaviour
     {
-        public SkillActionElement ElementTest;
-        public GameUIController GameUIControllerTest;
-
         public SkillTemplate SkillTemplate { private set; get; }
 
         private List<SkillAction> _skillActions;
         private CharacterCombatController _skillActivator;
+        private Dictionary<CharacterCombatController, bool> _charactersAlreadyHit = new Dictionary<CharacterCombatController, bool>();
         private void TriggerHitOnCharacter(CharacterCombatController character)
         {
 
@@ -30,11 +28,16 @@ namespace Chaos.Gameplay.Skills
                 return;
             }
 
-            // character.TriggerHitBySkillEffect(this, _skillActivator);
             if (_skillActions == null)
             {
                 
             }
+
+            if(_charactersAlreadyHit.TryGetValue(character, out bool _) == true)
+            {
+                return;
+            }
+
             foreach (SkillAction skillAction in _skillActions)
             {
                 character.TriggerHitBySkillAction( _skillActivator, SkillTemplate, skillAction);
@@ -42,21 +45,23 @@ namespace Chaos.Gameplay.Skills
             
             character.TriggerHitBySkillEffect(this, _skillActivator);
 
+            _charactersAlreadyHit.TryAdd(character, true);
+
         }
         private void OnTriggerEnter(Collider other)
         {
             var otherCombatController = other.gameObject.GetComponent<CharacterCombatController>();
-            if(otherCombatController.gameObject.GetComponent<PlayerController>() == true)
+            if(otherCombatController == _skillActivator)
             {
                 return;
             }
+
             TriggerHitOnCharacter(otherCombatController);
         }
 
         public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator)
         {
             SkillTemplate = skillTemplate;
-            //TEST
            _skillActions = skillTemplate.SkillActions;
             _skillActivator = activator;
         }

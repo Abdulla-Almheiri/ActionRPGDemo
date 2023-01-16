@@ -11,8 +11,8 @@ namespace Chaos.Gameplay.Camera
         public float LerpSpeedTest = 0.1f;
         [SerializeField]
         private GamePlayerController _gamePlayerController;
-        protected CharacterMovementController _characterMovementController;
-        protected Transform _playerTransform;
+        private CharacterMovementController _characterMovementController;
+        private Transform _playerTransform;
         private Vector3 _offset;
 
         void Start()

@@ -29,7 +29,6 @@ namespace Chaos.Gameplay.Characters
 
         private float _remainingDurationAnimatorPlaybackSpeedChanged = 0f;
 
-        //private AnimatorPlaybackSystem _animatorPlaybackSystem;
 
         void Start()
         { 
@@ -37,14 +36,34 @@ namespace Chaos.Gameplay.Characters
         }
 
 
-        public void TriggerAnimatorAction(string actionName, bool stopMovement = true)
+        public void TriggerAnimation(string actionName, bool stopMovement = true)
         {
             Animator.SetTrigger(actionName);
             if (stopMovement == true)
             {
                 _characterMovementController.StopMovement();
-                _characterMovementController.RotateCharacterInMouseDirection();
+                //_characterMovementController.RotateCharacterInMouseDirection();
             }
+        }
+
+        public bool TriggerAnimation(CharacterAnimation characterAnimation)
+        {
+            if(characterAnimation == null || Animator == null)
+            {
+                return false;
+            }
+
+            Animator.SetTrigger(characterAnimation.name);
+            if (characterAnimation.StopMovement == true)
+            {
+                _characterMovementController.StopMovement();
+            }
+
+            if(characterAnimation.FaceMousePoint == true)
+            {
+               // _characterMovementController.RotateCharacterInMouseDirection();
+            }
+            return true;
         }
 
         public void OnEnable()
@@ -74,10 +93,6 @@ namespace Chaos.Gameplay.Characters
             //_lastAnimationPlayed = 
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }
-        /*public void TriggerAttackAnimation()
-        {
-            Animator.SetTrigger("Attack1");
-        }*/
 
         public void TriggerHitAnimation()
         {
@@ -196,7 +211,6 @@ namespace Chaos.Gameplay.Characters
         }
         private float GetBaseAnimationClipDuration(CharacterAnimationData animationData)
         {
-            //Debug.Log("Clip " + animationData.AnimationClip.name + " length is          :     " + animationData.AnimationClip.length);
             return animationData.AnimationClip.length;
         }
 
