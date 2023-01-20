@@ -1787,6 +1787,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1682498534, guid: be0095cc562786a498ed75ee1bd1579e, type: 3}
+      propertyPath: m_Height
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682498534, guid: be0095cc562786a498ed75ee1bd1579e, type: 3}
+      propertyPath: m_Center.y
+      value: 0.84
+      objectReference: {fileID: 0}
     - target: {fileID: 1347905474224235880, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: GameMaterialController

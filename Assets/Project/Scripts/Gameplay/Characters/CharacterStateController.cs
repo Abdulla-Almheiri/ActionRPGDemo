@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events ;
 using Chaos.Gameplay.Systems;
+using Chaos.Gameplay.Skills;
 
 namespace Chaos.Gameplay.Characters
 {
@@ -31,7 +32,7 @@ namespace Chaos.Gameplay.Characters
 
         private CharacterAnimationController _characterAnimationController;
         private CharacterCombatController _characterCombatController;
-
+        private SkillEffectCombatController _currentAttackSkillEffect;
         private Dictionary<CharacterAction, float> _unallowedCharacterActions = new Dictionary<CharacterAction, float>();
 
         public void Start()
@@ -425,6 +426,16 @@ namespace Chaos.Gameplay.Characters
         {
             _characterAnimationController.TriggerAnimation("Revive");
             _characterCombatController.Revive();
+        }
+
+        public void PerformBasicAttack()
+        {
+
+        }
+
+        public void PerformSpecialAttack()
+        {
+
         }
     }
 }

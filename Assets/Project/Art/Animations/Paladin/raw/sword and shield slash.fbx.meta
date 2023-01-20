@@ -111,6 +111,40 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
+      - name: HitFrame
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.28686965
+            value: 0.6389608
+            inSlope: -0.040603302
+            outSlope: -0.040603302
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.20031688
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
       events: []
       transformMask: []
       maskType: 3

@@ -10,12 +10,11 @@ namespace Chaos.Gameplay.Characters
         public Transform child;
         public CharacterAnimationTemplate AnimationTemplateTest;
         protected CharacterMovementController _movementController;
-        protected CharacterSkillController _skillController;
+        protected CharacterSkillController _characterSkillController;
         protected CharacterVFXController _characterVFXController;
         private CharacterStateController _characterStateController;
         private CharacterCombatController _characterCombatController;
         private CharacterMovementController _characterMovementController;
-
         public Animator Animator { private set; get; }
 
         private CharacterAnimationData _lastAnimationPlayed;
@@ -34,8 +33,18 @@ namespace Chaos.Gameplay.Characters
         { 
             Initialize();
         }
-
-
+        private void Update()
+        {
+            ProcessCharacterAnimationHitFrame();
+        }
+        private void ProcessCharacterAnimationHitFrame()
+        {
+            float value = Animator.GetFloat("HitFrame");
+            if(value > 0.5f)
+            {
+                _characterSkillController.CurrentActiveSkillEffect?.ActivateHitBox();
+            }
+        }
         public void TriggerAnimation(string actionName, bool stopMovement = true)
         {
             Animator.SetTrigger(actionName);
@@ -85,7 +94,7 @@ namespace Chaos.Gameplay.Characters
         {
             _movementController = GetComponent<CharacterMovementController>();
             Animator = GetComponent<Animator>();
-            _skillController = GetComponent<CharacterSkillController>();
+            _characterSkillController = GetComponent<CharacterSkillController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterCombatController = GetComponent<CharacterCombatController>();

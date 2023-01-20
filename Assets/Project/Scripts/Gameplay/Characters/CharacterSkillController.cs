@@ -27,7 +27,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterInputController _characterInputController;
         private List<SkillTemplate> _skills;
         private List<SkillEffectCombatController> _preloadedSkillPrefabs = new List<SkillEffectCombatController>();
-
+        public SkillEffectCombatController CurrentActiveSkillEffect { private set; get; }
         private float[] _rechargeDurations;
         void Start()
         {
@@ -105,6 +105,7 @@ namespace Chaos.Gameplay.Characters
             }
 
             var instance = InstantiateSkillEffect(skillTemplate, location, activator);
+            CurrentActiveSkillEffect = instance;
             return true;
         }
 
