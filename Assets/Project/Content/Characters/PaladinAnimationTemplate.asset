@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b35e43b327add4bbc097603064e2a5, type: 3}
   m_Name: PaladinAnimationTemplate
   m_EditorClassIdentifier: 
+  MovementSpeedFactor: 0.4
   AnimationData:
   - Animation: {fileID: 11400000, guid: 3e45ff6c8af25844d8620f664a0f5ec8, type: 2}
     AnimationClip: {fileID: 7400000, guid: 78c3d1de612211d428408cfe9d7dc320, type: 2}

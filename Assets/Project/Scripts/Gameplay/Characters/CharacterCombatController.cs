@@ -16,6 +16,8 @@ namespace Chaos.Gameplay.Characters
         [field:SerializeField]
         public GameCombatProfile GameCombatProfile {private set; get;}
         public int Level { private set; get; } = 1;
+        [field: SerializeField]
+        public CharacterFaction CharacterFaction { private set; get; }
         public GameUIController GameUIController;
         public CharacterAttribute TestIntellectAttribute;
         [field:SerializeField]
@@ -355,16 +357,15 @@ namespace Chaos.Gameplay.Characters
             bool isActivatedBySelf = activator == this;
             if(isActivatedBySelf == true)
             {
-                //TEST
-               /* if(skillEffect.SkillTemplate.SkillActions.Find(x => x.Type == SkillActionTypeEnum.Damage) != null)
-                {
-                    return;
-                }*/
+                TriggerHitByElement(skillEffect.SkillTemplate.SkillElement);
+            } else
+            {
+
+                _characterMaterialController?.TriggerHitFrame();
+                _characterAnimationController?.TriggerHitAnimation();
             }
             //_characterUIController.GameUIController.SpawnDamageTextAtScreenPositionTest(Random.Range(0, 150).ToString(), transform);
-            TriggerHitByElement(skillEffect.SkillTemplate.SkillElement);
-            _characterMaterialController?.TriggerHitFrame();
-            _characterAnimationController?.TriggerHitAnimation();
+
         }
 
         public float GetHealthPercentage()

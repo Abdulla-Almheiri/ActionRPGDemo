@@ -7,15 +7,15 @@ namespace Chaos.Gameplay.Characters
 {
     public class CharacterAnimationController : MonoBehaviour
     {
-        public Transform child;
-        public CharacterAnimationTemplate AnimationTemplateTest;
-        protected CharacterMovementController _movementController;
-        protected CharacterSkillController _characterSkillController;
-        protected CharacterVFXController _characterVFXController;
+        public CharacterAnimationTemplate CharacterAnimationTemplate;
+        public Animator Animator { private set; get; }
+
+        private CharacterSkillController _characterSkillController;
+        private CharacterVFXController _characterVFXController;
         private CharacterStateController _characterStateController;
         private CharacterCombatController _characterCombatController;
         private CharacterMovementController _characterMovementController;
-        public Animator Animator { private set; get; }
+        
 
         private CharacterAnimationData _lastAnimationPlayed;
 
@@ -35,6 +35,7 @@ namespace Chaos.Gameplay.Characters
         }
         private void Update()
         {
+            SetAnimatorMovementSpeedFactor();
             ProcessCharacterAnimationHitFrame();
         }
         private void ProcessCharacterAnimationHitFrame()
@@ -92,17 +93,23 @@ namespace Chaos.Gameplay.Characters
 
         private void Initialize()
         {
-            _movementController = GetComponent<CharacterMovementController>();
             Animator = GetComponent<Animator>();
             _characterSkillController = GetComponent<CharacterSkillController>();
             _characterVFXController = GetComponent<CharacterVFXController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterCombatController = GetComponent<CharacterCombatController>();
             _characterMovementController = GetComponent<CharacterMovementController>();
-            //_lastAnimationPlayed = 
+
+            SetAnimatorMovementSpeedFactor();
+
             SubscribeToCharacterStateControllerOnCharacterStateChangeEvent();
         }
 
+        private void SetAnimatorMovementSpeedFactor()
+        {
+            float movementSpeed = _characterMovementController.BaseSpeed * CharacterAnimationTemplate.MovementSpeedFactor;
+            Animator.SetFloat("MovementSpeed", movementSpeed);
+        }
         public void TriggerHitAnimation()
         {
             Animator.SetTrigger("Hit");
@@ -136,14 +143,14 @@ namespace Chaos.Gameplay.Characters
                 return null;
             }
             
-            var data = AnimationTemplateTest.AnimationData.Find(x => x.Animation == characterState.CharacterAnimation);
+            var data = CharacterAnimationTemplate.AnimationData.Find(x => x.Animation == characterState.CharacterAnimation);
             return data;
 
         }
 
         public CharacterAttributeScalingData GetCharacterAttributeScalingDataFromTemplate(CharacterState characterState)
         {
-            var scalingData = AnimationTemplateTest.AnimationData.Find(x => x.CharacterAttributeAnimationScalingData.CharacterAttribute == characterState);
+            var scalingData = CharacterAnimationTemplate.AnimationData.Find(x => x.CharacterAttributeAnimationScalingData.CharacterAttribute == characterState);
             return scalingData.CharacterAttributeAnimationScalingData;
         }
         public void RepeatLastAnimationPlayed(float blendDuration = 0f)

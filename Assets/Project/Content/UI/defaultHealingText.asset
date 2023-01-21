@@ -53,22 +53,22 @@ MonoBehaviour:
       m_RotationOrder: 0
   - PropertyToAnimate: 2
     DurationInSeconds: 5
-    CurveMultiplier: 2
+    CurveMultiplier: 0.75
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.051193237
-        value: 0.74419785
-        inSlope: 0.15609011
-        outSlope: 0.15609011
+        time: 0
+        value: 0.73120457
+        inSlope: 0.043867987
+        outSlope: 0.043867987
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.09374103
+        outWeight: 0.07469155
       - serializedVersion: 3
-        time: 0.56352186
-        value: 0.79062295
+        time: 1
+        value: 0.7398489
         inSlope: 0.03780398
         outSlope: 0
         tangentMode: 1

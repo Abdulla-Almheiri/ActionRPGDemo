@@ -7,36 +7,18 @@ using Chaos.Gameplay.Systems;
 
 namespace Chaos.Gameplay.Characters
 {
-    public class CharacterMovementController : GameController
+    public class CharacterMovementController : MonoBehaviour
     {
-        [SerializeField]
-        private Transform _rootCharacterTransform;
-        private Vector3 _initialRootCharacterPosition;
-        private Quaternion _initialRootCharacterRotation;
-        public CharacterAction MovementActionTest;
-        public CharacterAction StopMovementAction;
-        public CharacterAction SpeedUpAction;
-        public CharacterStatesProfile CharacterStatesProfile;
-        public GameCombatController GameCombatController;
-        public CharacterCombatController CharacterCombatController { private set; get; }
-        private CharacterStateController _characterStateController;
+        [field:SerializeField]
+        public CharacterMovementTemplate CharacterMovementTemplate { private set; get; }
+        public float BaseSpeed { private set; get; } = 0f;
         private CharacterAnimationController _characterAnimationController;
         private CharacterCombatController _characterCombatController;
-        public LayerMask Layer;
         private NavMeshAgent _navMeshAgent;
-        public float DefaultMeleeRangeTest = 5f;
-        private Vector3 _destination;
-        private bool _onPath = false;
-        private float _baseSpeed = 0f;
+        private LayerMask _layer;
 
-        private Vector2 _velocity;
-        private Vector2 SmoothDeltaPosition;
 
-        private Vector3 _nextPoint;
-        private bool _isMoving = false;
-        private int _pathCornerIndex = 0;
-
-        void Start()
+        void Awake()
         {
             Initialize(null);
         }
@@ -61,29 +43,16 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
-        public override bool Initialize(Game game)
+        public void Initialize(Game game)
         {
-            var returnValue = base.Initialize(game);
-            /*if(returnValue == false)
-            {
-                return false;
-            }*/
-
             _navMeshAgent = GetComponentInChildren<NavMeshAgent>();
-
-            CharacterCombatController = GetComponent<CharacterCombatController>();
-            _characterStateController = GetComponent<CharacterStateController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterCombatController = GetComponent<CharacterCombatController>();
-            if(_navMeshAgent == null)
-            {
-                returnValue = false;
-            }
+            _navMeshAgent.speed = CharacterMovementTemplate.BaseMovementSpeed;
+            BaseSpeed = _navMeshAgent.speed;
+            _layer = CharacterMovementTemplate.GroundLayer;
 
-            _baseSpeed = _navMeshAgent.speed;
-
-            SubscribeToCharacterActionTriggeredEvent();
-            return returnValue;
         }
 
         public void DisableNavMeshComponent()
@@ -125,34 +94,11 @@ namespace Chaos.Gameplay.Characters
             
             return true;
         }
-
-        private void RequestStateChange(CharacterState newCharacterState )
-        {
-            if(_characterStateController == null)
-            {
-                return;
-            }
-
-            _characterStateController.AttemptCharacterStateChange(newCharacterState, 0.5f);
-
-        }
         public bool IsRunning()
         {
             return _navMeshAgent.velocity.magnitude > 0.01f;
         }
 
-        public void ProcessStoppingAndInformStateController()
-        {
-            if(_characterStateController == null)
-            {
-                return;
-            }
-
-            if (IsRunning() == false)
-            {
-                RequestStateChange(CharacterStatesProfile.Idle);
-            }
-        }
         public void MoveToMousePosition()
         {
             if(_characterCombatController.Alive == false)
@@ -164,39 +110,11 @@ namespace Chaos.Gameplay.Characters
 
             RaycastHit rayHit;
 
-            if (Physics.Raycast(ray, out rayHit, Layer) == true)
+            if (Physics.Raycast(ray, out rayHit, _layer) == true)
             {
                 MoveToWorldPoint(rayHit.point);
             }
 
-        }
-        private void SubscribeToCharacterActionTriggeredEvent()
-        {
-            if(_characterStateController == null)
-            {
-                return;
-            }
-
-            _characterStateController.SubscribeToCharacterActionTriggered(OnCharacterActionTriggered);
-        }
-
-        private void UnsubscribeToCharacterActionTriggeredEvent()
-        {
-            if (_characterStateController == null)
-            {
-                return;
-            }
-
-            _characterStateController.UnsubscribeToCharacterActionTriggered(OnCharacterActionTriggered);
-        }
-
-        private void OnCharacterActionTriggered(CharacterAction characterAction)
-        {
-            if(characterAction == StopMovementAction)
-            {
-               // StopMovment();
-            }
-            //Debug.Log("Action triggered by event     :   " + characterAction.name);
         }
 
         public void StopMovement()
@@ -231,7 +149,7 @@ namespace Chaos.Gameplay.Characters
              Ray ray = UnityEngine.Camera.main.ViewportPointToRay(point);
              RaycastHit rayHit;
 
-             if (Physics.Raycast(ray, out rayHit, Layer))
+             if (Physics.Raycast(ray, out rayHit, _layer))
              {
                  var direction = (rayHit.point - transform.position);
                  direction.y = 0;
@@ -258,7 +176,7 @@ namespace Chaos.Gameplay.Characters
             Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit rayHit;
 
-            if (Physics.Raycast(ray, out rayHit, Layer))
+            if (Physics.Raycast(ray, out rayHit, _layer))
             {
                 var direction = (rayHit.point - transform.position);
                 direction.y = 0;
@@ -280,8 +198,7 @@ namespace Chaos.Gameplay.Characters
         public bool IsCharacterWithinMeleeRange(CharacterMovementController targetCharacter)
         {
             float distance = GetUnsignedDistanceBetweenCharacters(targetCharacter);
-            //Debug.Log("Distance   is    :    " + distance);
-            float combinedMeleeRange = CharacterCombatController.CharacterCombatTemplate.Size + targetCharacter.CharacterCombatController.CharacterCombatTemplate.Size;
+            float combinedMeleeRange = _characterCombatController.CharacterCombatTemplate.Size + targetCharacter._characterCombatController.CharacterCombatTemplate.Size;
             if (distance <= combinedMeleeRange)
             {
                 return true;
@@ -291,9 +208,5 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
-        public void OnDisable()
-        {
-            UnsubscribeToCharacterActionTriggeredEvent();
-        }
     }
 }

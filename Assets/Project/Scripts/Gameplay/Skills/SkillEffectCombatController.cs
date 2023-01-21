@@ -19,7 +19,7 @@ namespace Chaos.Gameplay.Skills
         private bool _attackPerformed = false;
         private float _delay = 0f;
         private bool _selfSkill = false;
-
+   
         private void Update()
         {
             ProcessDelay();
@@ -69,6 +69,18 @@ namespace Chaos.Gameplay.Skills
             if(otherCombatController == _skillActivator && !_selfSkill)
             {
                 return;
+            }
+
+            if(_skillActivator.GetComponent<CharacterCombatController>().CharacterFaction == otherCombatController.CharacterFaction)
+            {
+                if (otherCombatController == _skillActivator && _selfSkill)
+                {
+
+                }
+                else
+                {
+                    return;
+                }
             }
 
             TriggerHitOnCharacter(otherCombatController);

@@ -1291,17 +1291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f499cf30959e91345885c9785f70a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rootCharacterTransform: {fileID: 7730208679661064675}
-  MovementActionTest: {fileID: 11400000, guid: c73d4d3eb5d64164cac0ec724fe8e1dc, type: 2}
-  StopMovementAction: {fileID: 0}
-  SpeedUpAction: {fileID: 11400000, guid: b315010c9811aa1489f1b4af88211817, type: 2}
-  CharacterStatesProfile: {fileID: 11400000, guid: fae16f6f6a3079c449cfe7b811e875e7,
+  <CharacterMovementTemplate>k__BackingField: {fileID: 11400000, guid: adde6c9f83335094ebcc54f6e1e0ae37,
     type: 2}
-  GameCombatController: {fileID: 0}
-  Layer:
-    serializedVersion: 2
-    m_Bits: 256
-  DefaultMeleeRangeTest: 5
 --- !u!195 &2350276917829032458
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1336,8 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3d8fc70e1fbdb429edc74a146f071e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  child: {fileID: 7730208679661064675}
-  AnimationTemplateTest: {fileID: 11400000, guid: 8f6127bac8e1ec24db54853ca365bd61,
+  CharacterAnimationTemplate: {fileID: 11400000, guid: 8f6127bac8e1ec24db54853ca365bd61,
     type: 2}
 --- !u!95 &919132148442708646
 Animator:
@@ -1490,6 +1480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TESTATTRIBUTE: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b, type: 2}
   <GameCombatProfile>k__BackingField: {fileID: 11400000, guid: bb53cf970bc23d142a56c7732295b67f,
+    type: 2}
+  <CharacterFaction>k__BackingField: {fileID: 11400000, guid: 67e4a63f373698b48b887556c41ee376,
     type: 2}
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460,

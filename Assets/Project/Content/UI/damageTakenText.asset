@@ -53,7 +53,7 @@ MonoBehaviour:
       m_RotationOrder: 0
   - PropertyToAnimate: 2
     DurationInSeconds: 5
-    CurveMultiplier: 1
+    CurveMultiplier: 0.5
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
