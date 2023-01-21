@@ -32,6 +32,7 @@ namespace Chaos.Gameplay.Skills
 
         [Space(20)]
         [Header("Combat")]
+        public bool IsSelfSkill = false;
         public List<SkillAction> SkillActions = new List<SkillAction>();
 
         

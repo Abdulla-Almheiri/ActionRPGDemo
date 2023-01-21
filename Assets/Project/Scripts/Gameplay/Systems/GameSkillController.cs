@@ -47,7 +47,7 @@ namespace Chaos.Gameplay.Systems
             }
 
             
-            skillCombatController.Initialize(skillTemplate, activator);
+            skillCombatController.Initialize(skillTemplate, activator, 0.5f, skillTemplate.IsSelfSkill);
             return skillCombatController;
         }
     }

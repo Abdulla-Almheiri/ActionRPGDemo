@@ -8,6 +8,7 @@ namespace Chaos.Gameplay.UI
     public class FloatingCombatTextProfile : ScriptableObject
     {
         public FloatingCombatTextTemplate Damage;
+        public FloatingCombatTextTemplate DamageTakenAsPlayer;
         public FloatingCombatTextTemplate CriticalDamage;
         public FloatingCombatTextTemplate Healing;
         public FloatingCombatTextTemplate CriticalHealing;

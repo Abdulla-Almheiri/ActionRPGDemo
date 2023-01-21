@@ -17,8 +17,8 @@ MonoBehaviour:
   SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   Description: Heals the caster for a moderate amount.
   SkillActivationData:
-    EnergyCost: 5
-    RechargeTime: 1
+    EnergyCost: 4
+    RechargeTime: 4
   CharacterActionTriggered: {fileID: 0}
   SkillTriggerData:
     TriggerChance: 100
@@ -27,6 +27,7 @@ MonoBehaviour:
     type: 3}
   SpawnLocationType: {fileID: 11400000, guid: f6434e0a998a6df4faa410b4cb82fbfb, type: 2}
   CharacterAnimation: {fileID: 11400000, guid: 8c7d29c48147c9d4da1ca95c16296622, type: 2}
+  IsSelfSkill: 1
   SkillActions:
   - TriggerData:
       TriggerChance: 100
@@ -34,7 +35,7 @@ MonoBehaviour:
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
     DamageScaled: 0
     DamageFlat: 0
-    HealingScaled: 10
+    HealingScaled: 40
     HealingFlat: 0
     DrainHealthFlat: 0
     DrainHealthPercentageOfDamage: 0

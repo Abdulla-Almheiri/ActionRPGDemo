@@ -35,8 +35,9 @@ namespace Chaos.Gameplay.Systems
             
         }
 
-        public void SpawnDamageTextAtScreenPositionTest(string text, Transform worldPoint)
+        public void SpawnDamageTextAtScreenPositionTest(string text, Transform worldPoint, FloatingCombatTextEventType combatEventType)
         {
+            //FIX HERE
             var objPool = _gamePoolController.RetrieveGameObjectPoolByTemplate(GameObjectPoolTemplate);
             var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
             if(spawn == null)
@@ -45,6 +46,23 @@ namespace Chaos.Gameplay.Systems
                 return;
             }
 
+            switch(combatEventType)
+            {
+                case FloatingCombatTextEventType.Damage:
+                    FloatingCombatTextTemplate = FloatingCombatTextProfile.Damage;
+                    break;
+                case FloatingCombatTextEventType.DamageTaken:
+                    FloatingCombatTextTemplate = FloatingCombatTextProfile.DamageTakenAsPlayer;
+                    break;
+                case FloatingCombatTextEventType.CriticalDamage:
+                    FloatingCombatTextTemplate = FloatingCombatTextProfile.CriticalDamage;
+                    break;
+                case FloatingCombatTextEventType.Healing:
+                    FloatingCombatTextTemplate = FloatingCombatTextProfile.Healing;
+                    break;
+                default:
+                    break;
+            }
 
             spawn.gameObject.SetActive(true);
             spawn.gameObject.GetComponent<FloatingCombatTextAnimationController>().Initialize(worldPoint, FloatingCombatTextTemplate);
@@ -65,6 +83,7 @@ namespace Chaos.Gameplay.Systems
     public enum FloatingCombatTextEventType
     {
         Damage,
+        DamageTaken,
         CriticalDamage,
         Healing,
         CriticalHealing,

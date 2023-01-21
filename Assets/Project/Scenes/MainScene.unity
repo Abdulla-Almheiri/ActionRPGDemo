@@ -1787,14 +1787,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1682498534, guid: be0095cc562786a498ed75ee1bd1579e, type: 3}
-      propertyPath: m_Height
-      value: 1.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682498534, guid: be0095cc562786a498ed75ee1bd1579e, type: 3}
-      propertyPath: m_Center.y
-      value: 0.84
-      objectReference: {fileID: 0}
     - target: {fileID: 1347905474224235880, guid: be0095cc562786a498ed75ee1bd1579e,
         type: 3}
       propertyPath: GameMaterialController
@@ -1973,11 +1965,6 @@ PrefabInstance:
       propertyPath: PlayerTest
       value: 
       objectReference: {fileID: 89098736}
-    - target: {fileID: 4514178778106989565, guid: 9f6d8a0f42d251244b0e75afddde237b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.85
-      objectReference: {fileID: 0}
     - target: {fileID: 6617214734728157151, guid: 9f6d8a0f42d251244b0e75afddde237b,
         type: 3}
       propertyPath: GameUIController
@@ -2076,6 +2063,12 @@ PrefabInstance:
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 373064777}
+    - target: {fileID: 6766537512342992500, guid: d4ba3fddb907f4f4fb9353b0f3ce25cf,
+        type: 3}
+      propertyPath: FloatingCombatTextProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 97b2c7e16ee9af3409436681db9968f6,
+        type: 2}
     - target: {fileID: 6766537512342992501, guid: d4ba3fddb907f4f4fb9353b0f3ce25cf,
         type: 3}
       propertyPath: DynamicCanvasTest

@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillCombatData : MonoBehaviour
+namespace Chaos.Gameplay.Skills
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SkillCombatData
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

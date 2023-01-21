@@ -34454,6 +34454,7 @@ GameObject:
   - component: {fileID: 4214322919442352092}
   - component: {fileID: 5842419231245097299}
   - component: {fileID: 6616575208816541193}
+  - component: {fileID: 4984256485920915894}
   m_Layer: 0
   m_Name: Heal2
   m_TagString: Untagged
@@ -34504,8 +34505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bf4104034ddca4ba9561a4a2424ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementTest: {fileID: 0}
-  GameUIControllerTest: {fileID: 0}
 --- !u!114 &6616575208816541193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34519,6 +34518,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Delay>k__BackingField: 4
+--- !u!135 &4984256485920915894
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214322919442352091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.43
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4900012396337540880
 GameObject:
   m_ObjectHideFlags: 0

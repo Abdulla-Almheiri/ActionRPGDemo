@@ -17,9 +17,15 @@ namespace Chaos.Gameplay.Skills
 
         private bool _hitBoxActive = false;
         private bool _attackPerformed = false;
+        private float _delay = 0f;
+        private bool _selfSkill = false;
+
+        private void Update()
+        {
+            ProcessDelay();
+        }
         private void TriggerHitOnCharacter(CharacterCombatController character)
         {
-
 
             if (character == null)
             {
@@ -53,32 +59,43 @@ namespace Chaos.Gameplay.Skills
         }
         private void OnTriggerStay(Collider other)
         {
-            if(_hitBoxActive == false || _attackPerformed == true)
+            if(_hitBoxActive == false)
             {
                 return;
             }
 
+            
             var otherCombatController = other.gameObject.GetComponent<CharacterCombatController>();
-            if(otherCombatController == _skillActivator)
+            if(otherCombatController == _skillActivator && !_selfSkill)
             {
                 return;
             }
 
             TriggerHitOnCharacter(otherCombatController);
-            _attackPerformed = true;
         }
 
-        public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator)
+        public void Initialize(SkillTemplate skillTemplate, CharacterCombatController activator, float delay, bool isSelfSkill)
         {
             SkillTemplate = skillTemplate;
            _skillActions = skillTemplate.SkillActions;
             _skillActivator = activator;
+            _delay = delay;
+            _selfSkill = isSelfSkill;
         }
 
         public void ActivateHitBox()
         {
             _hitBoxActive = true;
-            Debug.Log("HITBOX activated....");
+        }
+
+
+        private void ProcessDelay()
+        {
+            _delay -= Time.deltaTime;
+            if(_delay <= 0f)
+            {
+                ActivateHitBox();
+            }
         }
 
     }

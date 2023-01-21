@@ -43,25 +43,23 @@ namespace Chaos.Gameplay.Characters
 
         void Update()
         {
-            if(_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance/2f)
-            {
-                _navMeshAgent.updateRotation = false;
-                //_characterAnimationController.Animator.CrossFadeInFixedTime("Idle", 0.2f);
-            }
+            ProcessNavMeshRotation();
+
             _characterAnimationController.Animator.SetFloat("Velocity", _navMeshAgent.velocity.magnitude/_navMeshAgent.speed);
         }
 
-      /*  public void OnAnimatorMove()
+        private void ProcessNavMeshRotation()
         {
-            if(_navMeshAgent.SetDestination(_characterAnimationController.Animator.deltaPosition))
+            if(_navMeshAgent.enabled == false)
             {
-                transform.position = _characterAnimationController.Animator.rootPosition;
-                _rootCharacterTransform.position -= _characterAnimationController.Animator.deltaPosition;
-            } else
-            {
-                
+                return;
             }
-        }*/
+
+            if (_navMeshAgent.remainingDistance < _navMeshAgent.stoppingDistance / 2f)
+            {
+                _navMeshAgent.updateRotation = false;
+            }
+        }
 
         public override bool Initialize(Game game)
         {
@@ -88,6 +86,25 @@ namespace Chaos.Gameplay.Characters
             return returnValue;
         }
 
+        public void DisableNavMeshComponent()
+        {
+            if(_navMeshAgent == null)
+            {
+                return;
+            }
+
+            _navMeshAgent.enabled = false;
+        }
+
+        public void EnableNavMeshComponent()
+        {
+            if (_navMeshAgent == null)
+            {
+                return;
+            }
+
+            _navMeshAgent.enabled = true;
+        }
         public bool MoveToWorldPoint(Vector3 targetPoint)
         {
             if (_characterCombatController.Alive == false)
@@ -184,7 +201,7 @@ namespace Chaos.Gameplay.Characters
 
         public void StopMovement()
         {
-            if(_navMeshAgent == null)
+            if(_navMeshAgent == null || _navMeshAgent.enabled == false)
             {
                 return;
             }
@@ -205,6 +222,11 @@ namespace Chaos.Gameplay.Characters
 
         public void RotateCharacterXZTowardsPoint(Vector3 point)
         {
+            if(_navMeshAgent.enabled == false)
+            {
+                return;
+            }
+
             //Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
              Ray ray = UnityEngine.Camera.main.ViewportPointToRay(point);
              RaycastHit rayHit;
@@ -221,6 +243,11 @@ namespace Chaos.Gameplay.Characters
 
         public void FaceDirectionOfCharacter(CharacterMovementController character)
         {
+            if(_navMeshAgent == null || _navMeshAgent.enabled == false)
+            {
+                return;
+            }
+
             var direction = character.transform.position;
             direction.y = 0;
             transform.LookAt(direction);

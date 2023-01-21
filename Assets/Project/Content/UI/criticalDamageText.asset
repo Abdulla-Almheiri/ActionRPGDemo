@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ac3ffa88ac08a4595d110983071214, type: 3}
-  m_Name: defaultDamageText
+  m_Name: criticalDamageText
   m_EditorClassIdentifier: 
-  Color: {r: 1, g: 1, b: 1, a: 1}
+  Color: {r: 0.9056604, g: 0.8953689, b: 0.48273405, a: 1}
   StartingPositionVariationAmount: {x: 0, y: 0}
   PropertiesToAnimate:
   - PropertyToAnimate: 1
     DurationInSeconds: 5
-    CurveMultiplier: 200
+    CurveMultiplier: 250
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
@@ -25,29 +25,20 @@ MonoBehaviour:
         time: 0.0027503967
         value: 0.40518188
         inSlope: 0.7619714
-        outSlope: 0.13545841
+        outSlope: 1.6417881
         tangentMode: 65
         weightedMode: 0
         inWeight: 0
         outWeight: 0.038842678
       - serializedVersion: 3
-        time: 0.2708156
-        value: 0.44149357
-        inSlope: 0.13545841
+        time: 0.18191122
+        value: 0.699326
+        inSlope: 1.6417881
         outSlope: 0.33832705
         tangentMode: 5
         weightedMode: 2
         inWeight: 0.054833286
         outWeight: 0.15847647
-      - serializedVersion: 3
-        time: 0.89559937
-        value: 0.543972
-        inSlope: 0.16402227
-        outSlope: 0
-        tangentMode: 5
-        weightedMode: 0
-        inWeight: 0.21094659
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 0
@@ -58,8 +49,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.4817772
+        time: 0.050685883
+        value: 0.9867363
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -67,13 +58,13 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
-        value: 0.68491006
-        inSlope: 0.29294246
+        time: 0.19157362
+        value: 0.75156045
+        inSlope: -0.37553743
         outSlope: 0
         tangentMode: 1
         weightedMode: 0
-        inWeight: 0.23494501
+        inWeight: 0.3732779
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

@@ -14877,8 +14877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bf4104034ddca4ba9561a4a2424ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementTest: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
-  GameUIControllerTest: {fileID: 0}
 --- !u!114 &3755279548314645450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14891,7 +14889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95aa82fb80f8d624f96e1c33fe8c1deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 3
+  <Delay>k__BackingField: 1
 --- !u!1 &6820445246776034365
 GameObject:
   m_ObjectHideFlags: 0

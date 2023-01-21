@@ -121,8 +121,8 @@ namespace Chaos.Gameplay.Characters
                 return null;
             }
 
-
-            skillCombatController.Initialize(skillTemplate, activator);
+            //FIX HERE
+            skillCombatController.Initialize(skillTemplate, activator, 0.3f, skillTemplate.IsSelfSkill);
             return skillCombatController;
         }
 
