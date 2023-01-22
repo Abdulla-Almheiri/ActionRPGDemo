@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Chaos.Gameplay.Skills;
 
 namespace Chaos.Gameplay.Characters
 {
@@ -9,6 +10,6 @@ namespace Chaos.Gameplay.Characters
     {
         public bool ChasePlayer = true;
         public bool AttackPlayer = true;
-
+        public bool AttackFromRange = true;
     }
 }

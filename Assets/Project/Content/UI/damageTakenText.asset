@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ac3ffa88ac08a4595d110983071214, type: 3}
   m_Name: damageTakenText
   m_EditorClassIdentifier: 
-  Color: {r: 0.8962264, g: 0.2240566, b: 0.2240566, a: 1}
+  Color: {r: 0.8980392, g: 0.27166164, b: 0.2235294, a: 1}
   StartingPositionVariationAmount: {x: 0, y: 0}
   PropertiesToAnimate:
   - PropertyToAnimate: 1

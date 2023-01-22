@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1cd6c26cb60e5498761ac18adc8b23, type: 3}
+  m_Name: WraithSkillTemplate
+  m_EditorClassIdentifier: 
+  PrimaryAISkill: {fileID: 11400000, guid: cd51d7bd0fddf8c4d95d0423505c1103, type: 2}
+  Skills:
+  - {fileID: 11400000, guid: 95d3c02260b40cc46a1b633a2d03ec3a, type: 2}
+  - {fileID: 11400000, guid: cd51d7bd0fddf8c4d95d0423505c1103, type: 2}

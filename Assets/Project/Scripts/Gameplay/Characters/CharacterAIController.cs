@@ -48,8 +48,35 @@ namespace Chaos.Gameplay.Characters
             }
 
             ProcessChaseBehaviour();
-
+            ProcessRangedAttackBehaviour();
         }
+
+        private void ProcessRangedAttackBehaviour()
+        {
+            if (_playerCombatController.Alive == false)
+            {
+                return;
+            }
+
+            if (IsAIDecisionRecharging() == true)
+            {
+                return;
+            }
+
+            if (_characterAITemplate.AttackFromRange == true)
+            {
+                if (_characterMovementController.IsCharacterWithinMeleeRange(_playerMovementController) == false)
+                {
+                    if (ActivateSecondaryAttack())
+                    {
+                        _characterMovementController.FaceDirectionOfCharacter(_playerMovementController);
+                        _characterMovementController.StopMovement();
+                        TriggerAIDecisionRecharge();
+                    }
+                }
+            }
+        }
+
 
         private void ProcessChaseBehaviour()
         {
@@ -87,9 +114,13 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
-        private void ActivatePrimaryAttack()
+        private bool ActivatePrimaryAttack()
         {
-            _characterSkillController.ActivateSkill(0);
+            return _characterSkillController.ActivateSkill(0);
+        }
+        private bool ActivateSecondaryAttack()
+        {
+            return _characterSkillController.ActivateSkill(1);
         }
 
         private void ProcessAIDecisionRecharge()

@@ -25,13 +25,13 @@ namespace Chaos.Gameplay.UI
 
         public void SetHealthPercentage(float value)
         {
-            _image.rectTransform.sizeDelta = new Vector2(value, _originalHeight);
+            _image.rectTransform.sizeDelta = new Vector2(value/2, _originalHeight);
         }
 
         private void ProcessScreenPosition()
         {
             var newPoint = _cachedCamera.WorldToScreenPoint(_initialWorldPoint.position);
-            newPoint.x -= 50f;
+            newPoint.x -= 25f;
             _image.rectTransform.SetPositionAndRotation(newPoint, Quaternion.identity);
         }
         public void Initialize(Transform location)

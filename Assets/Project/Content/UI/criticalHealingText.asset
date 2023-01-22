@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ac3ffa88ac08a4595d110983071214, type: 3}
+  m_Name: criticalHealingText
+  m_EditorClassIdentifier: 
+  Color: {r: 0.37786525, g: 0.8207547, b: 0.31359026, a: 1}
+  StartingPositionVariationAmount: {x: 0, y: 0}
+  PropertiesToAnimate:
+  - PropertyToAnimate: 1
+    DurationInSeconds: 5
+    CurveMultiplier: 150
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.0027503967
+        value: 0.40518188
+        inSlope: 0.7619714
+        outSlope: 0.34293398
+        tangentMode: 65
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.038842678
+      - serializedVersion: 3
+        time: 0.20260882
+        value: 0.47372013
+        inSlope: 0.34293398
+        outSlope: 0.33832705
+        tangentMode: 5
+        weightedMode: 2
+        inWeight: 0.054833286
+        outWeight: 0.15847647
+      - serializedVersion: 3
+        time: 0.89559937
+        value: 0.543972
+        inSlope: 0.101374954
+        outSlope: 0
+        tangentMode: 5
+        weightedMode: 0
+        inWeight: 0.21094659
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+  - PropertyToAnimate: 2
+    DurationInSeconds: 5
+    CurveMultiplier: 0.75
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.73120457
+        inSlope: 0.043867987
+        outSlope: 0.043867987
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.07469155
+      - serializedVersion: 3
+        time: 0.32317245
+        value: 0.9298357
+        inSlope: 0.03780398
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.12049529
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+  - PropertyToAnimate: 3
+    DurationInSeconds: 5
+    CurveMultiplier: 1
+    AnimationCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6785047
+        value: 0.70884734
+        inSlope: -0.8309343
+        outSlope: -0.8309343
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.5255585
+        outWeight: 0.24264388
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0

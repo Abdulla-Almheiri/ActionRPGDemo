@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ac3ffa88ac08a4595d110983071214, type: 3}
   m_Name: criticalDamageText
   m_EditorClassIdentifier: 
-  Color: {r: 0.9056604, g: 0.8953689, b: 0.48273405, a: 1}
+  Color: {r: 0.8962264, g: 0.62910795, b: 0.28324133, a: 1}
   StartingPositionVariationAmount: {x: 0, y: 0}
   PropertiesToAnimate:
   - PropertyToAnimate: 1

@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c630bd50086a04fb8c535072b862ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkillTemplateModifierTest: {fileID: 0}
   TESTATTRIBUTE: {fileID: 0}
   <GameCombatProfile>k__BackingField: {fileID: 11400000, guid: bb53cf970bc23d142a56c7732295b67f,
     type: 2}
@@ -655,7 +656,7 @@ MonoBehaviour:
     type: 2}
   GameUIController: {fileID: 0}
   TestIntellectAttribute: {fileID: 0}
-  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: 211877ea1fc3fea43bcc30be8479d5bc,
+  <CharacterCombatTemplate>k__BackingField: {fileID: 11400000, guid: 5d01d81ff2c8f6249ac7e18d847f6f4e,
     type: 2}
 --- !u!114 &2286315884014677760
 MonoBehaviour:

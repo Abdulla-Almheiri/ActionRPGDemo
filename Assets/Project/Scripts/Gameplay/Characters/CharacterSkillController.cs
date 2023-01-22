@@ -135,26 +135,26 @@ namespace Chaos.Gameplay.Characters
 
             if(CharacterSkillTemplate == null)
             {
-                Debug.Log("Template is null.");
+                //Debug.Log("Template is null.");
                 return false;
             }
 
             if(index >= CharacterSkillTemplate.Skills.Count)
             {
-                Debug.Log("Skill index out of range.");
+               // Debug.Log("Skill index out of range.");
                 return false;
             }
 
             if(IsSkillRecharging(index) == true)
             {
-                Debug.Log("Skill is recharging.");
+                //Debug.Log("Skill is recharging.");
                 return false;
             }
 
             TriggerSkillRecharge(index);
             SpawnSkillVFXTest(CharacterSkillTemplate.Skills[index]);
             _characterAnimationController.TriggerAnimation(CharacterSkillTemplate.Skills[index].CharacterAnimation);
-            Debug.Log("Skill activated:  " + _skills[index].name);
+            //Debug.Log("Skill activated:  " + _skills[index].name);
             return true;
         }
         

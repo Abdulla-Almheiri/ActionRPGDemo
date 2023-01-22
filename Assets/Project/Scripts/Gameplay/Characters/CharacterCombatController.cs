@@ -11,6 +11,7 @@ namespace Chaos.Gameplay.Characters
 
     public class CharacterCombatController : MonoBehaviour
     {
+        public SkillTemplate SkillTemplateModifierTest;
         public bool IsPlayer { private set; get; } = false;
         public CharacterAttribute TESTATTRIBUTE;
         [field:SerializeField]
@@ -27,8 +28,12 @@ namespace Chaos.Gameplay.Characters
         private float _maxEnergy = 40f;
         private float _currentEnergy = 40f;
         private float _energyRegenPerSecond = 5f;
-        private float _criticalDamageChance = 50f;
-        private float _criticalHealChance = 5f;
+        private float _criticalDamageChance = 10f;
+
+        private float _criticalDamageMultiplier = 2f;
+        private float _criticalHealChance = 50f;
+        private float _criticalHealMultiplier = 2f;
+
 
         private CharacterMovementController _characterMovementController;
         private CharacterMaterialController _characterMaterialController;
@@ -39,7 +44,7 @@ namespace Chaos.Gameplay.Characters
 
         private Dictionary<CharacterAttribute, CharacterAttributeData> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeData>();
         public Dictionary<CharacterAttribute, float> CoreCharacterAttributes { private set; get; } = new Dictionary<CharacterAttribute, float>();
-
+        public Dictionary<SkillTemplate, SkillPowerModifier> SkillPowerModifiers { private set; get; } = new Dictionary<SkillTemplate, SkillPowerModifier>();
         public bool Alive { set; get; } = true;
         private CharacterStateTemplate _characterState;
 
@@ -54,6 +59,19 @@ namespace Chaos.Gameplay.Characters
             }
 
             Initialize();
+
+            //TEST CODE. Remove later
+            if(SkillTemplateModifierTest != null)
+            {
+                SkillPowerModifier skillModifier = new SkillPowerModifier();
+                skillModifier.DamageIncrease = 30f;
+                skillModifier.AdditionalDamageCriticalChance = 50f;
+                skillModifier.AdditionalDamageCriticalAmount = 50f;
+
+                AddSkillPowerModifier(SkillTemplateModifierTest, skillModifier);
+                Debug.Log("Skillmodifiers.Count ==   " + SkillPowerModifiers.Count);
+            }
+
         }
 
         
@@ -93,6 +111,18 @@ namespace Chaos.Gameplay.Characters
             _currentHealth = _maxHealth;
             _currentEnergy = _maxEnergy;
         }
+
+        public void AddSkillPowerModifier(SkillTemplate skill, SkillPowerModifier skillPowerModifier)
+        {
+            if(SkillPowerModifiers.TryAdd(skill, skillPowerModifier) == false)
+            {
+                SkillPowerModifiers[skill] = SkillPowerModifiers[skill] + skillPowerModifier;
+            } else
+            {
+                SkillPowerModifiers[skill] = skillPowerModifier;
+            }
+        }
+
         public float GetAttributeValue(CharacterAttribute characterAttribute)
         {
             if(characterAttribute == null)
@@ -109,32 +139,43 @@ namespace Chaos.Gameplay.Characters
             return 0f;
         }
 
+        //Ugly method. FIX!!!!
         public void TriggerHitBySkillAction(CharacterCombatController activator, SkillTemplate skill, SkillAction skillAction, List<SkillModifier> modifiers = null)
         {
             if (Alive == false)
             {
                 return;
             }
-
+            bool hasSkillModifier = activator.SkillPowerModifiers.TryGetValue(skill, out SkillPowerModifier skillModifier);
 
             bool hasAttribute = activator.CoreCharacterAttributes.TryGetValue(skillAction.ScalingAttribute, out float attributeValue);
             float energyReturn = 0f;
-            Debug.Log("Has attribute  :   " + hasAttribute);
+
             if(hasAttribute && attributeValue != 0f)
             {
                 if (skillAction.DamageScaled != 0 && activator != this)
                 {
                     var damage = (skillAction.DamageScaled / 100f) * attributeValue;
-                    if(Random.Range(0f, 100f) < _criticalDamageChance)
+                    var criticalChance = _criticalDamageChance;
+                    var criticalMultiplier = _criticalDamageMultiplier;
+
+                    if (hasSkillModifier)
                     {
-                        damage *= 2f;
+                        damage += (damage * skillModifier.DamageIncrease/100f);
+                        criticalChance += skillModifier.AdditionalDamageCriticalChance;
+                        criticalMultiplier += (skillModifier.AdditionalDamageCriticalAmount / 100f);
+                    }
+                    if(Random.Range(0f, 100f) < criticalChance)
+                    {
+
+                        damage *= criticalMultiplier;
                         TakeDamage(damage, true);
                     } else
                     {
                         TakeDamage(damage, false);
                     }
                     
-
+                    //FIX HERE. Apply skillmodifier to healing.
                     if(skillAction.DrainHealthPercentageOfDamage != 0)
                     {
                         var drain = (skillAction.DrainHealthPercentageOfDamage / 100f) * damage;
@@ -155,7 +196,7 @@ namespace Chaos.Gameplay.Characters
 
                     if (Random.Range(0f, 100f) < _criticalHealChance)
                     {
-                        healing *= 2f;
+                        healing *= _criticalHealMultiplier;
                         TakeHealing(healing, true);
                     }
                     else

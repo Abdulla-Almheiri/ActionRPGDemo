@@ -1478,6 +1478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c630bd50086a04fb8c535072b862ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SkillTemplateModifierTest: {fileID: 11400000, guid: dfb5fa548dbcccf479c595cfa088df9d,
+    type: 2}
   TESTATTRIBUTE: {fileID: 11400000, guid: 8090138b1ee1aea49a355f9f68eb240b, type: 2}
   <GameCombatProfile>k__BackingField: {fileID: 11400000, guid: bb53cf970bc23d142a56c7732295b67f,
     type: 2}
