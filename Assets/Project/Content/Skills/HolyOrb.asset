@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7233128efa0ac440bc2a92529b976b7, type: 3}
-  m_Name: HeavensFury
+  m_Name: HolyOrb
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
   Name: 
@@ -28,16 +28,16 @@ MonoBehaviour:
     type: 3}
   SpawnLocationType: {fileID: 11400000, guid: ee43a4c395630b340a822cdd8232723e, type: 2}
   CharacterAnimation: {fileID: 11400000, guid: 8c7d29c48147c9d4da1ca95c16296622, type: 2}
-  IsSelfSkill: 0
+  IsSelfSkill: 1
   SkillActions:
   - TriggerData:
       TriggerChance: 100
       SkillTrigger: {fileID: 0}
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
-    DamageScaled: 50
+    DamageScaled: 40
     DamageFlat: 0
-    HealingScaled: 0
-    HealingFlat: 10
+    HealingScaled: 40
+    HealingFlat: 0
     DrainHealthFlat: 0
     DrainHealthPercentageOfDamage: 0
     EnergyReturnFlat: 0
