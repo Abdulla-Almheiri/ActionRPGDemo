@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db45ce6e000391b48aa82f86fde47034, type: 3}
   m_Name: WraithAITemplate
   m_EditorClassIdentifier: 
+  PlayerDetectionRange: 7
   ChasePlayer: 1
   AttackPlayer: 1
   AttackFromRange: 1

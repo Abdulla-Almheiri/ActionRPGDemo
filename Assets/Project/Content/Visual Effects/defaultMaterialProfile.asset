@@ -85,7 +85,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   MaterialHighlightColorsTriggeredbyElements:
   - Element: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
-    MaterialHighlightColor: {r: 0.83478254, g: 0.8396226, b: 0.44753468, a: 0}
+    MaterialHighlightColor: {r: 0.8584906, g: 0.84565026, b: 0.36040404, a: 0}
     Duration: 1
     HighlightPowerCurve:
       serializedVersion: 2

@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 2}
   CriticalDamage: {fileID: 11400000, guid: 1ad0f183b7397eb49a73d587103edd26, type: 2}
   Healing: {fileID: 11400000, guid: 0bf3e9c53dfcb2c41ae858b97186a265, type: 2}
-  CriticalHealing: {fileID: 0}
+  CriticalHealing: {fileID: 11400000, guid: 005038cc4fe884b4282fdf352529a229, type: 2}
   CharacterStatusChange: {fileID: 0}
   HealingRegeneration: {fileID: 0}
   EnergyRegeneration: {fileID: 0}

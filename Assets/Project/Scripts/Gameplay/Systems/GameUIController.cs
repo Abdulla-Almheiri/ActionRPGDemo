@@ -60,6 +60,9 @@ namespace Chaos.Gameplay.Systems
                 case FloatingCombatTextEventType.Healing:
                     FloatingCombatTextTemplate = FloatingCombatTextProfile.Healing;
                     break;
+                case FloatingCombatTextEventType.CriticalHealing:
+                    FloatingCombatTextTemplate = FloatingCombatTextProfile.CriticalHealing;
+                    break;
                 default:
                     break;
             }

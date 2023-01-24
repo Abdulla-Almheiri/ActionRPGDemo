@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ac3ffa88ac08a4595d110983071214, type: 3}
   m_Name: damageTakenText
   m_EditorClassIdentifier: 
-  Color: {r: 0.8980392, g: 0.27166164, b: 0.2235294, a: 1}
+  Color: {r: 0.8679245, g: 0.20260222, b: 0.1514774, a: 1}
   StartingPositionVariationAmount: {x: 0, y: 0}
   PropertiesToAnimate:
   - PropertyToAnimate: 1
@@ -53,7 +53,7 @@ MonoBehaviour:
       m_RotationOrder: 0
   - PropertyToAnimate: 2
     DurationInSeconds: 5
-    CurveMultiplier: 0.5
+    CurveMultiplier: 0.8
     AnimationCurve:
       serializedVersion: 2
       m_Curve:
@@ -94,8 +94,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.6785047
-        value: 0.70884734
+        time: 0.9104383
+        value: 0.8172
         inSlope: -0.8309343
         outSlope: -0.8309343
         tangentMode: 0

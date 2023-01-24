@@ -15,18 +15,41 @@ namespace Chaos.Gameplay.Characters
         private CharacterSkillController _characterSkillController;
         private float _decisionRecharge = 1f;
         private float _decisionRechargeCounter = 0f;
+        private float _baseAlertnessLevel = 1f;
+        private float _alertnessLevel = 1f;
+        private float _alertnessLevelCounter = 0f;
 
-        // Start is called before the first frame update
         void Start()
         {
             Initialize();
         }
 
-        // Update is called once per frame
         void Update()
         {
+            ProcessAlertnessCounter();
             ProcessCharacterAI();
             ProcessAIDecisionRecharge();
+        }
+
+        private void ResetAlertness()
+        {
+            _alertnessLevel = _baseAlertnessLevel;
+        }
+
+        public void SetAlertnessLevel(float value, float duration)
+        {
+            _alertnessLevel = Mathf.Max(0f, value);
+            _alertnessLevelCounter = Mathf.Max(0f, duration);
+        }
+
+        private void ProcessAlertnessCounter()
+        {
+            if(_alertnessLevelCounter > 0f)
+            {
+                _alertnessLevelCounter -= Time.deltaTime;
+            } else {
+                ResetAlertness();
+            }
         }
 
         public void Initialize()
@@ -44,6 +67,12 @@ namespace Chaos.Gameplay.Characters
         {
             if(_characterAITemplate == null)
             {
+                return;
+            }
+
+            if(_characterMovementController.GetUnsignedDistanceBetweenCharacters(_playerMovementController) >= _characterAITemplate.PlayerDetectionRange*_alertnessLevel)
+            {
+                TriggerAIDecisionRecharge();
                 return;
             }
 

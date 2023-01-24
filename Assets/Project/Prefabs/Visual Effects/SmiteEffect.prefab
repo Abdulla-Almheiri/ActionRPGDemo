@@ -14891,8 +14891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bf4104034ddca4ba9561a4a2424ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementTest: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
-  GameUIControllerTest: {fileID: 0}
 --- !u!114 &-8611221011227952610
 MonoBehaviour:
   m_ObjectHideFlags: 0

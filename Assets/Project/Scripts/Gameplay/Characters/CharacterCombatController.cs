@@ -40,6 +40,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterAnimationController _characterAnimationController;
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
+        private CharacterAIController _characterAIController;
         private Rigidbody _characterRigidBody;
 
         private Dictionary<CharacterAttribute, CharacterAttributeData> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeData>();
@@ -97,6 +98,8 @@ namespace Chaos.Gameplay.Characters
             _characterMaterialController = GetComponent<CharacterMaterialController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterStateController = GetComponent<CharacterStateController>();
+            _characterAIController = GetComponent<CharacterAIController>(); 
+
             _characterRigidBody = GetComponentInChildren<Rigidbody>();
 
             if(GetComponent<PlayerController>() !=  null)
@@ -243,6 +246,8 @@ namespace Chaos.Gameplay.Characters
             }
 
             _currentHealth -= value;
+            //Fix here. Magic number!
+            SetAIAlertnessLevel(5f, 3f);
             ClampHealth();
             _characterUIController?.UpdateHealth();
             FloatingCombatTextEventType combatEventType = FloatingCombatTextEventType.Damage;
@@ -263,6 +268,16 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
+        private void SetAIAlertnessLevel(float amount, float duration)
+        {
+            if(_characterAIController == null)
+            {
+                return;
+            }
+
+            _characterAIController.SetAlertnessLevel(amount, duration);
+
+        }
         private void TakeHealing(float value, bool isCritical)
         {
             if (Alive == false)
