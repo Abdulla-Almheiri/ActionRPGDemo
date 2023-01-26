@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Chaos.Systems;
 using Chaos.Gameplay.Systems;
+using UnityEngine.EventSystems;
 
 namespace Chaos.Gameplay.Characters
 {
@@ -103,6 +104,12 @@ namespace Chaos.Gameplay.Characters
         {
             if(_characterCombatController.Alive == false)
             {
+                return;
+            }
+
+            if(EventSystem.current.IsPointerOverGameObject() == true)
+            {
+                Debug.Log("Pointer over gameobject : " + EventSystem.current.name );
                 return;
             }
 

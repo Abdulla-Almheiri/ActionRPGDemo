@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7233128efa0ac440bc2a92529b976b7, type: 3}
   m_Name: HolyOrb
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Name: 
+  Icon: {fileID: 21300000, guid: 4637953d65a24364aab3372a525b9ed2, type: 3}
+  Name: Holy Orb
   SkillElement: {fileID: 0}
-  Description: A beam of light travels forward dealing heavy Holy damage to all enemies
-    in its path.
+  Description: 'A an orb of pure light travels forward dealing minor Holy damage
+    to all enemies in its path.
+
+    Heals the caster for a small amount.'
   SkillActivationData:
     EnergyCost: 10
     RechargeTime: 5
@@ -34,9 +36,9 @@ MonoBehaviour:
       TriggerChance: 100
       SkillTrigger: {fileID: 0}
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
-    DamageScaled: 40
+    DamageScaled: 20
     DamageFlat: 0
-    HealingScaled: 40
+    HealingScaled: 10
     HealingFlat: 0
     DrainHealthFlat: 0
     DrainHealthPercentageOfDamage: 0

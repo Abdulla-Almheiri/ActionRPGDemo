@@ -25,11 +25,11 @@ namespace Chaos.Gameplay.Characters
         private CharacterCombatController _characterCombatController;
         private PlayerController _playerController;
         private CharacterInputController _characterInputController;
-        private List<SkillTemplate> _skills;
+        public List<SkillTemplate> Skills { private set; get; }
         private List<SkillEffectCombatController> _preloadedSkillPrefabs = new List<SkillEffectCombatController>();
         public SkillEffectCombatController CurrentActiveSkillEffect { private set; get; }
         private float[] _rechargeDurations;
-        void Start()
+        void Awake()
         {
             Initialize();
         }
@@ -50,7 +50,7 @@ namespace Chaos.Gameplay.Characters
             _playerController = GetComponent<PlayerController>();
 
             _rechargeDurations = new float[7];
-            _skills = CharacterSkillTemplate.Skills;
+            Skills = CharacterSkillTemplate.Skills;
             PreloadSkillPrefabs();
 
             for (int i =0; i<_rechargeDurations.Length; i++)
@@ -62,7 +62,7 @@ namespace Chaos.Gameplay.Characters
 
         private void PreloadSkillPrefabs()
         {
-            foreach (SkillTemplate skill in _skills)
+            foreach (SkillTemplate skill in Skills)
             {
                 var instance = Instantiate(skill.SkillPrefab, gameObject.transform);
                 if (instance != null)
@@ -151,6 +151,12 @@ namespace Chaos.Gameplay.Characters
                 return false;
             }
 
+            if(_characterCombatController.IsEnergyEnoughForSkill(Skills[index]) == false)
+            {
+                return false;
+            }
+
+            _characterCombatController.ConsumeEnergyFromSkill(Skills[index]);
             TriggerSkillRecharge(index);
             SpawnSkillVFXTest(CharacterSkillTemplate.Skills[index]);
             _characterAnimationController.TriggerAnimation(CharacterSkillTemplate.Skills[index].CharacterAnimation);
@@ -160,12 +166,12 @@ namespace Chaos.Gameplay.Characters
         
         private void TriggerSkillRecharge(int index)
         {
-            if(index >= _skills.Count)
+            if(index >= Skills.Count)
             {
                 return;
             }
 
-            _rechargeDurations[index] = _skills[index].SkillActivationData.RechargeTime;
+            _rechargeDurations[index] = Skills[index].SkillActivationData.RechargeTime;
         }
         public bool IsSkillRecharging(int index)
         {
@@ -179,7 +185,7 @@ namespace Chaos.Gameplay.Characters
 
         public float GetRemainingSkillRechargeTime(int index)
         {
-            if (index >= _skills.Count)
+            if (index >= Skills.Count)
             {
                 return -1f;
             }
@@ -195,13 +201,13 @@ namespace Chaos.Gameplay.Characters
 
         public bool IsSkillRecharging(SkillTemplate skill)
         {
-            var index = _skills.FindIndex(x => x == skill);
+            var index = Skills.FindIndex(x => x == skill);
             return IsSkillRecharging(index);
         }
 
         private void ProcessSkillsRecharge()
         {
-            for (int i = 0; i < _skills.Count; i++)
+            for (int i = 0; i < Skills.Count; i++)
             {
                 if (_rechargeDurations[i] > 0f)
                 {

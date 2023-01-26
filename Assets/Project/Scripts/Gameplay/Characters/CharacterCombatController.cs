@@ -25,13 +25,13 @@ namespace Chaos.Gameplay.Characters
         public CharacterCombatTemplate CharacterCombatTemplate { private set; get; }
         private float _maxHealth = 100f;
         private float _currentHealth = 100f;
-        private float _maxEnergy = 40f;
-        private float _currentEnergy = 40f;
-        private float _energyRegenPerSecond = 5f;
+        private float _maxEnergy = 30f;
+        private float _currentEnergy = 30f;
+        private float _energyRegenPerSecond = 2f;
         private float _criticalDamageChance = 10f;
 
         private float _criticalDamageMultiplier = 2f;
-        private float _criticalHealChance = 50f;
+        private float _criticalHealChance = 10f;
         private float _criticalHealMultiplier = 2f;
 
 
@@ -88,8 +88,30 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
-            _currentEnergy += (_energyRegenPerSecond / Time.deltaTime);
+            _currentEnergy += (_energyRegenPerSecond * Time.deltaTime);
             ClampEnergy();
+        }
+
+        public bool IsEnergyEnoughForSkill(SkillTemplate skill)
+        {
+            if(_currentEnergy < skill.SkillActivationData.EnergyCost)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
+        public void ConsumeEnergyFromSkill(SkillTemplate skill)
+        {
+            if(IsEnergyEnoughForSkill(skill) == false)
+            {
+                return;
+            }
+
+            _currentEnergy -= skill.SkillActivationData.EnergyCost;
+
         }
         public void Initialize()
         {
@@ -429,6 +451,11 @@ namespace Chaos.Gameplay.Characters
             return _currentHealth / _maxHealth * 100f;
         }
 
+        public float GetEnergyPercentage()
+        {
+            return _currentEnergy/ _maxEnergy * 100f;
+        }
+
         private void SubscribeToCharacterStateChangedEvent()
         {
             _characterStateController?.SubscribeToCharacterStateChanged(OnCharacterStateChanged);
@@ -482,5 +509,7 @@ namespace Chaos.Gameplay.Characters
 
             _characterMovementController.EnableNavMeshComponent();
         }
+
+
     }
 }
