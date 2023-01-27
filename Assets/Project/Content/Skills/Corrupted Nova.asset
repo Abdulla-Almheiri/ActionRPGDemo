@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7233128efa0ac440bc2a92529b976b7, type: 3}
-  m_Name: Noxious Gas
+  m_Name: Corrupted Nova
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Name: Noxious Gas
+  Name: Corrupted Nova
   SkillElement: {fileID: 11400000, guid: 7af5f26d9422a154c8315d429e04ca6d, type: 2}
-  Description: Release a cloud of noxious gas that deals heavy damage to all enemies
-    caught in it.
+  Description: Release a burst of corruption around you dealing Heavy damage to all
+    enemies.
   SkillActivationData:
     EnergyCost: 10
     RechargeTime: 20

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1903568097239924349}
   - component: {fileID: 1991399552235068764}
   m_Layer: 2
-  m_Name: Noxious Gas
+  m_Name: Corrupted Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -25,19 +25,14 @@ namespace Chaos.Gameplay.UI
             _gameObjectPoolController = GetComponent<GameObjectPoolController>();
             
         }
-        // Start is called before the first frame update
+
         void Start()
         {
             //Initialize(new Vector3(400f,400f,0f));
         }
 
-        // Update is called once per frame
         void Update()
         {
-            if(Input.GetKeyUp(KeyCode.C))
-            {
-                Play();
-            }
             ProcessDisablingAfterElapsedTime();
             ProcessFollowingInitializedTransform();
         }

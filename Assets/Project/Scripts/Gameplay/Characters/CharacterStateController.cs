@@ -44,15 +44,6 @@ namespace Chaos.Gameplay.Characters
         {
             ProcessCurrentCharacterStateElapsedTime();
             ProcessUnallowedActionsList();
-            if(Input.GetKeyUp(KeyCode.R))
-            {
-                TriggerRevive();
-            }
-
-            if(Input.GetKeyUp(KeyCode.E))
-            {
-                TriggerCharacterAction(CancelAttackActionTEST);
-            }
         }
 
 

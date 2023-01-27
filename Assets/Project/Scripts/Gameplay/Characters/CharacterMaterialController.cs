@@ -18,21 +18,9 @@ namespace Chaos.Gameplay.Characters
         private Material _material;
         private bool _isThisCharacterHostile = true;
         private List<Material> _materials = new List<Material>();
-        // Start is called before the first frame update
         void Start()
         {
             Initialize();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if(Input.GetKeyUp(KeyCode.M) == true)
-            {
-                var curve = _objectsMaterialProfile.MaterialHighlightColorsTriggeredbyElements[0].HighlightPowerCurve;
-                var color = _objectsMaterialProfile.MaterialHighlightColorsTriggeredbyElements[0].MaterialHighlightColor;
-                AnimateHighlightByCurve(curve, color, 1f);
-            }
         }
 
         public void Initialize()

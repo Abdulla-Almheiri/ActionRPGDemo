@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Value: 9.5
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.66946465, g: 0.60648805, b: 0.7264151, a: 1}
+    m_Value: {r: 0.53081167, g: 0.4258633, b: 0.6226415, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: -107
@@ -85,13 +85,13 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: -24.8
+    m_Value: -21.5
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 19.2
+    m_Value: 15.2
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 15.16
+    m_Value: 14.2
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1

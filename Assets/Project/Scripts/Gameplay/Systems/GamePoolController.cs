@@ -24,7 +24,7 @@ namespace Chaos.Gameplay.Systems
         // Update is called once per frame
         void Update()
         {
-            if(Input.GetKeyUp(KeyCode.P))
+            /*if(Input.GetKeyUp(KeyCode.P))
             {
                 var objPool = RetrieveGameObjectPoolByTemplate(PoolTemplateTest);
                 var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
@@ -36,7 +36,7 @@ namespace Chaos.Gameplay.Systems
                 spawn.GetComponent<CharacterMaterialController>().GameMaterialController = GetComponent<GameMaterialController>();
                 spawn.GetComponent<CharacterCombatController>().GameUIController = GetComponent<GameUIController>();
 
-            }
+            }*/
         }
 
         public void Initialize(List<GameObjectPoolTemplate> gameObjectPoolTemplatesList)

@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95aa82fb80f8d624f96e1c33fe8c1deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 20
+  <Delay>k__BackingField: 10
 --- !u!114 &306006762198180246
 MonoBehaviour:
   m_ObjectHideFlags: 0
