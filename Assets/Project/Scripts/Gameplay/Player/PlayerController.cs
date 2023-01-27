@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Chaos.Gameplay.Characters;
+using UnityEngine.SceneManagement;
 
 namespace Chaos.Gameplay.Player
 {
@@ -26,6 +27,9 @@ namespace Chaos.Gameplay.Player
             _characterAnimationController = GetComponent<CharacterAnimationController>();
         }
 
-
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

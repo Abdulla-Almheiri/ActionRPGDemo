@@ -4,11 +4,13 @@ using UnityEngine;
 using Chaos.Gameplay.Skills;
 using Chaos.Gameplay.Systems;
 using Chaos.Gameplay.Player;
+using Chaos.Gameplay.UI;
 
 namespace Chaos.Gameplay.Characters
 {
     public class CharacterSkillController : MonoBehaviour
     {
+        public PlayerUIMessage NotEnoughEnergyMessageTest;
         [field:SerializeField]
         public CharacterSkillTemplate CharacterSkillTemplate { get; private set; }
         public GameUIController GameUIController;
@@ -51,7 +53,7 @@ namespace Chaos.Gameplay.Characters
 
             _rechargeDurations = new float[7];
             Skills = CharacterSkillTemplate.Skills;
-            PreloadSkillPrefabs();
+            //PreloadSkillPrefabs();
 
             for (int i =0; i<_rechargeDurations.Length; i++)
             {
@@ -73,6 +75,7 @@ namespace Chaos.Gameplay.Characters
                 }
             }
         }
+
         public void SpawnSkillVFXTest(SkillTemplate skillTemplate)
         {
             /*if(SkillVFX == null || _characterVFXController == null || SpawnLocationType == null)
@@ -153,6 +156,10 @@ namespace Chaos.Gameplay.Characters
 
             if(_characterCombatController.IsEnergyEnoughForSkill(Skills[index]) == false)
             {
+                if (_playerController != null)
+                {
+                    GameUIController.TriggerPlayerUIMessage(NotEnoughEnergyMessageTest, 2f);
+                }
                 return false;
             }
 

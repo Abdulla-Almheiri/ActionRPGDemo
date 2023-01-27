@@ -173,9 +173,10 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
-            var direction = character.transform.position;
+            var direction = character.transform.position - transform.position;
             direction.y = 0;
-            transform.LookAt(direction);
+            direction = direction.normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
         }
 
         public void RotateCharacterInMouseDirection()

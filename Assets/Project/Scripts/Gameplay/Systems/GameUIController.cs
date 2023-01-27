@@ -10,12 +10,14 @@ namespace Chaos.Gameplay.Systems
 {
     public class GameUIController : MonoBehaviour
     {
+        public HUDController HUDController;
         public Canvas Canvas;
         public HealthBarPrefabController HealthBarPrefab;
         public FloatingCombatTextProfile FloatingCombatTextProfile;
         public FloatingCombatTextTemplate FloatingCombatTextTemplate;
         public GameObjectPoolTemplate GameObjectPoolTemplate;
         private GamePoolController _gamePoolController;
+        private GameAudioController _gameAudioController;
 
         // Start is called before the first frame update
         void Start()
@@ -32,9 +34,22 @@ namespace Chaos.Gameplay.Systems
         public void Initialize()
         {
             _gamePoolController = GetComponent<GamePoolController>();
+            _gameAudioController = GetComponent<GameAudioController>();
             
         }
 
+        public void ShowRestartLevelMenu()
+        {
+            HUDController.ShowRestartLevelMenu();
+        }
+        public void TriggerPlayerUIMessage(PlayerUIMessage message, float duration)
+        {
+            HUDController.TriggerPlayerUIMessage(message, duration);
+            _gameAudioController.PlayMessageSound(message);
+
+            Debug.Log("Message triggered :  " + message.Text);
+
+        }
         public void SpawnDamageTextAtScreenPositionTest(string text, Transform worldPoint, FloatingCombatTextEventType combatEventType)
         {
             //FIX HERE

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Chaos.Gameplay.Characters;
+using UnityEngine.SceneManagement;
 
 namespace Chaos.Gameplay.Systems
 {
@@ -18,6 +19,11 @@ namespace Chaos.Gameplay.Systems
         void Update()
         {
 
+        }
+
+        public void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

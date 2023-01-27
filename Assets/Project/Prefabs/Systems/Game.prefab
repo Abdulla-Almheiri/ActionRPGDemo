@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8069c93cc9903ee4280c4e32f913301e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUDController: {fileID: 0}
   Canvas: {fileID: 0}
   HealthBarPrefab: {fileID: 1255081653878379244, guid: 39edd6427e7225c47b1bc8256a5fa9c2,
     type: 3}

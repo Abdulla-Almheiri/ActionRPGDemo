@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7233128efa0ac440bc2a92529b976b7, type: 3}
+  m_Name: Noxious Gas
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  Name: Noxious Gas
+  SkillElement: {fileID: 11400000, guid: 7af5f26d9422a154c8315d429e04ca6d, type: 2}
+  Description: Release a cloud of noxious gas that deals heavy damage to all enemies
+    caught in it.
+  SkillActivationData:
+    EnergyCost: 10
+    RechargeTime: 20
+  CharacterActionTriggered: {fileID: 0}
+  SkillTriggerData:
+    TriggerChance: 100
+    SkillTrigger: {fileID: 0}
+  SkillPrefab: {fileID: 1903568097239924347, guid: 24e27e4049ab996478e919517c2697e2,
+    type: 3}
+  SpawnLocationType: {fileID: 11400000, guid: ea0cd8fb88f56a944b2bbc4008c03d2d, type: 2}
+  CharacterAnimation: {fileID: 11400000, guid: 8c7d29c48147c9d4da1ca95c16296622, type: 2}
+  IsSelfSkill: 0
+  SkillActions:
+  - TriggerData:
+      TriggerChance: 100
+      SkillTrigger: {fileID: 0}
+    ScalingAttribute: {fileID: 11400000, guid: 633316378c247db46a696dedb1cdb639, type: 2}
+    DamageScaled: 80
+    DamageFlat: 0
+    HealingScaled: 0
+    HealingFlat: 0
+    DrainHealthFlat: 0
+    DrainHealthPercentageOfDamage: 0
+    EnergyReturnFlat: 0
+    EnergyReturnPercentageOfSkillEnergyCost: 0
+    EnergyReturnPercentageOfDamageDone: 0
+    EnergyReturnPercentageOfHealingDone: 0
+    AppliesState: {fileID: 0}

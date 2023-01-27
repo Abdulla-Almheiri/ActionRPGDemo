@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3df2b21416714341b848ea3ea79a53d, type: 3}
   m_Name: WarrokCombatTemplate
   m_EditorClassIdentifier: 
-  Hostile: 1
   Size: 1.5
   BaseHitFrameDuration: 0.3
   Health:
     CharacterAttribute: {fileID: 11400000, guid: b0d14e30465a4ca4b8381ccf722af632,
       type: 2}
-    BaseRating: 150
+    BaseRating: 80
   Energy:
     CharacterAttribute: {fileID: 11400000, guid: 1a0f109772e9bd74da11aee187eb6677,
       type: 2}

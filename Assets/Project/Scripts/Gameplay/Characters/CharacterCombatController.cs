@@ -11,6 +11,7 @@ namespace Chaos.Gameplay.Characters
 
     public class CharacterCombatController : MonoBehaviour
     {
+        public GamePlayerController GamePlayerController;
         public SkillTemplate SkillTemplateModifierTest;
         public bool IsPlayer { private set; get; } = false;
         public CharacterAttribute TESTATTRIBUTE;
@@ -41,6 +42,8 @@ namespace Chaos.Gameplay.Characters
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
         private CharacterAIController _characterAIController;
+        private PlayerController _playerController;
+
         private Rigidbody _characterRigidBody;
 
         private Dictionary<CharacterAttribute, CharacterAttributeData> _characterAttributes = new Dictionary<CharacterAttribute, CharacterAttributeData>();
@@ -61,7 +64,7 @@ namespace Chaos.Gameplay.Characters
 
             Initialize();
 
-            //TEST CODE. Remove later
+           /* //TEST CODE. Remove later
             if(SkillTemplateModifierTest != null)
             {
                 SkillPowerModifier skillModifier = new SkillPowerModifier();
@@ -71,7 +74,7 @@ namespace Chaos.Gameplay.Characters
 
                 AddSkillPowerModifier(SkillTemplateModifierTest, skillModifier);
                 Debug.Log("Skillmodifiers.Count ==   " + SkillPowerModifiers.Count);
-            }
+            }*/
 
         }
 
@@ -120,8 +123,8 @@ namespace Chaos.Gameplay.Characters
             _characterMaterialController = GetComponent<CharacterMaterialController>();
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterStateController = GetComponent<CharacterStateController>();
-            _characterAIController = GetComponent<CharacterAIController>(); 
-
+            _characterAIController = GetComponent<CharacterAIController>();
+            _playerController = GetComponent<PlayerController>();
             _characterRigidBody = GetComponentInChildren<Rigidbody>();
 
             if(GetComponent<PlayerController>() !=  null)
@@ -496,6 +499,11 @@ namespace Chaos.Gameplay.Characters
             _currentEnergy = 0f;
             _characterRigidBody.detectCollisions = false;
             _characterMovementController.DisableNavMeshComponent();
+
+            if(_playerController != null)
+            {
+                GameUIController.ShowRestartLevelMenu();
+            }
             Debug.Log("Death triggered");
         }
 

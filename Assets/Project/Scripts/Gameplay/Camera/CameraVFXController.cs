@@ -27,14 +27,14 @@ namespace Chaos.Gameplay.Camera
 
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.S) == true)
+           /* if(Input.GetKeyDown(KeyCode.S) == true)
             {
                 ApplyScreenVisualEffectWithTween(ScreenVFXTest);
-            }
+            }*/
 
-            SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
+            /*SetVolumeWeight(CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity"));
             
-            SetCameraFoV(_currentCamFoV - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);
+            SetCameraFoV(_currentCamFoV - CharacterAnimationControllerTest.Animator.GetFloat("AttackIntensity")*8f);*/
         }
 
         private void SetVolumeWeight(float value)

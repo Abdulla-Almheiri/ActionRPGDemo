@@ -49,18 +49,40 @@ namespace Chaos.Gameplay.UI
         private VisualElement _settingsMenu;
         private Button _confirmButton;
 
-        // Start is called before the first frame update
+
+        private Label _messageLabel;
+        private VisualElement _messageSection;
+        private Color _defaultColor = Color.white;
+        private VisualElement _topSection;
+
+        private VisualElement _restartSection;
+        private Button _deathRestartButton;
+
         void Start()
         {
             Initialize();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if(Input.GetKeyUp(KeyCode.Escape) == true)
             {
-                TogglePauseMenu();
+                _playerMovementController.StopMovement();
+
+                if (IsVisualElementActive(_pauseMenu) == false)
+                {
+                    if(IsVisualElementActive(_settingsMenu) == false)
+                    {
+                        ShowVisualElement(_pauseMenu);
+                    } else
+                    {
+                        HideVisualElement(_settingsMenu);
+                    }
+
+                } else
+                {
+                    HideVisualElement(_pauseMenu);
+                }
             }
 
             ProcessAbilitiesRecharge();
@@ -70,7 +92,6 @@ namespace Chaos.Gameplay.UI
         {
             var healthValue = _playerCombatController.GetHealthPercentage() / 100f;
             var energyValue = _playerCombatController.GetEnergyPercentage() / 100f;
-            Debug.Log("Health =   :" + healthValue);
 
            _healthBar.style.scale = new StyleScale(new Scale(new Vector3(healthValue, 1f, 1f)));
             _energyBar.style.scale = new StyleScale(new Scale(new Vector3(energyValue, 1f, 1f)));
@@ -81,6 +102,8 @@ namespace Chaos.Gameplay.UI
         {
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
             _pauseMenu = _rootVisualElement.Q("PauseMenu");
+            _pauseMenu.style.display = DisplayStyle.None;
+
             _playerMovementController = _gamePlayerController.PlayerMovementController;
             _playerSkillController = _gamePlayerController.PlayerMovementController.gameObject.GetComponent<CharacterSkillController>();
             _playerCombatController = _gamePlayerController.PlayerMovementController.gameObject.GetComponent<CharacterCombatController>();
@@ -88,6 +111,8 @@ namespace Chaos.Gameplay.UI
 
             _resumeButton = _rootVisualElement.Q("ResumeButton");
             _settingsButton = _rootVisualElement.Q<Button>("SettingsButton");
+            _exitGameButton = _rootVisualElement.Q<Button>("ExitGameButton");
+            _restartGameButton = _rootVisualElement.Q<Button>("RestartGameButton");
 
             _tooltip = _rootVisualElement.Q("Tooltip");
             RegisterCallbackPauseMenuButtons();
@@ -109,22 +134,91 @@ namespace Chaos.Gameplay.UI
             _AudioVolumeSlider = _rootVisualElement.Q<Slider>("SFXSlider");
             _MusicVolumeSlider = _rootVisualElement.Q<Slider>("MusicSlider");
 
-            _AudioVolumeSlider.value = GameAudioController.SFXVolume;
-            _MusicVolumeSlider.value = GameAudioController.MusicVolume;
+            _AudioVolumeSlider.value = GameAudioController.SFXVolume*100f;
+            _MusicVolumeSlider.value = GameAudioController.MusicVolume*100f;
 
             _confirmButton = _rootVisualElement.Q<Button>("ExitSettingsButton");
             _settingsMenu = _rootVisualElement.Q("SettingsMenu");
 
+            _settingsMenu.style.display = DisplayStyle.None;
+
+            _messageLabel = _rootVisualElement.Q<Label>("MessageLabel");
+            _messageSection = _rootVisualElement.Q("MessageSection");
+            _topSection = _rootVisualElement.Q("TopSection");
+
+            _restartSection = _rootVisualElement.Q("RestartSection");
+            _deathRestartButton = _rootVisualElement.Q<Button>("DeathRestartButton");
+
+
+            ShowVisualElement(_topSection);
+            ShowVisualElement(_messageSection);
+            HideVisualElement(_messageLabel);
+
             RegisterCallbackSkillButtons();
+
             RegisterSettingsSlidersCallbacks();
+
+
             RegisterCallbackConfirmButton();
             RegisterCallbackPauseMenuButtons();
             RegisterCallbackSettingsButton();
 
+            RegisterCallbackDeathRestartButton();
+
+            RegisterCallBackExitGameButton();
+            RegisterCallBackRestartGameButton();
+
             UpdateSkillIcons();
         }
 
+        private bool IsVisualElementActive(VisualElement element)
+        {
+            return element.style.display != DisplayStyle.None;
+        }
+        public void TriggerPlayerUIMessage(PlayerUIMessage playerMessage, float duration)
+        {
+            ShowPlayerUIMessage(playerMessage);
+            StopAllCoroutines();
+            StartCoroutine(HidePlayerMessageCO(duration));
 
+        }
+
+        private void RegisterCallbackDeathRestartButton()
+        {
+            _deathRestartButton.RegisterCallback<ClickEvent>(DeathRestartButtonPressed);
+        }
+
+        private void DeathRestartButtonPressed(ClickEvent evt)
+        {
+            _gamePlayerController.RestartLevel();
+        }
+        private IEnumerator HidePlayerMessageCO(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            //HideVisualElement(_messageLabel);
+            _messageLabel.style.opacity = new StyleFloat(0f);
+            RestartPlayerUIMessageToDefault();
+            Debug.Log("End of Coroutine");
+
+        }
+        private void ShowPlayerUIMessage(PlayerUIMessage playerMessage)
+        {
+            ShowVisualElement(_messageLabel);
+            _messageLabel.style.opacity = new StyleFloat(100f);
+            _messageLabel.text = playerMessage.Text;
+            _messageLabel.style.color = playerMessage.Color;
+            
+
+        }
+
+        private void RestartPlayerUIMessageToDefault()
+        {
+            _messageLabel.style.color = _defaultColor;
+        }
+        private void HidePlayerUIMessage()
+        {
+            _messageSection.style.display = DisplayStyle.None;
+        }
 
         private void TogglePauseMenu()
         {
@@ -138,6 +232,26 @@ namespace Chaos.Gameplay.UI
                 _pauseMenu.style.display = DisplayStyle.Flex;
                 _playerMovementController.StopMovement();
             }
+        }
+
+        private void ShowVisualElement(VisualElement element)
+        {
+            if(element == null)
+            {
+                return;
+            }
+
+            element.style.display = DisplayStyle.Flex;
+        }
+
+        private void HideVisualElement(VisualElement element)
+        {
+            if (element == null)
+            {
+                return;
+            }
+
+            element.style.display = DisplayStyle.None;
         }
 
         private void ToggleVisualElement(VisualElement element)
@@ -212,7 +326,15 @@ namespace Chaos.Gameplay.UI
             _skillButton4.RegisterCallback<MouseLeaveEvent>(SkillButton4HoverLeave);
         }
 
+        private void RegisterCallBackRestartGameButton()
+        {
+            _restartGameButton.RegisterCallback<ClickEvent>(RestartGameButtonPressed);
+        }
 
+        private void RegisterCallBackExitGameButton()
+        {
+            _exitGameButton.RegisterCallback<ClickEvent>(ExitGameButtonPressed);
+        }
         private void ResumeButtonPressed(ClickEvent evt)
         {
             TogglePauseMenu();
@@ -221,12 +343,12 @@ namespace Chaos.Gameplay.UI
        
         private void RestartGameButtonPressed(ClickEvent evt)
         {
-
+            _gamePlayerController.RestartLevel();
         }
 
         private void ExitGameButtonPressed(ClickEvent evt)
         {
-
+            Application.Quit();
         }
 
         private void UpdateSkillIcons()
@@ -337,6 +459,14 @@ namespace Chaos.Gameplay.UI
                 skillButton.style.borderTopWidth = new StyleFloat(width);
                 skillButton.style.borderLeftWidth = new StyleFloat(width);
             }
+        }
+
+        public void ShowRestartLevelMenu()
+        {
+            HideVisualElement(_pauseMenu);
+            HideVisualElement(_settingsMenu);
+            ShowVisualElement(_restartSection);
+            
         }
     }
 }

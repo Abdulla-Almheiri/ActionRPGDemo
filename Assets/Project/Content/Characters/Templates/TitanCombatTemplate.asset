@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3df2b21416714341b848ea3ea79a53d, type: 3}
+  m_Name: TitanCombatTemplate
+  m_EditorClassIdentifier: 
+  Size: 3
+  BaseHitFrameDuration: 0.3
+  Health:
+    CharacterAttribute: {fileID: 11400000, guid: b0d14e30465a4ca4b8381ccf722af632,
+      type: 2}
+    BaseRating: 300
+  Energy:
+    CharacterAttribute: {fileID: 11400000, guid: 1a0f109772e9bd74da11aee187eb6677,
+      type: 2}
+    BaseRating: 50
+  PrimaryCharacterAttributes:
+  - CharacterAttribute: {fileID: 11400000, guid: 633316378c247db46a696dedb1cdb639,
+      type: 2}
+    BaseRating: 60
+  SecondaryCharacterAttributes: []
