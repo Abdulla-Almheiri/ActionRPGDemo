@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Project/Art/UI/Stylesheets/MainMenuStylesheet.uss?fileID=7433441132597879392&amp;guid=a8ea479562de6c74aa5f20c48794c5e8&amp;type=3#MainMenuStylesheet" />
+    <Style src="project://database/Assets/Project/Art/UI/Stylesheets/MainStylesheet.uss?fileID=7433441132597879392&amp;guid=2e09d0e5fbf2f504a9c68c703def6ddb&amp;type=3#MainStylesheet" />
+    <ui:VisualElement name="MainScreen" style="height: 100%; width: 100%; flex-direction: column-reverse; align-items: center; justify-content: space-between;">
+        <ui:VisualElement name="MainMenuSection" style="height: 40%; width: 30%; align-items: center; justify-content: flex-start; flex-direction: column;">
+            <ui:Label text="Start Game" display-tooltip-when-elided="true" name="StartGameLabel" class="main-menu-label" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); -unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); margin-bottom: 30px;" />
+            <ui:Label text="Settings" display-tooltip-when-elided="true" name="SettingsLabel" class="main-menu-label" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); -unity-text-align: middle-center; font-size: 32px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="SettingsSection" style="flex-direction: column; width: 70%; display: none;">
+                <ui:VisualElement name="SlidersSection" style="flex-direction: row; height: 100%;">
+                    <ui:VisualElement name="LeftSection" style="width: 50%; height: 100%;">
+                        <ui:Label text="Master Volume" display-tooltip-when-elided="true" name="MasterVolumeLabel" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); color: rgb(255, 255, 255); -unity-text-align: upper-left; font-size: 12px;" />
+                        <ui:Label text="Sound Effects Volume" display-tooltip-when-elided="true" name="SoundEffectsVolumeLabel" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                        <ui:Label text="Music Volume" display-tooltip-when-elided="true" name="MusicVolumeLabel" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); color: rgb(255, 255, 255); font-size: 12px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="RightSection" style="width: 50%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:Slider picking-mode="Ignore" value="-10" high-value="0" low-value="-40" name="MasterVolumeSlider" style="width: 70%; padding-bottom: 7px;" />
+                        <ui:Slider picking-mode="Ignore" value="-10" high-value="0" low-value="-40" name="SoundEffectsVolumeSlider" style="width: 70%;" />
+                        <ui:Slider picking-mode="Ignore" value="-10" high-value="0" low-value="-40" name="MusicVolumeSlider" style="width: 70%; padding-top: 9px; padding-bottom: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="ConfirmButtonSection">
+                    <ui:Label text="Confirm" display-tooltip-when-elided="true" name="ConfirmLabel" class="main-menu-label" style="font-size: 18px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Label text="Quit" display-tooltip-when-elided="true" name="QuitLabel" class="main-menu-label" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); -unity-text-align: middle-center; font-size: 24px; -unity-font-style: bold; color: rgb(255, 255, 255); margin-top: 78px;" />
+            <ui:VisualElement name="QuitSection" style="justify-content: center; align-items: center; display: none;">
+                <ui:Label text="Are you sure you want to quit?" display-tooltip-when-elided="true" name="QuitQuestionLabel" style="font-size: 24px; -unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); color: rgb(255, 255, 255); -unity-font-style: normal; -unity-text-align: upper-center; -unity-font: none;" />
+                <ui:VisualElement name="YesOrNoSection" style="align-items: center; justify-content: space-around; flex-direction: row; width: 40%;">
+                    <ui:Label text="No" display-tooltip-when-elided="true" name="NoLabel" class="main-menu-label" style="-unity-font-style: bold; color: rgb(255, 255, 255); font-size: 18px;" />
+                    <ui:Label text="Yes" display-tooltip-when-elided="true" name="YesLabel" class="main-menu-label" style="color: rgb(219, 219, 219); font-size: 12px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="BottomSection" style="height: 5%; width: 100%; justify-content: flex-end;">
+        <ui:Label text="Game build: " display-tooltip-when-elided="true" name="GameBuildLabel" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); font-size: 12px; color: rgb(255, 255, 255); -unity-text-align: upper-left; justify-content: flex-start; display: none;" />
+    </ui:VisualElement>
+</ui:UXML>

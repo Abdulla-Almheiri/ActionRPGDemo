@@ -35,7 +35,7 @@ MonoBehaviour:
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
     DamageScaled: 0
     DamageFlat: 0
-    HealingScaled: 40
+    HealingScaled: 60
     HealingFlat: 0
     DrainHealthFlat: 0
     DrainHealthPercentageOfDamage: 0

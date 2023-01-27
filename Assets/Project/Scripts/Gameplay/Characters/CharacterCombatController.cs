@@ -86,7 +86,7 @@ namespace Chaos.Gameplay.Characters
 
         private void ProcessEnergyRegen()
         {
-            if(_currentEnergy >= _maxEnergy)
+            if(_currentEnergy >= _maxEnergy || Alive == false)
             {
                 return;
             }

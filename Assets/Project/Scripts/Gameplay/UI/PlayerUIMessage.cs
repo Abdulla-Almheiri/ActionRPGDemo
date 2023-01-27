@@ -11,5 +11,6 @@ namespace Chaos.Gameplay.UI
         public string Text;
         public Color Color;
         public AudioClip SoundEffect;
+        public int Priority = 3;
     }
 }

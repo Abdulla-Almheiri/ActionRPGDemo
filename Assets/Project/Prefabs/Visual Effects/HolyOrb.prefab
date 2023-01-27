@@ -4929,7 +4929,8 @@ AudioSource:
   m_GameObject: {fileID: 1393455709605897683}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2686849704448011476, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 9e485415b656baf41aa3b8888cd837bd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.252
@@ -19858,7 +19859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3971941608333617805}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: 0, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24781,7 +24782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6661b920cefd436438e61ee40de27e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0, z: 3}
+  Velocity: {x: 0, y: 0, z: 4}
 --- !u!114 &8962608298532112457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24804,8 +24805,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.63
-  m_Height: 4.07
+  m_Radius: 1.1
+  m_Height: 4.59
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8553639835606333911
@@ -24820,7 +24821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95aa82fb80f8d624f96e1c33fe8c1deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Delay>k__BackingField: 4
+  <Delay>k__BackingField: 5
 --- !u!1 &4298913275253414051
 GameObject:
   m_ObjectHideFlags: 0
@@ -34623,7 +34624,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6013268254330761903}
   m_LocalRotation: {x: 0.49848783, y: -0, z: 0.86689675, w: 0}
-  m_LocalPosition: {x: 0, y: 1.52, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39770,7 +39771,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.83
+      scalar: 2.11
       minScalar: 2
       maxCurve:
         serializedVersion: 2
@@ -49298,7 +49299,7 @@ Transform:
   m_GameObject: {fileID: 8655226818664225948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7055683676713819066}

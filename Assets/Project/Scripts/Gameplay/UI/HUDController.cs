@@ -43,8 +43,9 @@ namespace Chaos.Gameplay.UI
         private VisualElement _healthBar;
         private VisualElement _energyBar;
 
-        private Slider _AudioVolumeSlider;
-        private Slider _MusicVolumeSlider;
+        private Slider _masterVolumeSlider;
+        private Slider _audioVolumeSlider;
+        private Slider _musicVolumeSlider;
 
         private VisualElement _settingsMenu;
         private Button _confirmButton;
@@ -57,7 +58,7 @@ namespace Chaos.Gameplay.UI
 
         private VisualElement _restartSection;
         private Button _deathRestartButton;
-
+        private PlayerUIMessage _currentPlayerUIMessage;
         void Start()
         {
             Initialize();
@@ -65,28 +66,35 @@ namespace Chaos.Gameplay.UI
 
         void Update()
         {
-            if(Input.GetKeyUp(KeyCode.Escape) == true)
+
+            ProcessPauseAndSettingsMenu();
+            ProcessAbilitiesRecharge();
+            ProcessHealthAndEnergyBars();
+        }
+
+        private void ProcessPauseAndSettingsMenu()
+        {
+            if (Input.GetKeyUp(KeyCode.Escape) == true)
             {
                 _playerMovementController.StopMovement();
 
                 if (IsVisualElementActive(_pauseMenu) == false)
                 {
-                    if(IsVisualElementActive(_settingsMenu) == false)
+                    if (IsVisualElementActive(_settingsMenu) == false)
                     {
                         ShowVisualElement(_pauseMenu);
-                    } else
+                    }
+                    else
                     {
                         HideVisualElement(_settingsMenu);
                     }
 
-                } else
+                }
+                else
                 {
                     HideVisualElement(_pauseMenu);
                 }
             }
-
-            ProcessAbilitiesRecharge();
-            ProcessHealthAndEnergyBars();
         }
         private void ProcessHealthAndEnergyBars()
         {
@@ -131,11 +139,13 @@ namespace Chaos.Gameplay.UI
             _healthBar = _rootVisualElement.Q("HealthBar");
             _energyBar = _rootVisualElement.Q("EnergyBar");
 
-            _AudioVolumeSlider = _rootVisualElement.Q<Slider>("SFXSlider");
-            _MusicVolumeSlider = _rootVisualElement.Q<Slider>("MusicSlider");
+            _masterVolumeSlider = _rootVisualElement.Q<Slider>("MasterSlider");
+            _audioVolumeSlider = _rootVisualElement.Q<Slider>("SFXSlider");
+            _musicVolumeSlider = _rootVisualElement.Q<Slider>("MusicSlider");
 
-            _AudioVolumeSlider.value = GameAudioController.SFXVolume*100f;
-            _MusicVolumeSlider.value = GameAudioController.MusicVolume*100f;
+            _masterVolumeSlider.value = GameAudioController.MasterVolume;
+            _audioVolumeSlider.value = GameAudioController.SoundEffectsVolume;
+            _musicVolumeSlider.value = GameAudioController.MusicVolume;
 
             _confirmButton = _rootVisualElement.Q<Button>("ExitSettingsButton");
             _settingsMenu = _rootVisualElement.Q("SettingsMenu");
@@ -177,6 +187,13 @@ namespace Chaos.Gameplay.UI
         }
         public void TriggerPlayerUIMessage(PlayerUIMessage playerMessage, float duration)
         {
+            if (_currentPlayerUIMessage != null)
+            {
+                if (_currentPlayerUIMessage.Priority > playerMessage.Priority)
+                {
+                    return;
+                }
+            }
             ShowPlayerUIMessage(playerMessage);
             StopAllCoroutines();
             StartCoroutine(HidePlayerMessageCO(duration));
@@ -198,15 +215,17 @@ namespace Chaos.Gameplay.UI
             //HideVisualElement(_messageLabel);
             _messageLabel.style.opacity = new StyleFloat(0f);
             RestartPlayerUIMessageToDefault();
-            Debug.Log("End of Coroutine");
+            _currentPlayerUIMessage = null;
 
         }
         private void ShowPlayerUIMessage(PlayerUIMessage playerMessage)
         {
+   
             ShowVisualElement(_messageLabel);
-            _messageLabel.style.opacity = new StyleFloat(100f);
+            _messageLabel.style.opacity = new StyleFloat(1f);
             _messageLabel.text = playerMessage.Text;
             _messageLabel.style.color = playerMessage.Color;
+            _currentPlayerUIMessage = playerMessage;
             
 
         }
@@ -282,8 +301,14 @@ namespace Chaos.Gameplay.UI
         }
         private void RegisterSettingsSlidersCallbacks()
         {
-            _AudioVolumeSlider.RegisterValueChangedCallback(AudioVolumeChanged);
-            _MusicVolumeSlider.RegisterValueChangedCallback(MusicVolumeChanged);
+            _masterVolumeSlider.RegisterValueChangedCallback(MasterVolumeChanged);
+            _audioVolumeSlider.RegisterValueChangedCallback(AudioVolumeChanged);
+            _musicVolumeSlider.RegisterValueChangedCallback(MusicVolumeChanged);
+        }
+
+        private void MasterVolumeChanged(ChangeEvent<float> evt)
+        {
+            GameAudioController.SetMasterVolume(evt.newValue);
         }
 
         private void SettingsMenuButtonPressed(ClickEvent evt)
@@ -299,12 +324,12 @@ namespace Chaos.Gameplay.UI
         }
         private void AudioVolumeChanged(ChangeEvent<float> evt)
         {
-            GameAudioController.SetSFXVolume(evt.newValue / 100f);
+            GameAudioController.SetSoundEffectsVolume(evt.newValue);
         }
 
         private void MusicVolumeChanged(ChangeEvent<float> evt)
         {
-            GameAudioController.SetMusicVolume(evt.newValue / 100f);
+            GameAudioController.SetMusicVolume(evt.newValue);
         }
         private void RegisterCallbackSkillButtons()
         {

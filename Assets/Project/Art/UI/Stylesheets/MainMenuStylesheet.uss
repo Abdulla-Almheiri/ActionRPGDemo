@@ -1,0 +1,12 @@
+.main-menu-label {
+    -unity-font-definition: url('project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&guid=daf5f9368e767e54b9cddcb4c3a10b41&type=2#Cinzel-VariableFont_wght SDF');
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    color: rgba(255, 255, 255, 255);
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.main-menu-label:hover {
+    scale: 1.2 1.2;
+}

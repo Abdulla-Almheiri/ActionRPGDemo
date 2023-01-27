@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Not enough energy!
   Color: {r: 0.509434, g: 0.1321645, b: 0.1321645, a: 1}
+  SoundEffect: {fileID: 0}
+  Priority: 2

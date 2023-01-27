@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6d59821713b6549b4f1299574bfe74, type: 3}
+  m_Name: MainGameAudioTemplate
+  m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: b84f65f429650d84580092627403ab17, type: 2}
+  UIWindowOpen: {fileID: 8300000, guid: a52b3afdaebba464cab5cfb459d84aad, type: 3}
+  UIConfirmSound: {fileID: 8300000, guid: 46fbee511c02955449a57a2f28a62dde, type: 3}
+  UICancelSound: {fileID: 8300000, guid: a9d5af64f33e4bc49b28860f517a43e3, type: 3}
+  UIHoverSound: {fileID: 8300000, guid: 8afd444c06f4f9346a6a35738d10823b, type: 3}
+  MasterMixerGroup: {fileID: 24300002, guid: b84f65f429650d84580092627403ab17, type: 2}
+  SoundEffectsMixerGroup: {fileID: -6933797740404008212, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
+  MusicMixerGroup: {fileID: 6340016742078257683, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
+  GameSoundsMixerGroup: {fileID: 2686849704448011476, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
+  UISoundsMixerGroup: {fileID: -2669471390325122686, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
+  AmbientSoundsMixerGroup: {fileID: -1741207909053365024, guid: b84f65f429650d84580092627403ab17,
+    type: 2}
