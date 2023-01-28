@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fd84a440fc1c4fb0f9fab63d46f33, type: 3}
+  m_Name: WraithAudioTemplate
+  m_EditorClassIdentifier: 
+  Engage:
+    AudioClips:
+    - {fileID: 8300000, guid: 6fbd89e5f7ceadd4189660557190cad3, type: 3}
+    - {fileID: 8300000, guid: 14fe15007973ec4459ac80fe947757b2, type: 3}
+    - {fileID: 8300000, guid: 2916389c6e412c142b082e1a3eb4fee2, type: 3}
+    - {fileID: 8300000, guid: 12a8a4f14ef6cb1419b0ee87f70aabdc, type: 3}
+    BaseVolume: 0.087
+    PitchVariation: 10
+    VolumeVariation: 10
+  Footsteps:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  Death:
+    AudioClips:
+    - {fileID: 8300000, guid: 85c9a85bc0e2cf74d8bc514b2747db98, type: 3}
+    BaseVolume: 0.092
+    PitchVariation: 10
+    VolumeVariation: 10
+  Hit:
+    AudioClips:
+    - {fileID: 8300000, guid: e1f1bbac7c856c14082a393d86282f28, type: 3}
+    BaseVolume: 0.03
+    PitchVariation: 20
+    VolumeVariation: 30
+  BasicAttack:
+    AudioClips:
+    - {fileID: 8300000, guid: 00817971d43cf0742a6ef455d4f15f17, type: 3}
+    - {fileID: 8300000, guid: 9550eeb367936ca4a93952a4cc299e59, type: 3}
+    - {fileID: 8300000, guid: fbcf09682752a9347a0363c2ef7e28ae, type: 3}
+    BaseVolume: 0.06
+    PitchVariation: 10
+    VolumeVariation: 10
+  SpecialAttack:
+    AudioClips:
+    - {fileID: 8300000, guid: 678940530c838a1489647eabab1e43df, type: 3}
+    BaseVolume: 0.211
+    PitchVariation: 10
+    VolumeVariation: 10

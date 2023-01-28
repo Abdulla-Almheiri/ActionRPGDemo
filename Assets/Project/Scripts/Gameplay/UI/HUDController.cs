@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using Chaos.Gameplay.Systems;
 using Chaos.Gameplay.Characters;
 using Chaos.Gameplay.Skills;
+using System.Linq;
 
 namespace Chaos.Gameplay.UI
 {
@@ -59,6 +60,10 @@ namespace Chaos.Gameplay.UI
         private VisualElement _restartSection;
         private Button _deathRestartButton;
         private PlayerUIMessage _currentPlayerUIMessage;
+
+
+        private List<VisualElement> _hoverableList;
+
         void Start()
         {
             Initialize();
@@ -83,16 +88,19 @@ namespace Chaos.Gameplay.UI
                     if (IsVisualElementActive(_settingsMenu) == false)
                     {
                         ShowVisualElement(_pauseMenu);
+                        GameAudioController.PlayUIWindowOpenSound();
                     }
                     else
                     {
                         HideVisualElement(_settingsMenu);
+                        GameAudioController.PlayUICancelSound();
                     }
 
                 }
                 else
                 {
                     HideVisualElement(_pauseMenu);
+                    GameAudioController.PlayUICancelSound();
                 }
             }
         }
@@ -130,7 +138,7 @@ namespace Chaos.Gameplay.UI
             _skillButton3 = _rootVisualElement.Q("SkillButton3");
             _skillButton4 = _rootVisualElement.Q("SkillButton4");
 
-            _tooltip = _rootVisualElement.Q("TooltipSection");
+            _tooltip = _rootVisualElement.Q("Tooltip");
             _tooltipSkillTitle = _rootVisualElement.Q<Label>("TooltipTitle");
             _tooltipSkillDescription = _rootVisualElement.Q<Label>("TooltipDescription");
             _tooltipSkillEnergyCost = _rootVisualElement.Q<Label>("EnergyCost");
@@ -160,6 +168,8 @@ namespace Chaos.Gameplay.UI
             _deathRestartButton = _rootVisualElement.Q<Button>("DeathRestartButton");
 
 
+            _hoverableList = _rootVisualElement.Query<VisualElement>(className: "pause-menu-button").ToList();
+
             ShowVisualElement(_topSection);
             ShowVisualElement(_messageSection);
             HideVisualElement(_messageLabel);
@@ -177,6 +187,9 @@ namespace Chaos.Gameplay.UI
 
             RegisterCallBackExitGameButton();
             RegisterCallBackRestartGameButton();
+
+
+            RegisterHoverableList();
 
             UpdateSkillIcons();
         }
@@ -199,6 +212,18 @@ namespace Chaos.Gameplay.UI
             StartCoroutine(HidePlayerMessageCO(duration));
 
         }
+        private void RegisterHoverableList()
+        {
+            foreach(VisualElement element in _hoverableList)
+            {
+                element.RegisterCallback<MouseEnterEvent>(MouseHoverAllButtons);
+            }
+        }
+
+        private void MouseHoverAllButtons(MouseEnterEvent evt)
+        {
+            GameAudioController.PlayUIHoverSound();
+        }
 
         private void RegisterCallbackDeathRestartButton()
         {
@@ -207,6 +232,7 @@ namespace Chaos.Gameplay.UI
 
         private void DeathRestartButtonPressed(ClickEvent evt)
         {
+            GameAudioController.PlayUIConfirmSound();
             _gamePlayerController.RestartLevel();
         }
         private IEnumerator HidePlayerMessageCO(float duration)
@@ -244,12 +270,14 @@ namespace Chaos.Gameplay.UI
             if (_pauseMenu.style.display == DisplayStyle.Flex )
             {
                 _pauseMenu.style.display = DisplayStyle.None;
+                GameAudioController.PlayUICancelSound();
 
             }
             else
             {
                 _pauseMenu.style.display = DisplayStyle.Flex;
                 _playerMovementController.StopMovement();
+                GameAudioController.PlayUIWindowOpenSound();
             }
         }
 
@@ -302,12 +330,13 @@ namespace Chaos.Gameplay.UI
         private void RegisterSettingsSlidersCallbacks()
         {
             _masterVolumeSlider.RegisterValueChangedCallback(MasterVolumeChanged);
-            _audioVolumeSlider.RegisterValueChangedCallback(AudioVolumeChanged);
+            _audioVolumeSlider.RegisterValueChangedCallback(SoundEffectsVolumeChanged);
             _musicVolumeSlider.RegisterValueChangedCallback(MusicVolumeChanged);
         }
 
         private void MasterVolumeChanged(ChangeEvent<float> evt)
         {
+            GameAudioController.PlayUIHoverSound();
             GameAudioController.SetMasterVolume(evt.newValue);
         }
 
@@ -315,15 +344,18 @@ namespace Chaos.Gameplay.UI
         {
             TogglePauseMenu();
             ToggleVisualElement(_settingsMenu);
+            GameAudioController.PlayUIConfirmSound();
         }
 
         private void ConfirmButtonPressed(ClickEvent evt)
         {
+            GameAudioController.PlayUIConfirmSound();
             ToggleVisualElement(_settingsMenu);
             TogglePauseMenu();
         }
-        private void AudioVolumeChanged(ChangeEvent<float> evt)
+        private void SoundEffectsVolumeChanged(ChangeEvent<float> evt)
         {
+            GameAudioController.PlayUIHoverSound();
             GameAudioController.SetSoundEffectsVolume(evt.newValue);
         }
 
@@ -362,17 +394,20 @@ namespace Chaos.Gameplay.UI
         }
         private void ResumeButtonPressed(ClickEvent evt)
         {
+            GameAudioController.PlayUIConfirmSound();
             TogglePauseMenu();
             Debug.Log("Resume pressed");
         }
        
         private void RestartGameButtonPressed(ClickEvent evt)
         {
+            GameAudioController.PlayUIConfirmSound();
             _gamePlayerController.RestartLevel();
         }
 
         private void ExitGameButtonPressed(ClickEvent evt)
         {
+            GameAudioController.PlayUICancelSound();
             Application.Quit();
         }
 
@@ -409,6 +444,7 @@ namespace Chaos.Gameplay.UI
 
         private void ShowTooltip()
         {
+            GameAudioController.PlayUIHoverSound();
             _tooltip.style.display = DisplayStyle.Flex;
         }
 

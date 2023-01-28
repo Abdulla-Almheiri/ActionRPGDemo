@@ -28,7 +28,7 @@ namespace Chaos.Gameplay.UI
         private Slider _soundEffectsVolumeSlider;
         private Slider _musicVolumeSlider;
         private Label _confirmButton;
-
+        private List<VisualElement> _hoverableList;
 
         private Label _gameBuildLabel;
 
@@ -69,8 +69,25 @@ namespace Chaos.Gameplay.UI
 
             _gameBuildLabel = _rootVisualElement.Q<Label>("GameBuildLabel");
 
+            _hoverableList = _rootVisualElement.Query<VisualElement>(className: "main-menu-label").ToList();
+
             RegisterCallbacks();
 
+            RegisterHoverableList();
+
+        }
+
+        private void RegisterHoverableList()
+        {
+            foreach (VisualElement element in _hoverableList)
+            {
+                element.RegisterCallback<MouseEnterEvent>(MouseHoverAllButtons);
+            }
+        }
+
+        private void MouseHoverAllButtons(MouseEnterEvent evt)
+        {
+            GameAudioController.PlayUIHoverSound();
         }
 
         private void RegisterCallbacks()

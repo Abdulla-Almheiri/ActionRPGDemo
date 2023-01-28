@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MainGameAudioTemplate
   m_EditorClassIdentifier: 
   AudioMixer: {fileID: 24100000, guid: b84f65f429650d84580092627403ab17, type: 2}
-  UIWindowOpen: {fileID: 8300000, guid: a52b3afdaebba464cab5cfb459d84aad, type: 3}
+  UIWindowOpenSound: {fileID: 8300000, guid: a52b3afdaebba464cab5cfb459d84aad, type: 3}
   UIConfirmSound: {fileID: 8300000, guid: 46fbee511c02955449a57a2f28a62dde, type: 3}
   UICancelSound: {fileID: 8300000, guid: a9d5af64f33e4bc49b28860f517a43e3, type: 3}
   UIHoverSound: {fileID: 8300000, guid: 8afd444c06f4f9346a6a35738d10823b, type: 3}

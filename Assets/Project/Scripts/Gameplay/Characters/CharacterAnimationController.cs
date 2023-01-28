@@ -15,7 +15,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterStateController _characterStateController;
         private CharacterCombatController _characterCombatController;
         private CharacterMovementController _characterMovementController;
-        
+        private CharacterAudioController _characterAudioController;
 
         private CharacterAnimationData _lastAnimationPlayed;
 
@@ -73,6 +73,16 @@ namespace Chaos.Gameplay.Characters
             {
                // _characterMovementController.RotateCharacterInMouseDirection();
             }
+            if(characterAnimation.name == "Slash")
+            {
+                _characterAudioController?.PlayBasicAttackSound();
+            }
+
+            if (characterAnimation.name == "Cast")
+            {
+                _characterAudioController?.PlaySpecialAttackSound();
+            }
+
             return true;
         }
 
@@ -99,6 +109,8 @@ namespace Chaos.Gameplay.Characters
             _characterStateController = GetComponent<CharacterStateController>();
             _characterCombatController = GetComponent<CharacterCombatController>();
             _characterMovementController = GetComponent<CharacterMovementController>();
+            _characterAudioController = GetComponent<CharacterAudioController>();
+
 
             SetAnimatorMovementSpeedFactor();
 

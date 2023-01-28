@@ -216,5 +216,10 @@ namespace Chaos.Gameplay.Characters
             }
         }
 
+        public float GetVelocityPercentageOfMaximumSpeed()
+        {
+            return _navMeshAgent.velocity.magnitude / _navMeshAgent.speed;
+        }
+
     }
 }

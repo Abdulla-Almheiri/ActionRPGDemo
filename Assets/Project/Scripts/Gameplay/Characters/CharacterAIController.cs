@@ -13,12 +13,18 @@ namespace Chaos.Gameplay.Characters
         protected CharacterAITemplate _characterAITemplate;
         private CharacterMovementController _characterMovementController;
         private CharacterSkillController _characterSkillController;
+        private CharacterAudioController _characterAudioController;
+        private CharacterCombatController _characterCombatController;
+
         private float _decisionRecharge = 1f;
         private float _decisionRechargeCounter = 0f;
         private float _baseAlertnessLevel = 1f;
         private float _alertnessLevel = 1f;
         private float _alertnessLevelCounter = 0f;
-
+        private bool _engaged = false;
+        private bool _engagedSoundPlayed = false;
+        private float _engageSoundRecharge = 10f;
+        private float _engageSoundCounter = 0f;
         void Start()
         {
             Initialize();
@@ -29,8 +35,33 @@ namespace Chaos.Gameplay.Characters
             ProcessAlertnessCounter();
             ProcessCharacterAI();
             ProcessAIDecisionRecharge();
+            ProcessEngageSoundRecharge();
         }
 
+        private void ProcessEngageSoundRecharge()
+        {
+            if(_engageSoundCounter > 0f)
+            {
+                _engageSoundCounter -= Time.deltaTime;
+            }
+        }
+
+        private void PlayEngageSound()
+        {
+            if(_characterAudioController == null)
+            {
+                return;
+            }
+
+            _engageSoundCounter = _engageSoundRecharge;
+            _characterAudioController.PlayEngageSound();
+            
+        }
+
+        private bool IsEngageSoundReady()
+        {
+            return _engageSoundCounter <= 0f;
+        }
         private void ResetAlertness()
         {
             _alertnessLevel = _baseAlertnessLevel;
@@ -57,6 +88,9 @@ namespace Chaos.Gameplay.Characters
             _characterMovementController = GetComponent<CharacterMovementController>();
             _characterSkillController = GetComponent<CharacterSkillController>();
             _playerCombatController = PlayerTest.GetComponent<CharacterCombatController>();
+            _characterAudioController = GetComponent<CharacterAudioController>();
+            _characterCombatController = GetComponent<CharacterCombatController>();
+
             if (PlayerTest != null)
             {
                 _playerMovementController = PlayerTest.GetComponent<CharacterMovementController>();
@@ -70,10 +104,23 @@ namespace Chaos.Gameplay.Characters
                 return;
             }
 
+            if(_characterCombatController?.Alive == false )
+            {
+                return;
+            }
+
             if(_characterMovementController.GetUnsignedDistanceBetweenCharacters(_playerMovementController) >= _characterAITemplate.PlayerDetectionRange*_alertnessLevel)
             {
                 TriggerAIDecisionRecharge();
+                _engaged = false;
+                _engagedSoundPlayed = false;
                 return;
+            }
+
+            _engaged = true;
+            if(IsEngageSoundReady() == true)
+            {
+                PlayEngageSound();
             }
 
             ProcessChaseBehaviour();

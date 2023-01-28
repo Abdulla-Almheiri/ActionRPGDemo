@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fd84a440fc1c4fb0f9fab63d46f33, type: 3}
+  m_Name: PaladinAudioTemplate
+  m_EditorClassIdentifier: 
+  Engage:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  Footsteps:
+    AudioClips:
+    - {fileID: 8300000, guid: 2fe9834e56938554c908afeb32612f7e, type: 3}
+    - {fileID: 8300000, guid: 84dc6f5a1482e4d4d98664cf476be91c, type: 3}
+    - {fileID: 8300000, guid: f062a55b2ec3e9f41aa4f3f385d093ac, type: 3}
+    - {fileID: 8300000, guid: 0280b892563ea974ba7b70649af9ff5a, type: 3}
+    BaseVolume: 0.01
+    PitchVariation: 10
+    VolumeVariation: 10
+  Death:
+    AudioClips:
+    - {fileID: 8300000, guid: 8aaa890b0a30f2b4d811983fcbd72e2b, type: 3}
+    - {fileID: 8300000, guid: 4e9ba169e5cedad4d9d6a3325f1aad51, type: 3}
+    - {fileID: 8300000, guid: 536fbe93b5368584e9393a19132705f7, type: 3}
+    - {fileID: 8300000, guid: cd24fc522a1418c4081ce1380e592e71, type: 3}
+    - {fileID: 8300000, guid: f8c34b8f011371f449c0af44340d81c7, type: 3}
+    BaseVolume: 0.121
+    PitchVariation: 20
+    VolumeVariation: 20
+  Hit:
+    AudioClips:
+    - {fileID: 8300000, guid: 12ffe787549bf1844a6bf6d3d4de2099, type: 3}
+    - {fileID: 8300000, guid: 82ee577b3b03b5f449ff7fa089e51ee2, type: 3}
+    - {fileID: 8300000, guid: 55986bb89e9b1c24081317b3271c226d, type: 3}
+    - {fileID: 8300000, guid: 3033a5b077ea89a419ab46e503a9c252, type: 3}
+    - {fileID: 8300000, guid: 2fed7440edbe4fb43a0367db5a851e2a, type: 3}
+    BaseVolume: 0.026
+    PitchVariation: 10
+    VolumeVariation: 10
+  BasicAttack:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  SpecialAttack:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10

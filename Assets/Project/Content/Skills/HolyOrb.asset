@@ -24,7 +24,7 @@ MonoBehaviour:
   SkillTriggerData:
     TriggerChance: 100
     SkillTrigger: {fileID: 0}
-  SkillPrefab: {fileID: 8962608298532112457, guid: 020d21246234f3748923062afd7d0780,
+  SkillPrefab: {fileID: 189723565081659313, guid: 060223dda4436034297aa10a29479e10,
     type: 3}
   SpawnLocationType: {fileID: 11400000, guid: ee43a4c395630b340a822cdd8232723e, type: 2}
   CharacterAnimation: {fileID: 11400000, guid: 8c7d29c48147c9d4da1ca95c16296622, type: 2}

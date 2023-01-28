@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9d3627ca33fc547b9ec46343caf3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExpansionVelocity: {x: 4, y: 4, z: 4}
+  ExpansionVelocity: {x: 5, y: 5, z: 5}
 --- !u!114 &1903568097239924347
 MonoBehaviour:
   m_ObjectHideFlags: 0

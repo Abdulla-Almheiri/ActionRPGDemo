@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fd84a440fc1c4fb0f9fab63d46f33, type: 3}
+  m_Name: TitanAudioTemplate
+  m_EditorClassIdentifier: 
+  Engage:
+    AudioClips:
+    - {fileID: 8300000, guid: 4f04ba8c8e20d24478b82d457392dec5, type: 3}
+    - {fileID: 8300000, guid: 16968b7e39c6b794493bf5873cf5814e, type: 3}
+    BaseVolume: 0.251
+    PitchVariation: 10
+    VolumeVariation: 10
+  Footsteps:
+    AudioClips:
+    - {fileID: 8300000, guid: a4458178ce9b27948a38b2364cdf0b9b, type: 3}
+    - {fileID: 8300000, guid: f7dc45745d91d864e99ec297b7d27dc3, type: 3}
+    - {fileID: 8300000, guid: 286a2f1980c8ce04798856db2fa632f5, type: 3}
+    - {fileID: 8300000, guid: 562f98fbc7ec4fe44b1554f0213752b1, type: 3}
+    - {fileID: 8300000, guid: 75b6ec97150e5bc4f9994c5159291a24, type: 3}
+    - {fileID: 8300000, guid: 4e489f72a389a3a4aa807cba45e63e17, type: 3}
+    BaseVolume: 0.553
+    PitchVariation: 10
+    VolumeVariation: 10
+  Death:
+    AudioClips:
+    - {fileID: 8300000, guid: c3f480e03ec93274c886c0965072572b, type: 3}
+    - {fileID: 8300000, guid: 061d4cf7f56644b40b62b7f5daed9d2a, type: 3}
+    - {fileID: 8300000, guid: c9b276e1c635daa409366f8970e74aaa, type: 3}
+    - {fileID: 8300000, guid: 5b6810b756af1a446857f5efbefd16f2, type: 3}
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  Hit:
+    AudioClips:
+    - {fileID: 8300000, guid: b6124008d011d87438507a55ffb99216, type: 3}
+    - {fileID: 8300000, guid: 1616ac85f98b44d42a7fe14290f0c11e, type: 3}
+    - {fileID: 8300000, guid: 93bd0f1e29d8cb2499001b4621945225, type: 3}
+    - {fileID: 8300000, guid: e298f24463f0df548a88f07bd1ca7a9f, type: 3}
+    - {fileID: 8300000, guid: 0a3ffed4c29abc84b85e67774271cb4d, type: 3}
+    BaseVolume: 0.163
+    PitchVariation: 20
+    VolumeVariation: 20
+  BasicAttack:
+    AudioClips:
+    - {fileID: 8300000, guid: a05b34745cff7c1449f98d557d0c90b8, type: 3}
+    BaseVolume: 0.196
+    PitchVariation: 10
+    VolumeVariation: 10
+  SpecialAttack:
+    AudioClips:
+    - {fileID: 8300000, guid: 4253ea676060e49dd9488f73d692ea2a, type: 3}
+    BaseVolume: 0.223
+    PitchVariation: 10
+    VolumeVariation: 10

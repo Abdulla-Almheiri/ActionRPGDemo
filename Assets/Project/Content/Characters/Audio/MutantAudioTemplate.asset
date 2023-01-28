@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fd84a440fc1c4fb0f9fab63d46f33, type: 3}
+  m_Name: MutantAudioTemplate
+  m_EditorClassIdentifier: 
+  Engage:
+    AudioClips:
+    - {fileID: 8300000, guid: 6762d6d1004c5e7419d1fa3cbf4b1956, type: 3}
+    - {fileID: 8300000, guid: 1015e169dadf9a94db36cdf9be0fae90, type: 3}
+    BaseVolume: 0.202
+    PitchVariation: 10
+    VolumeVariation: 10
+  Footsteps:
+    AudioClips:
+    - {fileID: 8300000, guid: bcfd29bb856d3be419b754da883d2209, type: 3}
+    - {fileID: 8300000, guid: cb496366c216fe848804536090fdcc8e, type: 3}
+    - {fileID: 8300000, guid: 5218f7a4afcd7d347a53d629e3613318, type: 3}
+    BaseVolume: 0.154
+    PitchVariation: 10
+    VolumeVariation: 10
+  Death:
+    AudioClips:
+    - {fileID: 8300000, guid: 210592e478d80dc4c888311f6d8d208d, type: 3}
+    - {fileID: 8300000, guid: 2494e902954d02443aa475d3452f5ec6, type: 3}
+    BaseVolume: 0.127
+    PitchVariation: 10
+    VolumeVariation: 10
+  Hit:
+    AudioClips:
+    - {fileID: 8300000, guid: 1afdd900c2978c94fab7aef6ef71bb41, type: 3}
+    - {fileID: 8300000, guid: 5b94570b777c3974890d1ae622435d57, type: 3}
+    - {fileID: 8300000, guid: bda623dc3bd7e984ebfca69a61101e70, type: 3}
+    BaseVolume: 0.044
+    PitchVariation: 20
+    VolumeVariation: 20
+  BasicAttack:
+    AudioClips:
+    - {fileID: 8300000, guid: cfac94bbc29a3b34f8f039027659b77a, type: 3}
+    BaseVolume: 0.092
+    PitchVariation: 10
+    VolumeVariation: 30
+  SpecialAttack:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10

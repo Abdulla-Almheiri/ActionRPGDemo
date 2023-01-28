@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1fd84a440fc1c4fb0f9fab63d46f33, type: 3}
+  m_Name: SpiderAudioTemplate
+  m_EditorClassIdentifier: 
+  Engage:
+    AudioClips:
+    - {fileID: 8300000, guid: a13349935d6b599489e7eab8c6f355bb, type: 3}
+    BaseVolume: 0.127
+    PitchVariation: 10
+    VolumeVariation: 10
+  Footsteps:
+    AudioClips:
+    - {fileID: 8300000, guid: bb3d43bc0e5d89e4085cca36578663d9, type: 3}
+    BaseVolume: 0.216
+    PitchVariation: 10
+    VolumeVariation: 10
+  Death:
+    AudioClips:
+    - {fileID: 8300000, guid: 4fe3d69a0c041f94fbfc5f4ecb189194, type: 3}
+    BaseVolume: 0.074
+    PitchVariation: 20
+    VolumeVariation: 20
+  Hit:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  BasicAttack:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10
+  SpecialAttack:
+    AudioClips: []
+    BaseVolume: 0.5
+    PitchVariation: 10
+    VolumeVariation: 10

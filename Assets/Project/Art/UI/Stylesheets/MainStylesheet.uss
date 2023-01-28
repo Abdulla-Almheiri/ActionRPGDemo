@@ -1,20 +1,24 @@
 .pause-menu-button {
-    border-top-left-radius: 39px;
-    border-bottom-left-radius: 39px;
-    border-top-right-radius: 39px;
-    border-bottom-right-radius: 39px;
-    background-image: url('project://database/Assets/_importedAssets/Free%20UI%20build%20package/Art/Bars_Unity.png?fileID=21300012&guid=34ecf51bcd3f4424eafda7dafd885bd0&type=3#Bars_Unity_6');
-    -unity-background-image-tint-color: rgba(53, 37, 37, 255);
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    background-image: url('project://database/Assets/_importedAssets/Free%20UI%20build%20package/Art/Bars_Unity.png?fileID=21300042&guid=34ecf51bcd3f4424eafda7dafd885bd0&type=3#Bars_Unity_21');
+    -unity-background-image-tint-color: rgb(53, 37, 37);
     -unity-background-scale-mode: stretch-to-fill;
-    -unity-slice-left: 0;
-    -unity-slice-top: 0;
-    -unity-slice-right: 0;
-    -unity-slice-bottom: 0;
+    -unity-slice-left: 15;
+    -unity-slice-top: 5;
+    -unity-slice-right: 15;
+    -unity-slice-bottom: 5;
     -unity-font: url('project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght.ttf?fileID=12800000&guid=f6df716619697e14ca8a22d024a8bda0&type=3#Cinzel-VariableFont_wght');
     -unity-font-style: normal;
     -unity-font-definition: none;
-    background-color: rgba(0, 0, 0, 255);
-    color: rgba(255, 255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }
 
 .skillbar-button {
@@ -23,7 +27,7 @@
 }
 
 .skillbutton-glow {
-    background-color: rgba(255, 255, 255, 255);
+    background-color: rgb(255, 255, 255);
     background-image: url('project://database/Assets/_importedAssets/Basic_RPG_Icons/Skills/02_Fire.png?fileID=21300000&guid=9725fb87facc42a4984598500f76e0fb&type=3#02_Fire');
     scale: 1.2 1.2;
     transition-duration: 1s;
@@ -31,4 +35,21 @@
 
 .button-scale:hover {
     scale: 1.1 1;
+}
+
+.section-background {
+    -unity-background-image-tint-color: rgba(106, 90, 79, 255);
+    background-image: url('project://database/Assets/_importedAssets/Free%20UI%20build%20package/Art/Bars_Unity.png?fileID=21300040&guid=34ecf51bcd3f4424eafda7dafd885bd0&type=3#Bars_Unity_20');
+    -unity-slice-left: 20;
+    -unity-slice-top: 5;
+    -unity-slice-right: 20;
+    -unity-slice-bottom: 5;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }

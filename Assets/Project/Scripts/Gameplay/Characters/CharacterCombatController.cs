@@ -42,6 +42,7 @@ namespace Chaos.Gameplay.Characters
         private CharacterUIController _characterUIController;
         private CharacterStateController _characterStateController;
         private CharacterAIController _characterAIController;
+        private CharacterAudioController _characterAudioController;
         private PlayerController _playerController;
 
         private Rigidbody _characterRigidBody;
@@ -124,6 +125,8 @@ namespace Chaos.Gameplay.Characters
             _characterAnimationController = GetComponent<CharacterAnimationController>();
             _characterStateController = GetComponent<CharacterStateController>();
             _characterAIController = GetComponent<CharacterAIController>();
+            _characterAudioController = GetComponent<CharacterAudioController>();
+
             _playerController = GetComponent<PlayerController>();
             _characterRigidBody = GetComponentInChildren<Rigidbody>();
 
@@ -219,7 +222,6 @@ namespace Chaos.Gameplay.Characters
 
                 if (skillAction.HealingScaled != 0 && activator == this)
                 {
-                    Debug.Log("HEALING TIME!!!!!!!!!!!!!");
                     var healing = (skillAction.HealingScaled / 100f) * attributeValue;
 
                     if (Random.Range(0f, 100f) < _criticalHealChance)
@@ -269,7 +271,7 @@ namespace Chaos.Gameplay.Characters
             {
                 return;
             }
-
+            _characterAudioController?.PlayHitSound();
             _currentHealth -= value;
             //Fix here. Magic number!
             SetAIAlertnessLevel(5f, 3f);
@@ -500,6 +502,10 @@ namespace Chaos.Gameplay.Characters
             _characterRigidBody.detectCollisions = false;
             _characterMovementController.DisableNavMeshComponent();
 
+            if(_characterAudioController != null)
+            {
+                _characterAudioController.PlayDeathSound();
+            }
             if(_playerController != null)
             {
                 GameUIController.ShowRestartLevelMenu();
