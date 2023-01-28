@@ -11,6 +11,8 @@ namespace Chaos.Gameplay.UI
         public string Text;
         public Color Color;
         public AudioClip SoundEffect;
+        [Range(0f, 1f)]
+        public float VolumeOverride = 0.5f;
         public int Priority = 3;
     }
 }

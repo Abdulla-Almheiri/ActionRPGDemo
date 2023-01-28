@@ -34,7 +34,7 @@ MonoBehaviour:
       TriggerChance: 100
       SkillTrigger: {fileID: 0}
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
-    DamageScaled: 80
+    DamageScaled: 50
     DamageFlat: 0
     HealingScaled: 0
     HealingFlat: 0

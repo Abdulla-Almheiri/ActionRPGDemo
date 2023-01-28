@@ -15,4 +15,5 @@ MonoBehaviour:
   Text: Explore the ruins of Maynuurskald
   Color: {r: 1, g: 1, b: 1, a: 1}
   SoundEffect: {fileID: 8300000, guid: e4bd181674b002646805cf8d4b20fd14, type: 3}
+  VolumeOverride: 0.336
   Priority: 5

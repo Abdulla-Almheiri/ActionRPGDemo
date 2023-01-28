@@ -21,8 +21,10 @@ namespace Chaos.Gameplay.Systems {
 
 
         private PlayerController _playerController;
+        public AudioSource AudioSourceComponent { private set; get; }
         private void Awake()
         {
+            AudioSourceComponent = GetComponent<AudioSource>();
             InitializePlayerPrefs();
         }
 
@@ -101,7 +103,7 @@ namespace Chaos.Gameplay.Systems {
             //FIX HERE. Make it affected by soundeffect volume
             if(message.SoundEffect != null)
             {
-                AudioSource.PlayClipAtPoint(message.SoundEffect, _playerController.gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+                AudioSource.PlayClipAtPoint(message.SoundEffect, _playerController.gameObject.transform.position, GetSoundEffectsVolumeNormalized()*message.VolumeOverride);
             }
 
             Debug.Log("Normalized sound effects volume =   " + GetSoundEffectsVolumeNormalized());
@@ -129,22 +131,31 @@ namespace Chaos.Gameplay.Systems {
 
         public void PlayUIConfirmSound()
         {
-            AudioSource.PlayClipAtPoint(GameAudioTemplate.UIConfirmSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            //AudioSource.PlayClipAtPoint(GameAudioTemplate.UIConfirmSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            PlaySound(GameAudioTemplate.UIConfirmSound);
         }
 
         public void PlayUICancelSound()
         {
-            AudioSource.PlayClipAtPoint(GameAudioTemplate.UICancelSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            // AudioSource.PlayClipAtPoint(GameAudioTemplate.UICancelSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            PlaySound(GameAudioTemplate.UICancelSound);
         }
 
         public void PlayUIWindowOpenSound()
         {
-            AudioSource.PlayClipAtPoint(GameAudioTemplate.UIWindowOpenSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            // AudioSource.PlayClipAtPoint(GameAudioTemplate.UIWindowOpenSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            PlaySound(GameAudioTemplate.UIWindowOpenSound);
         }
 
         public void PlayUIHoverSound()
         {
-            AudioSource.PlayClipAtPoint(GameAudioTemplate.UIHoverSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            // AudioSource.PlayClipAtPoint(GameAudioTemplate.UIHoverSound, gameObject.transform.position, GetSoundEffectsVolumeNormalized());
+            PlaySound(GameAudioTemplate.UIHoverSound);
+        }
+
+        public void PlaySound(AudioClip clip)
+        {
+            AudioSourceComponent.PlayOneShot(clip);
         }
     }
 }
