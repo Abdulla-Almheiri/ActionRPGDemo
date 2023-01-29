@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrimaryAISkill: {fileID: 11400000, guid: cd51d7bd0fddf8c4d95d0423505c1103, type: 2}
   Skills:
-  - {fileID: 11400000, guid: 95d3c02260b40cc46a1b633a2d03ec3a, type: 2}
+  - {fileID: 11400000, guid: 96c55c052d3fba744889739a9415fa98, type: 2}
   - {fileID: 11400000, guid: cd51d7bd0fddf8c4d95d0423505c1103, type: 2}

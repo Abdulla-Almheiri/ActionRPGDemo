@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &943761932110937747
 Transform:
   m_ObjectHideFlags: 0
@@ -43,9 +43,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2686849704448011476, guid: b84f65f429650d84580092627403ab17,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 053d1d01ba233ae4c93c58498a9b26d0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 12ffe787549bf1844a6bf6d3d4de2099, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.081
+  m_Volume: 0.11
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4559473715180577077}
   - component: {fileID: 1928841624632038555}
   m_Layer: 0
-  m_Name: Swipe
+  m_Name: Smack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.43
+  m_Radius: 1.11
   m_Center: {x: 0, y: 0.54, z: 1}
 --- !u!114 &4559473715180577077
 MonoBehaviour:

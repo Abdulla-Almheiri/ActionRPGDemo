@@ -4933,7 +4933,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c6ed6e3748c083c41b900a3c2dea6fec, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.218
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4977,7 +4977,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14822,11 +14822,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6820445246708541171}
   - component: {fileID: 4825874627786699988}
-  - component: {fileID: 7335469836677168637}
   - component: {fileID: 6024815044805923972}
-  - component: {fileID: -8611221011227952610}
+  - component: {fileID: 3755279548314645450}
   m_Layer: 2
-  m_Name: SmiteEffect
+  m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14867,19 +14866,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7335469836677168637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6820445246708541164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0602e65ae4e7a45b2dc64297ea9534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Delay: 3
 --- !u!114 &6024815044805923972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14892,7 +14878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bf4104034ddca4ba9561a4a2424ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-8611221011227952610
+--- !u!114 &3755279548314645450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14901,9 +14887,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6820445246708541164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bb1698812a4574fa122f04ef0d6b32, type: 3}
+  m_Script: {fileID: 11500000, guid: 95aa82fb80f8d624f96e1c33fe8c1deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Delay>k__BackingField: 0.7
 --- !u!1 &6820445246776034365
 GameObject:
   m_ObjectHideFlags: 0
