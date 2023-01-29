@@ -17,7 +17,7 @@ MonoBehaviour:
   Health:
     CharacterAttribute: {fileID: 11400000, guid: b0d14e30465a4ca4b8381ccf722af632,
       type: 2}
-    BaseRating: 30
+    BaseRating: 25
   Energy:
     CharacterAttribute: {fileID: 11400000, guid: 1a0f109772e9bd74da11aee187eb6677,
       type: 2}

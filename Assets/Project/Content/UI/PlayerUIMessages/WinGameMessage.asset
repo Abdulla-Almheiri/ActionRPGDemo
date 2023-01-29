@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73211dd1cfeb4114e9c4160ab40360bd, type: 3}
-  m_Name: NotEnoughEnergy
+  m_Name: WinGameMessage
   m_EditorClassIdentifier: 
-  Text: Not enough energy!
-  Color: {r: 0.509434, g: 0.1321645, b: 0.1321645, a: 1}
-  SoundEffect: {fileID: 8300000, guid: 3a9e2fb2c72f7844292c90bccf4c46f7, type: 3}
-  VolumeOverride: 0.121
-  Priority: 2
+  Text: You defeated the Corrupted Titan. Thank you for playing the demo!
+  Color: {r: 0.33045566, g: 0.6753159, b: 0.8867924, a: 0.99215686}
+  SoundEffect: {fileID: 8300000, guid: fe6ee36f815210546b975edd2ffca309, type: 3}
+  VolumeOverride: 0.291
+  Priority: 5

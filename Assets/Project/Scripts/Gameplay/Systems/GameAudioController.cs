@@ -64,7 +64,6 @@ namespace Chaos.Gameplay.Systems {
             MusicVolume = value;
             GameAudioTemplate.AudioMixer.SetFloat("MusicVolume", MusicVolume);
             PlayerPrefs.SetFloat(MUSIC_VOLUME_KEY, MusicVolume);
-            Debug.Log("Music Volume PlayerPrefs  :  " + MusicVolume);
         }
 
         private void InitializePlayerPrefs()
@@ -106,7 +105,6 @@ namespace Chaos.Gameplay.Systems {
                 AudioSource.PlayClipAtPoint(message.SoundEffect, _playerController.gameObject.transform.position, GetSoundEffectsVolumeNormalized()*message.VolumeOverride);
             }
 
-            Debug.Log("Normalized sound effects volume =   " + GetSoundEffectsVolumeNormalized());
         }
 
         public float GetSoundEffectsVolumeNormalized()

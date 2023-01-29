@@ -109,7 +109,6 @@ namespace Chaos.Gameplay.Characters
 
             if(EventSystem.current.IsPointerOverGameObject() == true)
             {
-                Debug.Log("Pointer over gameobject : " + EventSystem.current.name );
                 return;
             }
 

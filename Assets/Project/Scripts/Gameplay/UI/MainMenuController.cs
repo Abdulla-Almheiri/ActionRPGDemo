@@ -65,7 +65,6 @@ namespace Chaos.Gameplay.UI
             _soundEffectsVolumeSlider.value = GameAudioController.SoundEffectsVolume;
             _musicVolumeSlider.value = GameAudioController.MusicVolume;
 
-            Debug.Log("Music Volume Value  :   " + GameAudioController.MusicVolume);
 
             _gameBuildLabel = _rootVisualElement.Q<Label>("GameBuildLabel");
 

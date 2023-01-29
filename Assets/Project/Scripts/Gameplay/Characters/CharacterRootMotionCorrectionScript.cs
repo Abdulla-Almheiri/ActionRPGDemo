@@ -23,7 +23,7 @@ namespace Chaos.Gameplay.Characters
 
         private void OnAnimatorMove()
         {
-            Debug.Log("ANIMATOR MOVED");
+            //Debug.Log("ANIMATOR MOVED");
         }
     }
 }

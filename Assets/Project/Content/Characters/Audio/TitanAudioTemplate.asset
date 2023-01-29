@@ -16,6 +16,7 @@ MonoBehaviour:
     AudioClips:
     - {fileID: 8300000, guid: 4f04ba8c8e20d24478b82d457392dec5, type: 3}
     - {fileID: 8300000, guid: 16968b7e39c6b794493bf5873cf5814e, type: 3}
+    - {fileID: 8300000, guid: 9e138a6215558d444983834fd1656471, type: 3}
     BaseVolume: 0.251
     PitchVariation: 10
     VolumeVariation: 10

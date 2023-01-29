@@ -21,9 +21,8 @@ MonoBehaviour:
     AudioClips:
     - {fileID: 8300000, guid: 2fe9834e56938554c908afeb32612f7e, type: 3}
     - {fileID: 8300000, guid: 84dc6f5a1482e4d4d98664cf476be91c, type: 3}
-    - {fileID: 8300000, guid: f062a55b2ec3e9f41aa4f3f385d093ac, type: 3}
     - {fileID: 8300000, guid: 0280b892563ea974ba7b70649af9ff5a, type: 3}
-    BaseVolume: 0.01
+    BaseVolume: 0.005
     PitchVariation: 10
     VolumeVariation: 10
   Death:
@@ -33,7 +32,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 536fbe93b5368584e9393a19132705f7, type: 3}
     - {fileID: 8300000, guid: cd24fc522a1418c4081ce1380e592e71, type: 3}
     - {fileID: 8300000, guid: f8c34b8f011371f449c0af44340d81c7, type: 3}
-    BaseVolume: 0.121
+    BaseVolume: 0.166
     PitchVariation: 20
     VolumeVariation: 20
   Hit:

@@ -86,7 +86,6 @@ namespace Chaos.Gameplay.Characters
                 return false;
             }
 
-            Debug.Log("Triggered action :  " + characterAction);
             InvokeCharacterActionTriggeredEvent(characterAction);
             var attempt = AttemptCharacterStateChange(characterAction.TransitionToState);
             if(attempt == true)

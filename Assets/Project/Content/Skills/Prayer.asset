@@ -17,8 +17,8 @@ MonoBehaviour:
   SkillElement: {fileID: 11400000, guid: 3e9b9cbe786d4cb4fb88ae178232f92f, type: 2}
   Description: Heals the caster for a moderate amount.
   SkillActivationData:
-    EnergyCost: 4
-    RechargeTime: 4
+    EnergyCost: 6
+    RechargeTime: 6
   CharacterActionTriggered: {fileID: 0}
   SkillTriggerData:
     TriggerChance: 100

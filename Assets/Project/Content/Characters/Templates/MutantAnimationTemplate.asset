@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b35e43b327add4bbc097603064e2a5, type: 3}
   m_Name: MutantAnimationTemplate
   m_EditorClassIdentifier: 
-  MovementSpeedFactor: 0.25
+  MovementSpeedFactor: 0.49
   AnimationData: []

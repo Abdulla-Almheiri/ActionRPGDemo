@@ -49,7 +49,7 @@
                 <ui:Button text="Exit Game" display-tooltip-when-elided="true" focusable="false" name="ExitGameButton" class="pause-menu-button button-scale" style="width: 125px; height: 35px; font-size: 16px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="RestartSection" picking-mode="Ignore" class="pause-menu-button section-background" style="height: 20%; width: 20%; align-items: center; display: none;">
+        <ui:VisualElement name="RestartSection" picking-mode="Ignore" class="pause-menu-button section-background" style="height: 20%; width: 20%; align-items: center; display: none; margin-bottom: 182px;">
             <ui:Label text="You have died. Would you like to restart this level?" display-tooltip-when-elided="true" name="DeathLabel" style="-unity-font-definition: url(&apos;project://database/Assets/Project/Art/UI/Fonts/Cinzel-VariableFont_wght%20SDF.asset?fileID=11400000&amp;guid=daf5f9368e767e54b9cddcb4c3a10b41&amp;type=2#Cinzel-VariableFont_wght SDF&apos;); -unity-text-align: middle-center; width: 100%; height: 50%; white-space: normal;" />
             <ui:Button text="Restart" display-tooltip-when-elided="true" name="DeathRestartButton" class="button-scale pause-menu-button" style="width: 30%; height: 30%;" />
         </ui:VisualElement>

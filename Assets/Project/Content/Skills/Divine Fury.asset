@@ -20,15 +20,15 @@ MonoBehaviour:
 
     Heals the caster for a small amount.'
   SkillActivationData:
-    EnergyCost: 5
-    RechargeTime: 3
+    EnergyCost: 8
+    RechargeTime: 30
   CharacterActionTriggered: {fileID: 0}
   SkillTriggerData:
     TriggerChance: 100
     SkillTrigger: {fileID: 0}
   SkillPrefab: {fileID: 1903568097239924347, guid: f7a95e84f57dd5d47981391d6dc6af57,
     type: 3}
-  SpawnLocationType: {fileID: 11400000, guid: f6434e0a998a6df4faa410b4cb82fbfb, type: 2}
+  SpawnLocationType: {fileID: 11400000, guid: ea0cd8fb88f56a944b2bbc4008c03d2d, type: 2}
   CharacterAnimation: {fileID: 11400000, guid: 8c7d29c48147c9d4da1ca95c16296622, type: 2}
   IsSelfSkill: 1
   SkillActions:
@@ -36,7 +36,7 @@ MonoBehaviour:
       TriggerChance: 100
       SkillTrigger: {fileID: 0}
     ScalingAttribute: {fileID: 11400000, guid: f112c50591268a3429ff2829681c5460, type: 2}
-    DamageScaled: 200
+    DamageScaled: 180
     DamageFlat: 0
     HealingScaled: 60
     HealingFlat: 0

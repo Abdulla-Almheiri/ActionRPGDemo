@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: You sense corruption nearby! Find its source!
   Color: {r: 1, g: 1, b: 1, a: 1}
-  SoundEffect: {fileID: 8300000, guid: 6c21cc17e7113db4b8898864129bea28, type: 3}
-  VolumeOverride: 0.255
+  SoundEffect: {fileID: 8300000, guid: 3b49a41de34abb640b104815f73ec807, type: 3}
+  VolumeOverride: 0.19
   Priority: 5

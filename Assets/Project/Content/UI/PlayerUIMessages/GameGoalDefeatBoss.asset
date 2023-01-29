@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text: Defeat the Corrupted Titan!
   Color: {r: 1, g: 1, b: 1, a: 1}
-  SoundEffect: {fileID: 8300000, guid: 6c21cc17e7113db4b8898864129bea28, type: 3}
-  VolumeOverride: 0.26
+  SoundEffect: {fileID: 8300000, guid: ee52261e332a42c4ebc2c3da2e573e03, type: 3}
+  VolumeOverride: 0.185
   Priority: 5

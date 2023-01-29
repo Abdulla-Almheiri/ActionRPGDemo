@@ -396,7 +396,6 @@ namespace Chaos.Gameplay.UI
         {
             GameAudioController.PlayUIConfirmSound();
             TogglePauseMenu();
-            Debug.Log("Resume pressed");
         }
        
         private void RestartGameButtonPressed(ClickEvent evt)
@@ -421,7 +420,6 @@ namespace Chaos.Gameplay.UI
             _skillButton2.style.backgroundImage = new StyleBackground(_playerSkillController.Skills[1].Icon);
             _skillButton3.style.backgroundImage = new StyleBackground(_playerSkillController.Skills[2].Icon);
             _skillButton4.style.backgroundImage = new StyleBackground(_playerSkillController.Skills[3].Icon);
-            //Debug.Log("Skill icons updated :  " + _playerSkillController.Skills[0].Icon.name);
 
         }
 

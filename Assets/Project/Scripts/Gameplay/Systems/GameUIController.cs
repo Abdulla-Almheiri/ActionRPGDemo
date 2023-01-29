@@ -47,7 +47,6 @@ namespace Chaos.Gameplay.Systems
             HUDController.TriggerPlayerUIMessage(message, duration);
             _gameAudioController.PlayMessageSound(message);
 
-            Debug.Log("Message triggered :  " + message.Text);
 
         }
         public void SpawnDamageTextAtScreenPositionTest(string text, Transform worldPoint, FloatingCombatTextEventType combatEventType)
@@ -57,7 +56,6 @@ namespace Chaos.Gameplay.Systems
             var spawn = objPool.RetrieveNextAvailableGameObjectFromPool();
             if(spawn == null)
             {
-                Debug.Log("Spawn is null");
                 return;
             }
 

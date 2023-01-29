@@ -164,7 +164,6 @@ namespace Chaos.Gameplay.Characters
             if(_characterAttributes.TryGetValue(characterAttribute, out CharacterAttributeData valueContainer))
             {
                 //Fix here
-                //Debug.Log("Attribute " + characterAttribute.name + "is   :   " + valueContainer.BaseRating);
                 return valueContainer.BaseRating;
             }
             return 0f;
@@ -510,7 +509,7 @@ namespace Chaos.Gameplay.Characters
             {
                 GameUIController.ShowRestartLevelMenu();
             }
-            Debug.Log("Death triggered");
+
         }
 
         public void Revive()

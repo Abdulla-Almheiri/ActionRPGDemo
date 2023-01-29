@@ -13,7 +13,7 @@ namespace Chaos.Gameplay.Characters
             AnimationLayerIndex = Animator.StringToHash(name);
             if (AnimationLayerIndex == -1)
             {
-                Debug.Log("Layer " + name + " doesn't exist." + AnimationLayerIndex);
+                //Debug.Log("Layer " + name + " doesn't exist." + AnimationLayerIndex);
             }
         }
 
