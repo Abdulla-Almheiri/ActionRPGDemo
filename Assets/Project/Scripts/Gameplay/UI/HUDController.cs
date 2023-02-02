@@ -116,7 +116,10 @@ namespace Chaos.Gameplay.UI
 
         private void Initialize()
         {
+
             _rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+
+
             _pauseMenu = _rootVisualElement.Q("PauseMenu");
             _pauseMenu.style.display = DisplayStyle.None;
 
@@ -126,7 +129,11 @@ namespace Chaos.Gameplay.UI
 
 
             _resumeButton = _rootVisualElement.Q("ResumeButton");
+
+
             _settingsButton = _rootVisualElement.Q<Button>("SettingsButton");
+
+
             _exitGameButton = _rootVisualElement.Q<Button>("ExitGameButton");
             _restartGameButton = _rootVisualElement.Q<Button>("RestartGameButton");
 
@@ -317,7 +324,9 @@ namespace Chaos.Gameplay.UI
         private void RegisterCallbackSettingsButton()
         {
             _settingsButton.RegisterCallback<ClickEvent>(SettingsMenuButtonPressed);
+
         }
+
         private void RegisterCallbackPauseMenuButtons()
         {
             _resumeButton.RegisterCallback<ClickEvent>(ResumeButtonPressed);

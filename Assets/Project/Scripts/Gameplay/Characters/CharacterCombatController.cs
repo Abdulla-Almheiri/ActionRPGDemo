@@ -176,8 +176,8 @@ namespace Chaos.Gameplay.Characters
             {
                 return;
             }
-            bool hasSkillModifier = activator.SkillPowerModifiers.TryGetValue(skill, out SkillPowerModifier skillModifier);
 
+            bool hasSkillModifier = activator.SkillPowerModifiers.TryGetValue(skill, out SkillPowerModifier skillModifier);
             bool hasAttribute = activator.CoreCharacterAttributes.TryGetValue(skillAction.ScalingAttribute, out float attributeValue);
             float energyReturn = 0f;
 
@@ -205,7 +205,6 @@ namespace Chaos.Gameplay.Characters
                         TakeDamage(damage, false);
                     }
                     
-                    //FIX HERE. Apply skillmodifier to healing.
                     if(skillAction.DrainHealthPercentageOfDamage != 0)
                     {
                         var drain = (skillAction.DrainHealthPercentageOfDamage / 100f) * damage;
@@ -240,17 +239,10 @@ namespace Chaos.Gameplay.Characters
                 }
             }
 
-
             if(energyReturn != 0)
             {
                 GenerateEnergy(energyReturn);
             }
-
-
- 
-
-
-
         }
 
         private void GenerateEnergy(float amount)
